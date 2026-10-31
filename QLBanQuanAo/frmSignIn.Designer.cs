@@ -36,13 +36,13 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.dungeonTextBox1 = new ReaLTaiizor.DungeonTextBox();
-            this.dungeonTextBox2 = new ReaLTaiizor.DungeonTextBox();
-            this.dungeonTextBox3 = new ReaLTaiizor.DungeonTextBox();
-            this.dungeonTextBox4 = new ReaLTaiizor.DungeonTextBox();
+            this.txtEmail = new ReaLTaiizor.DungeonTextBox();
+            this.txtPhone = new ReaLTaiizor.DungeonTextBox();
+            this.txtPassword = new ReaLTaiizor.DungeonTextBox();
+            this.txtConfirmPassword = new ReaLTaiizor.DungeonTextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnSignIn = new System.Windows.Forms.Button();
             this.foxLinkLabel1 = new ReaLTaiizor.FoxLinkLabel();
             this.SuspendLayout();
             // 
@@ -68,7 +68,7 @@
             this.txtFullName.Multiline = false;
             this.txtFullName.Name = "txtFullName";
             this.txtFullName.ReadOnly = false;
-            this.txtFullName.Size = new System.Drawing.Size(591, 33);
+            this.txtFullName.Size = new System.Drawing.Size(591, 31);
             this.txtFullName.TabIndex = 1;
             this.txtFullName.TextAlignment = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtFullName.UseSystemPasswordChar = false;
@@ -129,78 +129,78 @@
             this.label3.TabIndex = 6;
             this.label3.Text = "Xác nhận mật khẩu";
             // 
-            // dungeonTextBox1
+            // txtEmail
             // 
-            this.dungeonTextBox1.BackColor = System.Drawing.Color.Transparent;
-            this.dungeonTextBox1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.dungeonTextBox1.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.dungeonTextBox1.EdgeColor = System.Drawing.Color.White;
-            this.dungeonTextBox1.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.dungeonTextBox1.ForeColor = System.Drawing.Color.DimGray;
-            this.dungeonTextBox1.Location = new System.Drawing.Point(71, 414);
-            this.dungeonTextBox1.MaxLength = 32767;
-            this.dungeonTextBox1.Multiline = false;
-            this.dungeonTextBox1.Name = "dungeonTextBox1";
-            this.dungeonTextBox1.ReadOnly = false;
-            this.dungeonTextBox1.Size = new System.Drawing.Size(591, 33);
-            this.dungeonTextBox1.TabIndex = 7;
-            this.dungeonTextBox1.TextAlignment = System.Windows.Forms.HorizontalAlignment.Left;
-            this.dungeonTextBox1.UseSystemPasswordChar = false;
-            this.dungeonTextBox1.TextChanged += new System.EventHandler(this.dungeonTextBox1_TextChanged);
+            this.txtEmail.BackColor = System.Drawing.Color.Transparent;
+            this.txtEmail.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.txtEmail.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtEmail.EdgeColor = System.Drawing.Color.White;
+            this.txtEmail.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.txtEmail.ForeColor = System.Drawing.Color.DimGray;
+            this.txtEmail.Location = new System.Drawing.Point(71, 414);
+            this.txtEmail.MaxLength = 32767;
+            this.txtEmail.Multiline = false;
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.ReadOnly = false;
+            this.txtEmail.Size = new System.Drawing.Size(591, 31);
+            this.txtEmail.TabIndex = 7;
+            this.txtEmail.TextAlignment = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtEmail.UseSystemPasswordChar = false;
+            this.txtEmail.TextChanged += new System.EventHandler(this.dungeonTextBox1_TextChanged);
             // 
-            // dungeonTextBox2
+            // txtPhone
             // 
-            this.dungeonTextBox2.BackColor = System.Drawing.Color.Transparent;
-            this.dungeonTextBox2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.dungeonTextBox2.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.dungeonTextBox2.EdgeColor = System.Drawing.Color.White;
-            this.dungeonTextBox2.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.dungeonTextBox2.ForeColor = System.Drawing.Color.DimGray;
-            this.dungeonTextBox2.Location = new System.Drawing.Point(71, 493);
-            this.dungeonTextBox2.MaxLength = 32767;
-            this.dungeonTextBox2.Multiline = false;
-            this.dungeonTextBox2.Name = "dungeonTextBox2";
-            this.dungeonTextBox2.ReadOnly = false;
-            this.dungeonTextBox2.Size = new System.Drawing.Size(591, 33);
-            this.dungeonTextBox2.TabIndex = 8;
-            this.dungeonTextBox2.TextAlignment = System.Windows.Forms.HorizontalAlignment.Left;
-            this.dungeonTextBox2.UseSystemPasswordChar = false;
+            this.txtPhone.BackColor = System.Drawing.Color.Transparent;
+            this.txtPhone.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.txtPhone.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtPhone.EdgeColor = System.Drawing.Color.White;
+            this.txtPhone.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.txtPhone.ForeColor = System.Drawing.Color.DimGray;
+            this.txtPhone.Location = new System.Drawing.Point(71, 493);
+            this.txtPhone.MaxLength = 32767;
+            this.txtPhone.Multiline = false;
+            this.txtPhone.Name = "txtPhone";
+            this.txtPhone.ReadOnly = false;
+            this.txtPhone.Size = new System.Drawing.Size(591, 31);
+            this.txtPhone.TabIndex = 8;
+            this.txtPhone.TextAlignment = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtPhone.UseSystemPasswordChar = false;
             // 
-            // dungeonTextBox3
+            // txtPassword
             // 
-            this.dungeonTextBox3.BackColor = System.Drawing.Color.Transparent;
-            this.dungeonTextBox3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.dungeonTextBox3.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.dungeonTextBox3.EdgeColor = System.Drawing.Color.White;
-            this.dungeonTextBox3.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.dungeonTextBox3.ForeColor = System.Drawing.Color.DimGray;
-            this.dungeonTextBox3.Location = new System.Drawing.Point(71, 570);
-            this.dungeonTextBox3.MaxLength = 32767;
-            this.dungeonTextBox3.Multiline = false;
-            this.dungeonTextBox3.Name = "dungeonTextBox3";
-            this.dungeonTextBox3.ReadOnly = false;
-            this.dungeonTextBox3.Size = new System.Drawing.Size(591, 33);
-            this.dungeonTextBox3.TabIndex = 9;
-            this.dungeonTextBox3.TextAlignment = System.Windows.Forms.HorizontalAlignment.Left;
-            this.dungeonTextBox3.UseSystemPasswordChar = true;
+            this.txtPassword.BackColor = System.Drawing.Color.Transparent;
+            this.txtPassword.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.txtPassword.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtPassword.EdgeColor = System.Drawing.Color.White;
+            this.txtPassword.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.txtPassword.ForeColor = System.Drawing.Color.DimGray;
+            this.txtPassword.Location = new System.Drawing.Point(71, 570);
+            this.txtPassword.MaxLength = 32767;
+            this.txtPassword.Multiline = false;
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.ReadOnly = false;
+            this.txtPassword.Size = new System.Drawing.Size(591, 31);
+            this.txtPassword.TabIndex = 9;
+            this.txtPassword.TextAlignment = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtPassword.UseSystemPasswordChar = true;
             // 
-            // dungeonTextBox4
+            // txtConfirmPassword
             // 
-            this.dungeonTextBox4.BackColor = System.Drawing.Color.Transparent;
-            this.dungeonTextBox4.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.dungeonTextBox4.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.dungeonTextBox4.EdgeColor = System.Drawing.Color.White;
-            this.dungeonTextBox4.Font = new System.Drawing.Font("Tahoma", 11F);
-            this.dungeonTextBox4.ForeColor = System.Drawing.Color.DimGray;
-            this.dungeonTextBox4.Location = new System.Drawing.Point(71, 649);
-            this.dungeonTextBox4.MaxLength = 32767;
-            this.dungeonTextBox4.Multiline = false;
-            this.dungeonTextBox4.Name = "dungeonTextBox4";
-            this.dungeonTextBox4.ReadOnly = false;
-            this.dungeonTextBox4.Size = new System.Drawing.Size(591, 33);
-            this.dungeonTextBox4.TabIndex = 10;
-            this.dungeonTextBox4.TextAlignment = System.Windows.Forms.HorizontalAlignment.Left;
-            this.dungeonTextBox4.UseSystemPasswordChar = true;
+            this.txtConfirmPassword.BackColor = System.Drawing.Color.Transparent;
+            this.txtConfirmPassword.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.txtConfirmPassword.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtConfirmPassword.EdgeColor = System.Drawing.Color.White;
+            this.txtConfirmPassword.Font = new System.Drawing.Font("Tahoma", 11F);
+            this.txtConfirmPassword.ForeColor = System.Drawing.Color.DimGray;
+            this.txtConfirmPassword.Location = new System.Drawing.Point(71, 649);
+            this.txtConfirmPassword.MaxLength = 32767;
+            this.txtConfirmPassword.Multiline = false;
+            this.txtConfirmPassword.Name = "txtConfirmPassword";
+            this.txtConfirmPassword.ReadOnly = false;
+            this.txtConfirmPassword.Size = new System.Drawing.Size(591, 33);
+            this.txtConfirmPassword.TabIndex = 10;
+            this.txtConfirmPassword.TextAlignment = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtConfirmPassword.UseSystemPasswordChar = true;
             // 
             // label4
             // 
@@ -224,21 +224,22 @@
             this.label5.TabIndex = 12;
             this.label5.Text = "Đăng ký tài khoản mới";
             // 
-            // button1
+            // btnSignIn
             // 
-            this.button1.BackColor = System.Drawing.Color.Black;
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Firebrick;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.button1.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.button1.Location = new System.Drawing.Point(246, 705);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(251, 60);
-            this.button1.TabIndex = 13;
-            this.button1.Text = "ĐĂNG KÝ";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnSignIn.BackColor = System.Drawing.Color.Black;
+            this.btnSignIn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSignIn.FlatAppearance.BorderSize = 0;
+            this.btnSignIn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Firebrick;
+            this.btnSignIn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSignIn.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.btnSignIn.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.btnSignIn.Location = new System.Drawing.Point(246, 705);
+            this.btnSignIn.Name = "btnSignIn";
+            this.btnSignIn.Size = new System.Drawing.Size(251, 60);
+            this.btnSignIn.TabIndex = 13;
+            this.btnSignIn.Text = "ĐĂNG KÝ";
+            this.btnSignIn.UseVisualStyleBackColor = false;
+            this.btnSignIn.Click += new System.EventHandler(this.btnSignIn_Click);
             // 
             // foxLinkLabel1
             // 
@@ -262,13 +263,13 @@
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ClientSize = new System.Drawing.Size(734, 845);
             this.Controls.Add(this.foxLinkLabel1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnSignIn);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.dungeonTextBox4);
-            this.Controls.Add(this.dungeonTextBox3);
-            this.Controls.Add(this.dungeonTextBox2);
-            this.Controls.Add(this.dungeonTextBox1);
+            this.Controls.Add(this.txtConfirmPassword);
+            this.Controls.Add(this.txtPassword);
+            this.Controls.Add(this.txtPhone);
+            this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -294,13 +295,13 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private ReaLTaiizor.DungeonTextBox dungeonTextBox1;
-        private ReaLTaiizor.DungeonTextBox dungeonTextBox2;
-        private ReaLTaiizor.DungeonTextBox dungeonTextBox3;
-        private ReaLTaiizor.DungeonTextBox dungeonTextBox4;
+        private ReaLTaiizor.DungeonTextBox txtEmail;
+        private ReaLTaiizor.DungeonTextBox txtPhone;
+        private ReaLTaiizor.DungeonTextBox txtPassword;
+        private ReaLTaiizor.DungeonTextBox txtConfirmPassword;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnSignIn;
         private ReaLTaiizor.FoxLinkLabel foxLinkLabel1;
     }
 }
