@@ -16,5 +16,19 @@ namespace QLBanQuanAo
         {
             InitializeComponent();
         }
+
+        private void lnkForgotPassword_Click(object sender, EventArgs e)
+        {
+            frmFogotPassword forgotPasswordForm = new frmFogotPassword();
+            forgotPasswordForm.Show();
+            this.Hide();
+        }
+
+        private void foxLinkLabel1_Click(object sender, EventArgs e)
+        {
+            frmSignIn frmSignIn = new frmSignIn();
+            frmSignIn.Show();
+            this.Hide();
+        }
     }
 }

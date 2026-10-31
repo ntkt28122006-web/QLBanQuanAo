@@ -94,6 +94,7 @@
             // 
             this.txtEmail.BackColor = System.Drawing.Color.Transparent;
             this.txtEmail.BorderColor = System.Drawing.Color.White;
+            this.txtEmail.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtEmail.EdgeColor = System.Drawing.Color.Gray;
             this.txtEmail.Font = new System.Drawing.Font("Tahoma", 11F);
             this.txtEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -111,6 +112,7 @@
             // 
             this.txtPassword.BackColor = System.Drawing.Color.Transparent;
             this.txtPassword.BorderColor = System.Drawing.Color.White;
+            this.txtPassword.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtPassword.EdgeColor = System.Drawing.Color.Gray;
             this.txtPassword.Font = new System.Drawing.Font("Tahoma", 11F);
             this.txtPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -122,7 +124,7 @@
             this.txtPassword.Size = new System.Drawing.Size(596, 33);
             this.txtPassword.TabIndex = 5;
             this.txtPassword.TextAlignment = System.Windows.Forms.HorizontalAlignment.Left;
-            this.txtPassword.UseSystemPasswordChar = false;
+            this.txtPassword.UseSystemPasswordChar = true;
             // 
             // button1
             // 
@@ -137,36 +139,38 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(260, 60);
             this.button1.TabIndex = 6;
-            this.button1.Text = "Đăng nhập";
+            this.button1.Text = "ĐĂNG NHẬP";
             this.button1.UseVisualStyleBackColor = false;
             // 
             // lnkForgotPassword
             // 
             this.lnkForgotPassword.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.lnkForgotPassword.DownColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lnkForgotPassword.DownColor = System.Drawing.Color.White;
             this.lnkForgotPassword.EnabledCalc = true;
-            this.lnkForgotPassword.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lnkForgotPassword.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.lnkForgotPassword.ForeColor = System.Drawing.Color.Silver;
             this.lnkForgotPassword.Location = new System.Drawing.Point(529, 509);
             this.lnkForgotPassword.Name = "lnkForgotPassword";
             this.lnkForgotPassword.OverColor = System.Drawing.Color.White;
-            this.lnkForgotPassword.Size = new System.Drawing.Size(136, 27);
+            this.lnkForgotPassword.Size = new System.Drawing.Size(150, 27);
             this.lnkForgotPassword.TabIndex = 9;
             this.lnkForgotPassword.Text = "Quên mật khẩu?";
+            this.lnkForgotPassword.Click += new ReaLTaiizor.FoxBase.ButtonFoxBase.ClickEventHandler(this.lnkForgotPassword_Click);
             // 
             // foxLinkLabel1
             // 
             this.foxLinkLabel1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.foxLinkLabel1.DownColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.foxLinkLabel1.DownColor = System.Drawing.Color.White;
             this.foxLinkLabel1.EnabledCalc = true;
-            this.foxLinkLabel1.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.foxLinkLabel1.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.foxLinkLabel1.ForeColor = System.Drawing.Color.Silver;
             this.foxLinkLabel1.Location = new System.Drawing.Point(240, 619);
             this.foxLinkLabel1.Name = "foxLinkLabel1";
             this.foxLinkLabel1.OverColor = System.Drawing.Color.White;
-            this.foxLinkLabel1.Size = new System.Drawing.Size(269, 27);
+            this.foxLinkLabel1.Size = new System.Drawing.Size(295, 27);
             this.foxLinkLabel1.TabIndex = 10;
             this.foxLinkLabel1.Text = "Chưa có tài khoản? Đăng ký ngay";
+            this.foxLinkLabel1.Click += new ReaLTaiizor.FoxBase.ButtonFoxBase.ClickEventHandler(this.foxLinkLabel1_Click);
             // 
             // frmLogin
             // 
