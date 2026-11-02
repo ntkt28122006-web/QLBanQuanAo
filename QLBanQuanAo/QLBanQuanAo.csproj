@@ -67,6 +67,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmAdminDashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAdminDashboard.Designer.cs">
+      <DependentUpon>frmAdminDashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmAdminOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAdminOrder.Designer.cs">
+      <DependentUpon>frmAdminOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmAdminProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAdminProduct.Designer.cs">
+      <DependentUpon>frmAdminProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCategory.Designer.cs">
+      <DependentUpon>frmCategory.cs</DependentUpon>
     <Compile Include="FrmCart.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -110,6 +133,17 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>QLBanHang.dbml</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="frmAdminDashboard.resx">
+      <DependentUpon>frmAdminDashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAdminOrder.resx">
+      <DependentUpon>frmAdminOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAdminProduct.resx">
+      <DependentUpon>frmAdminProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCategory.resx">
+      <DependentUpon>frmCategory.cs</DependentUpon>
     <Compile Include="ucProductCard.cs">
       <SubType>UserControl</SubType>
     </Compile>
