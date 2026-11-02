@@ -73,6 +73,48 @@
     <Compile Include="frmFogotPassword.Designer.cs">
       <DependentUpon>frmFogotPassword.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmAdminDashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAdminDashboard.Designer.cs">
+      <DependentUpon>frmAdminDashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmAdminOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAdminOrder.Designer.cs">
+      <DependentUpon>frmAdminOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmAdminProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAdminProduct.Designer.cs">
+      <DependentUpon>frmAdminProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCategory.Designer.cs">
+      <DependentUpon>frmCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmCart.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCart.Designer.cs">
+      <DependentUpon>FrmCart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmCheckout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCheckout.Designer.cs">
+      <DependentUpon>FrmCheckout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmCustomerHome.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCustomerHome.Designer.cs">
+      <DependentUpon>FrmCustomerHome.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -85,6 +127,18 @@
     <Compile Include="frmSignIn.Designer.cs">
       <DependentUpon>frmSignIn.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmOrderHistory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmOrderHistory.Designer.cs">
+      <DependentUpon>FrmOrderHistory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmProductDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmProductDetail.Designer.cs">
+      <DependentUpon>FrmProductDetail.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QLBanHang.designer.cs">
@@ -92,14 +146,48 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>QLBanHang.dbml</DependentUpon>
     </Compile>
+    <Compile Include="ucProductCard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucProductCard.Designer.cs">
+      <DependentUpon>ucProductCard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserSession.cs" />
     <EmbeddedResource Include="frmFogotPassword.resx">
       <DependentUpon>frmFogotPassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAdminDashboard.resx">
+      <DependentUpon>frmAdminDashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAdminOrder.resx">
+      <DependentUpon>frmAdminOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAdminProduct.resx">
+      <DependentUpon>frmAdminProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCategory.resx">
+      <DependentUpon>frmCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmCart.resx">
+      <DependentUpon>FrmCart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmCheckout.resx">
+      <DependentUpon>FrmCheckout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmCustomerHome.resx">
+      <DependentUpon>FrmCustomerHome.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmSignIn.resx">
       <DependentUpon>frmSignIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmOrderHistory.resx">
+      <DependentUpon>FrmOrderHistory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmProductDetail.resx">
+      <DependentUpon>FrmProductDetail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -110,6 +198,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ucProductCard.resx">
+      <DependentUpon>ucProductCard.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
