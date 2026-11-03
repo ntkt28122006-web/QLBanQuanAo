@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlProductHeader = new System.Windows.Forms.Panel();
             this.lblPageDescription = new System.Windows.Forms.Label();
             this.lblPageTitle = new System.Windows.Forms.Label();
@@ -50,6 +50,16 @@
             this.colProductStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colProductStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlProductInfo = new System.Windows.Forms.Panel();
+            this.btnExit = new System.Windows.Forms.Button();
+            this.btnClearProduct = new System.Windows.Forms.Button();
+            this.btnUpdateProduct = new System.Windows.Forms.Button();
+            this.btnDeleteProduct = new System.Windows.Forms.Button();
+            this.btnAddProduct = new System.Windows.Forms.Button();
+            this.btnChooseImage = new System.Windows.Forms.Button();
+            this.picProductImage = new System.Windows.Forms.PictureBox();
+            this.chkIsSale = new System.Windows.Forms.CheckBox();
+            this.chkIsHot = new System.Windows.Forms.CheckBox();
+            this.cboProductStatus = new System.Windows.Forms.ComboBox();
             this.lblProductStatus = new System.Windows.Forms.Label();
             this.txtProductDescription = new System.Windows.Forms.TextBox();
             this.lblProductDescription = new System.Windows.Forms.Label();
@@ -66,16 +76,6 @@
             this.lblProductId = new System.Windows.Forms.Label();
             this.lblProductName = new System.Windows.Forms.Label();
             this.lblProductInfoTitle = new System.Windows.Forms.Label();
-            this.cboProductStatus = new System.Windows.Forms.ComboBox();
-            this.chkIsHot = new System.Windows.Forms.CheckBox();
-            this.chkIsSale = new System.Windows.Forms.CheckBox();
-            this.picProductImage = new System.Windows.Forms.PictureBox();
-            this.btnChooseImage = new System.Windows.Forms.Button();
-            this.btnAddProduct = new System.Windows.Forms.Button();
-            this.btnDeleteProduct = new System.Windows.Forms.Button();
-            this.btnUpdateProduct = new System.Windows.Forms.Button();
-            this.btnClearProduct = new System.Windows.Forms.Button();
-            this.btnExit = new System.Windows.Forms.Button();
             this.pnlProductHeader.SuspendLayout();
             this.pnlProductFilter.SuspendLayout();
             this.pnlProductBody.SuspendLayout();
@@ -85,9 +85,9 @@
             this.splitProductContent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).BeginInit();
             this.pnlProductInfo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picProductImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numProductSalePrice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numProductPrice)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picProductImage)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlProductHeader
@@ -112,7 +112,6 @@
             this.lblPageDescription.TabIndex = 0;
             this.lblPageDescription.Text = "Quản lý thông tin, giá bán và trạng thái kinh doanh";
             this.lblPageDescription.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.lblPageDescription.Click += new System.EventHandler(this.lblPageDescription_Click);
             // 
             // lblPageTitle
             // 
@@ -164,6 +163,7 @@
             this.cboFilterStatus.Name = "cboFilterStatus";
             this.cboFilterStatus.Size = new System.Drawing.Size(220, 36);
             this.cboFilterStatus.TabIndex = 3;
+            this.cboFilterStatus.SelectedIndexChanged += new System.EventHandler(this.cboFilterStatus_SelectedIndexChanged);
             // 
             // cboFilterCategory
             // 
@@ -174,6 +174,7 @@
             this.cboFilterCategory.Name = "cboFilterCategory";
             this.cboFilterCategory.Size = new System.Drawing.Size(220, 36);
             this.cboFilterCategory.TabIndex = 2;
+            this.cboFilterCategory.SelectedIndexChanged += new System.EventHandler(this.cboFilterCategory_SelectedIndexChanged);
             // 
             // btnSearchProduct
             // 
@@ -182,7 +183,7 @@
             this.btnSearchProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSearchProduct.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSearchProduct.ForeColor = System.Drawing.Color.White;
-            this.btnSearchProduct.Location = new System.Drawing.Point(849, 14);
+            this.btnSearchProduct.Location = new System.Drawing.Point(845, 14);
             this.btnSearchProduct.Name = "btnSearchProduct";
             this.btnSearchProduct.Size = new System.Drawing.Size(110, 38);
             this.btnSearchProduct.TabIndex = 1;
@@ -198,6 +199,7 @@
             this.txtSearchProduct.Size = new System.Drawing.Size(300, 34);
             this.txtSearchProduct.TabIndex = 0;
             this.txtSearchProduct.Text = "Tìm kiếm sản phẩm...";
+            this.txtSearchProduct.TextChanged += new System.EventHandler(this.txtSearchProduct_TextChanged);
             // 
             // pnlProductBody
             // 
@@ -237,14 +239,14 @@
             this.dgvProducts.AllowUserToDeleteRows = false;
             this.dgvProducts.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvProducts.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(41)))), ((int)(((byte)(55)))));
-            dataGridViewCellStyle17.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle17.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvProducts.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(41)))), ((int)(((byte)(55)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvProducts.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvProducts.ColumnHeadersHeight = 38;
             this.dgvProducts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvProducts.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -255,14 +257,14 @@
             this.colProductSalePrice,
             this.colProductStock,
             this.colProductStatus});
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle18.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(41)))), ((int)(((byte)(55)))));
-            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvProducts.DefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(41)))), ((int)(((byte)(55)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvProducts.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvProducts.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvProducts.GridColor = System.Drawing.Color.Gainsboro;
             this.dgvProducts.Location = new System.Drawing.Point(0, 0);
@@ -275,6 +277,8 @@
             this.dgvProducts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvProducts.Size = new System.Drawing.Size(780, 576);
             this.dgvProducts.TabIndex = 0;
+            this.dgvProducts.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProducts_CellClick);
+            this.dgvProducts.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProducts_CellContentClick);
             // 
             // colProductId
             // 
@@ -375,7 +379,108 @@
             this.pnlProductInfo.Padding = new System.Windows.Forms.Padding(12);
             this.pnlProductInfo.Size = new System.Drawing.Size(597, 576);
             this.pnlProductInfo.TabIndex = 0;
-            this.pnlProductInfo.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlProductInfo_Paint);
+            // 
+            // btnExit
+            // 
+            this.btnExit.Location = new System.Drawing.Point(415, 720);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(138, 90);
+            this.btnExit.TabIndex = 26;
+            this.btnExit.Text = "Thoát";
+            this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            // 
+            // btnClearProduct
+            // 
+            this.btnClearProduct.Location = new System.Drawing.Point(210, 770);
+            this.btnClearProduct.Name = "btnClearProduct";
+            this.btnClearProduct.Size = new System.Drawing.Size(180, 38);
+            this.btnClearProduct.TabIndex = 25;
+            this.btnClearProduct.Text = "Làm trống";
+            this.btnClearProduct.UseVisualStyleBackColor = true;
+            this.btnClearProduct.Click += new System.EventHandler(this.btnClearProduct_Click);
+            // 
+            // btnUpdateProduct
+            // 
+            this.btnUpdateProduct.Location = new System.Drawing.Point(15, 770);
+            this.btnUpdateProduct.Name = "btnUpdateProduct";
+            this.btnUpdateProduct.Size = new System.Drawing.Size(180, 38);
+            this.btnUpdateProduct.TabIndex = 24;
+            this.btnUpdateProduct.Text = "Cập nhật";
+            this.btnUpdateProduct.UseVisualStyleBackColor = true;
+            this.btnUpdateProduct.Click += new System.EventHandler(this.btnUpdateProduct_Click);
+            // 
+            // btnDeleteProduct
+            // 
+            this.btnDeleteProduct.Location = new System.Drawing.Point(210, 720);
+            this.btnDeleteProduct.Name = "btnDeleteProduct";
+            this.btnDeleteProduct.Size = new System.Drawing.Size(180, 38);
+            this.btnDeleteProduct.TabIndex = 23;
+            this.btnDeleteProduct.Text = "Ngừng bán";
+            this.btnDeleteProduct.UseVisualStyleBackColor = true;
+            this.btnDeleteProduct.Click += new System.EventHandler(this.btnDeleteProduct_Click);
+            // 
+            // btnAddProduct
+            // 
+            this.btnAddProduct.Location = new System.Drawing.Point(15, 720);
+            this.btnAddProduct.Name = "btnAddProduct";
+            this.btnAddProduct.Size = new System.Drawing.Size(180, 38);
+            this.btnAddProduct.TabIndex = 22;
+            this.btnAddProduct.Text = "Thêm mới";
+            this.btnAddProduct.UseVisualStyleBackColor = true;
+            this.btnAddProduct.Click += new System.EventHandler(this.btnAddProduct_Click);
+            // 
+            // btnChooseImage
+            // 
+            this.btnChooseImage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(41)))), ((int)(((byte)(55)))));
+            this.btnChooseImage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnChooseImage.ForeColor = System.Drawing.Color.White;
+            this.btnChooseImage.Location = new System.Drawing.Point(150, 620);
+            this.btnChooseImage.Name = "btnChooseImage";
+            this.btnChooseImage.Size = new System.Drawing.Size(180, 36);
+            this.btnChooseImage.TabIndex = 21;
+            this.btnChooseImage.Text = "Chọn ảnh...";
+            this.btnChooseImage.UseVisualStyleBackColor = false;
+            this.btnChooseImage.Click += new System.EventHandler(this.btnChooseImage_Click);
+            // 
+            // picProductImage
+            // 
+            this.picProductImage.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.picProductImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.picProductImage.Location = new System.Drawing.Point(15, 600);
+            this.picProductImage.Name = "picProductImage";
+            this.picProductImage.Size = new System.Drawing.Size(120, 100);
+            this.picProductImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picProductImage.TabIndex = 20;
+            this.picProductImage.TabStop = false;
+            this.picProductImage.Click += new System.EventHandler(this.picProductImage_Click);
+            // 
+            // chkIsSale
+            // 
+            this.chkIsSale.Location = new System.Drawing.Point(200, 560);
+            this.chkIsSale.Name = "chkIsSale";
+            this.chkIsSale.Size = new System.Drawing.Size(190, 30);
+            this.chkIsSale.TabIndex = 19;
+            this.chkIsSale.Text = "Đang khuyến mãi";
+            this.chkIsSale.UseVisualStyleBackColor = true;
+            // 
+            // chkIsHot
+            // 
+            this.chkIsHot.Location = new System.Drawing.Point(15, 560);
+            this.chkIsHot.Name = "chkIsHot";
+            this.chkIsHot.Size = new System.Drawing.Size(190, 30);
+            this.chkIsHot.TabIndex = 17;
+            this.chkIsHot.Text = "Sản phẩm nổi bật";
+            this.chkIsHot.UseVisualStyleBackColor = true;
+            // 
+            // cboProductStatus
+            // 
+            this.cboProductStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboProductStatus.FormattingEnabled = true;
+            this.cboProductStatus.Location = new System.Drawing.Point(15, 520);
+            this.cboProductStatus.Name = "cboProductStatus";
+            this.cboProductStatus.Size = new System.Drawing.Size(380, 33);
+            this.cboProductStatus.TabIndex = 16;
             // 
             // lblProductStatus
             // 
@@ -384,6 +489,7 @@
             this.lblProductStatus.Size = new System.Drawing.Size(380, 31);
             this.lblProductStatus.TabIndex = 15;
             this.lblProductStatus.Text = "Trạng thái kinh doanh";
+            this.lblProductStatus.Click += new System.EventHandler(this.lblProductStatus_Click);
             // 
             // txtProductDescription
             // 
@@ -395,6 +501,7 @@
             this.txtProductDescription.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtProductDescription.Size = new System.Drawing.Size(380, 31);
             this.txtProductDescription.TabIndex = 14;
+            this.txtProductDescription.TextChanged += new System.EventHandler(this.txtProductDescription_TextChanged);
             // 
             // lblProductDescription
             // 
@@ -421,6 +528,7 @@
             this.numProductSalePrice.Size = new System.Drawing.Size(380, 31);
             this.numProductSalePrice.TabIndex = 12;
             this.numProductSalePrice.ThousandsSeparator = true;
+            this.numProductSalePrice.ValueChanged += new System.EventHandler(this.numProductSalePrice_ValueChanged);
             // 
             // lblProductSalePrice
             // 
@@ -429,6 +537,7 @@
             this.lblProductSalePrice.Size = new System.Drawing.Size(380, 31);
             this.lblProductSalePrice.TabIndex = 11;
             this.lblProductSalePrice.Text = " Giá khuyến mãi (VNĐ)";
+            this.lblProductSalePrice.Click += new System.EventHandler(this.lblProductSalePrice_Click);
             // 
             // numProductPrice
             // 
@@ -447,6 +556,7 @@
             this.numProductPrice.Size = new System.Drawing.Size(380, 31);
             this.numProductPrice.TabIndex = 10;
             this.numProductPrice.ThousandsSeparator = true;
+            this.numProductPrice.ValueChanged += new System.EventHandler(this.numProductPrice_ValueChanged);
             // 
             // lblProductPrice
             // 
@@ -464,6 +574,7 @@
             this.txtProductBrand.ReadOnly = true;
             this.txtProductBrand.Size = new System.Drawing.Size(380, 31);
             this.txtProductBrand.TabIndex = 8;
+            this.txtProductBrand.TextChanged += new System.EventHandler(this.txtProductBrand_TextChanged);
             // 
             // lblProductBrand
             // 
@@ -498,6 +609,7 @@
             this.txtProductName.ReadOnly = true;
             this.txtProductName.Size = new System.Drawing.Size(380, 31);
             this.txtProductName.TabIndex = 4;
+            this.txtProductName.TextChanged += new System.EventHandler(this.txtProductName_TextChanged);
             // 
             // txtProductId
             // 
@@ -506,6 +618,7 @@
             this.txtProductId.ReadOnly = true;
             this.txtProductId.Size = new System.Drawing.Size(380, 31);
             this.txtProductId.TabIndex = 3;
+            this.txtProductId.TextChanged += new System.EventHandler(this.txtProductId_TextChanged);
             // 
             // lblProductId
             // 
@@ -533,107 +646,6 @@
             this.lblProductInfoTitle.TabIndex = 0;
             this.lblProductInfoTitle.Text = "Thông tin sản phẩm";
             this.lblProductInfoTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // cboProductStatus
-            // 
-            this.cboProductStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboProductStatus.FormattingEnabled = true;
-            this.cboProductStatus.Location = new System.Drawing.Point(15, 520);
-            this.cboProductStatus.Name = "cboProductStatus";
-            this.cboProductStatus.Size = new System.Drawing.Size(380, 33);
-            this.cboProductStatus.TabIndex = 16;
-            // 
-            // chkIsHot
-            // 
-            this.chkIsHot.Location = new System.Drawing.Point(15, 560);
-            this.chkIsHot.Name = "chkIsHot";
-            this.chkIsHot.Size = new System.Drawing.Size(190, 30);
-            this.chkIsHot.TabIndex = 17;
-            this.chkIsHot.Text = "Sản phẩm nổi bật";
-            this.chkIsHot.UseVisualStyleBackColor = true;
-            // 
-            // chkIsSale
-            // 
-            this.chkIsSale.Location = new System.Drawing.Point(200, 560);
-            this.chkIsSale.Name = "chkIsSale";
-            this.chkIsSale.Size = new System.Drawing.Size(190, 30);
-            this.chkIsSale.TabIndex = 19;
-            this.chkIsSale.Text = "Đang khuyến mãi";
-            this.chkIsSale.UseVisualStyleBackColor = true;
-            // 
-            // picProductImage
-            // 
-            this.picProductImage.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.picProductImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.picProductImage.Location = new System.Drawing.Point(15, 600);
-            this.picProductImage.Name = "picProductImage";
-            this.picProductImage.Size = new System.Drawing.Size(120, 100);
-            this.picProductImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picProductImage.TabIndex = 20;
-            this.picProductImage.TabStop = false;
-            // 
-            // btnChooseImage
-            // 
-            this.btnChooseImage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(41)))), ((int)(((byte)(55)))));
-            this.btnChooseImage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnChooseImage.ForeColor = System.Drawing.Color.White;
-            this.btnChooseImage.Location = new System.Drawing.Point(150, 620);
-            this.btnChooseImage.Name = "btnChooseImage";
-            this.btnChooseImage.Size = new System.Drawing.Size(180, 36);
-            this.btnChooseImage.TabIndex = 21;
-            this.btnChooseImage.Text = "Chọn ảnh...";
-            this.btnChooseImage.UseVisualStyleBackColor = false;
-            this.btnChooseImage.Click += new System.EventHandler(this.btnChooseImage_Click);
-            // 
-            // btnAddProduct
-            // 
-            this.btnAddProduct.Location = new System.Drawing.Point(15, 720);
-            this.btnAddProduct.Name = "btnAddProduct";
-            this.btnAddProduct.Size = new System.Drawing.Size(180, 38);
-            this.btnAddProduct.TabIndex = 22;
-            this.btnAddProduct.Text = "Thêm mới";
-            this.btnAddProduct.UseVisualStyleBackColor = true;
-            this.btnAddProduct.Click += new System.EventHandler(this.btnAddProduct_Click);
-            // 
-            // btnDeleteProduct
-            // 
-            this.btnDeleteProduct.Location = new System.Drawing.Point(210, 720);
-            this.btnDeleteProduct.Name = "btnDeleteProduct";
-            this.btnDeleteProduct.Size = new System.Drawing.Size(180, 38);
-            this.btnDeleteProduct.TabIndex = 23;
-            this.btnDeleteProduct.Text = "Ngừng bán";
-            this.btnDeleteProduct.UseVisualStyleBackColor = true;
-            this.btnDeleteProduct.Click += new System.EventHandler(this.btnDeleteProduct_Click);
-            // 
-            // btnUpdateProduct
-            // 
-            this.btnUpdateProduct.Location = new System.Drawing.Point(15, 770);
-            this.btnUpdateProduct.Name = "btnUpdateProduct";
-            this.btnUpdateProduct.Size = new System.Drawing.Size(180, 38);
-            this.btnUpdateProduct.TabIndex = 24;
-            this.btnUpdateProduct.Text = "Cập nhật";
-            this.btnUpdateProduct.UseVisualStyleBackColor = true;
-            this.btnUpdateProduct.Click += new System.EventHandler(this.btnUpdateProduct_Click);
-            // 
-            // btnClearProduct
-            // 
-            this.btnClearProduct.Location = new System.Drawing.Point(210, 770);
-            this.btnClearProduct.Name = "btnClearProduct";
-            this.btnClearProduct.Size = new System.Drawing.Size(180, 38);
-            this.btnClearProduct.TabIndex = 25;
-            this.btnClearProduct.Text = "Làm trống";
-            this.btnClearProduct.UseVisualStyleBackColor = true;
-            this.btnClearProduct.Click += new System.EventHandler(this.btnClearProduct_Click);
-            // 
-            // btnExit
-            // 
-            this.btnExit.Location = new System.Drawing.Point(415, 720);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(138, 90);
-            this.btnExit.TabIndex = 26;
-            this.btnExit.Text = "Thoát";
-            this.btnExit.UseVisualStyleBackColor = true;
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // frmAdminProduct
             // 
@@ -663,9 +675,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).EndInit();
             this.pnlProductInfo.ResumeLayout(false);
             this.pnlProductInfo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picProductImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numProductSalePrice)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numProductPrice)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picProductImage)).EndInit();
             this.ResumeLayout(false);
 
         }
