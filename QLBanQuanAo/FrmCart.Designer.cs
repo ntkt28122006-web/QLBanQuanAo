@@ -34,6 +34,7 @@ namespace QLBanQuanAo
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCart));
             this.lblTitle = new System.Windows.Forms.Label();
             this.dgvCart = new System.Windows.Forms.DataGridView();
             this.btnIncrease = new System.Windows.Forms.Button();
@@ -162,6 +163,7 @@ namespace QLBanQuanAo
             this.Controls.Add(this.dgvCart);
             this.Controls.Add(this.lblTitle);
             this.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "FrmCart";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;

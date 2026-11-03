@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAdminOrder));
             this.pnlOrderHeader = new System.Windows.Forms.Panel();
             this.lblOrderDescription = new System.Windows.Forms.Label();
             this.lblOrderTitle = new System.Windows.Forms.Label();
@@ -437,6 +438,7 @@
             this.Controls.Add(this.pnlOrderFilter);
             this.Controls.Add(this.pnlOrderHeader);
             this.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimumSize = new System.Drawing.Size(1100, 650);
             this.Name = "frmAdminOrder";

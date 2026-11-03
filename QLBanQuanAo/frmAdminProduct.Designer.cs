@@ -30,6 +30,7 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAdminProduct));
             this.pnlProductHeader = new System.Windows.Forms.Panel();
             this.lblPageDescription = new System.Windows.Forms.Label();
             this.lblPageTitle = new System.Windows.Forms.Label();
@@ -658,6 +659,7 @@
             this.Controls.Add(this.pnlProductFilter);
             this.Controls.Add(this.pnlProductHeader);
             this.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MinimumSize = new System.Drawing.Size(1280, 700);
