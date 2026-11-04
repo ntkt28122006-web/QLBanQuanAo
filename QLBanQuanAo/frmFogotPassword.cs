@@ -73,24 +73,39 @@ namespace QLBanQuanAo
         {
             try
             {
-                // Sinh mã OTP 6 chữ số ngẫu nhiên
+                // 1. Sinh mã OTP ngẫu nhiên 6 chữ số
                 Random random = new Random();
                 generatedOtp = random.Next(100000, 999999).ToString();
-
-                // Mã OTP có hiệu lực trong 3 phút
                 otpExpiryTime = DateTime.Now.AddMinutes(3);
 
-                // Gửi Email qua SMTP
+                // 2. LƯU HASH CỦA OTP VÀ HẠN DÙNG VÀO DATABASE
+                using (QLBanHangDataContext db = new QLBanHangDataContext())
+                {
+                    var userObj = db.users.FirstOrDefault(u => u.email == targetEmail && u.status == "active");
+                    if (userObj != null)
+                    {
+                        // Mã hóa OTP bằng BCrypt trước khi lưu xuống DB
+                        userObj.password_reset_otp_hash = BCrypt.Net.BCrypt.HashPassword(generatedOtp);
+                        userObj.password_reset_otp_expires_at = otpExpiryTime;
+
+                        db.SubmitChanges(); // Lưu thay đổi xuống SQL Server
+                    }
+                }
+
+                // 3. Gửi Email chứa mã OTP thô cho người dùng
                 SendEmailSmtp(targetEmail, generatedOtp);
 
-                MessageBox.Show($"Mã OTP đã được gửi đến email {targetEmail}. Vui lòng kiểm tra hộp thư!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show($"Mã OTP đã được gửi đến email {targetEmail}. Vui lòng kiểm tra hộp thư!",
+                                "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                txtOTP.Text="";
-                ShowStep(2); // Chuyển sang Panel nhập OTP
+                txtOTP.Text = "";
+                ShowStep(2);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Gửi Email thất bại! Lỗi: " + ex.Message, "Lỗi kết nối Email", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                string errorDetails = ex.InnerException != null ? ex.InnerException.Message : ex.Message;
+                MessageBox.Show("Gửi Email thất bại! Lỗi chi tiết: " + errorDetails,
+                                "Lỗi kết nối Email", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -140,23 +155,38 @@ namespace QLBanQuanAo
                 return;
             }
 
-            if (DateTime.Now > otpExpiryTime)
+            using (QLBanHangDataContext db = new QLBanHangDataContext())
             {
-                MessageBox.Show("Mã OTP đã hết hạn! Vui lòng nhấn 'Gửi lại mã OTP'.", "Hết hạn", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                // Lấy thông tin user từ DB theo email đã xác minh ở Bước 1
+                var userObj = db.users.FirstOrDefault(u => u.email == targetEmail && u.status == "active");
+
+                if (userObj == null)
+                {
+                    MessageBox.Show("Không tìm thấy thông tin tài khoản!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                // 1. Kiểm tra OTP có bị trống hoặc đã hết hạn trong DB chưa
+                if (userObj.password_reset_otp_expires_at == null || DateTime.Now > userObj.password_reset_otp_expires_at)
+                {
+                    MessageBox.Show("Mã OTP đã hết hạn! Vui lòng nhấn 'Gửi lại mã OTP'.", "Hết hạn", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // 2. So sánh mã OTP người dùng nhập với chuỗi Hash BCrypt trong DB
+                if (string.IsNullOrEmpty(userObj.password_reset_otp_hash) ||
+                    !BCrypt.Net.BCrypt.Verify(otpInput, userObj.password_reset_otp_hash))
+                {
+                    MessageBox.Show("Mã OTP không chính xác! Vui lòng kiểm tra lại.", "Lỗi xác minh", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                MessageBox.Show("Xác minh OTP thành công! Vui lòng nhập mật khẩu mới.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                txtNewPassword.Text = "";
+                txtConfirmPassword.Text = "";
+                ShowStep(3); // Chuyển sang Panel đặt mật khẩu mới
             }
-
-            if (otpInput != generatedOtp)
-            {
-                MessageBox.Show("Mã OTP không chính xác! Vui lòng kiểm tra lại.", "Lỗi xác minh", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            MessageBox.Show("Xác minh OTP thành công! Vui lòng nhập mật khẩu mới.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            txtNewPassword.Text = "";
-            txtConfirmPassword.Text = "";
-            ShowStep(3); // Chuyển sang Panel đặt mật khẩu mới
 
         }
 
