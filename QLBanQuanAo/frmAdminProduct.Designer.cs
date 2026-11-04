@@ -100,7 +100,7 @@
             this.pnlProductHeader.Controls.Add(this.lblPageTitle);
             this.pnlProductHeader.Location = new System.Drawing.Point(0, 0);
             this.pnlProductHeader.Name = "pnlProductHeader";
-            this.pnlProductHeader.Size = new System.Drawing.Size(1411, 90);
+            this.pnlProductHeader.Size = new System.Drawing.Size(1212, 90);
             this.pnlProductHeader.TabIndex = 0;
             // 
             // lblPageDescription
@@ -137,7 +137,7 @@
             this.pnlProductFilter.ForeColor = System.Drawing.SystemColors.ControlText;
             this.pnlProductFilter.Location = new System.Drawing.Point(0, 90);
             this.pnlProductFilter.Name = "pnlProductFilter";
-            this.pnlProductFilter.Size = new System.Drawing.Size(1411, 70);
+            this.pnlProductFilter.Size = new System.Drawing.Size(1212, 70);
             this.pnlProductFilter.TabIndex = 1;
             // 
             // btnResetFilter
@@ -210,7 +210,7 @@
             this.pnlProductBody.Controls.Add(this.splitProductContent);
             this.pnlProductBody.Location = new System.Drawing.Point(0, 160);
             this.pnlProductBody.Name = "pnlProductBody";
-            this.pnlProductBody.Size = new System.Drawing.Size(1411, 606);
+            this.pnlProductBody.Size = new System.Drawing.Size(1212, 536);
             this.pnlProductBody.TabIndex = 2;
             // 
             // splitProductContent
@@ -230,8 +230,8 @@
             // 
             this.splitProductContent.Panel2.Controls.Add(this.pnlProductInfo);
             this.splitProductContent.Panel2MinSize = 400;
-            this.splitProductContent.Size = new System.Drawing.Size(1381, 576);
-            this.splitProductContent.SplitterDistance = 780;
+            this.splitProductContent.Size = new System.Drawing.Size(1182, 506);
+            this.splitProductContent.SplitterDistance = 667;
             this.splitProductContent.TabIndex = 0;
             // 
             // dgvProducts
@@ -276,7 +276,7 @@
             this.dgvProducts.RowHeadersWidth = 62;
             this.dgvProducts.RowTemplate.Height = 28;
             this.dgvProducts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvProducts.Size = new System.Drawing.Size(780, 576);
+            this.dgvProducts.Size = new System.Drawing.Size(667, 506);
             this.dgvProducts.TabIndex = 0;
             this.dgvProducts.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProducts_CellClick);
             this.dgvProducts.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProducts_CellContentClick);
@@ -378,14 +378,14 @@
             this.pnlProductInfo.Location = new System.Drawing.Point(0, 0);
             this.pnlProductInfo.Name = "pnlProductInfo";
             this.pnlProductInfo.Padding = new System.Windows.Forms.Padding(12);
-            this.pnlProductInfo.Size = new System.Drawing.Size(597, 576);
+            this.pnlProductInfo.Size = new System.Drawing.Size(511, 506);
             this.pnlProductInfo.TabIndex = 0;
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(415, 720);
+            this.btnExit.Location = new System.Drawing.Point(396, 727);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(138, 90);
+            this.btnExit.Size = new System.Drawing.Size(76, 81);
             this.btnExit.TabIndex = 26;
             this.btnExit.Text = "Thoát";
             this.btnExit.UseVisualStyleBackColor = true;
@@ -653,18 +653,19 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
+            this.AutoSize = true;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1389, 710);
+            this.ClientSize = new System.Drawing.Size(1190, 640);
             this.Controls.Add(this.pnlProductBody);
             this.Controls.Add(this.pnlProductFilter);
             this.Controls.Add(this.pnlProductHeader);
             this.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.MinimumSize = new System.Drawing.Size(1280, 700);
             this.Name = "frmAdminProduct";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Quản lí sản phẩm";
             this.pnlProductHeader.ResumeLayout(false);
             this.pnlProductFilter.ResumeLayout(false);
