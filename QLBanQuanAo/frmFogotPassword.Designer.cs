@@ -85,7 +85,7 @@
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             this.label3.Location = new System.Drawing.Point(136, 105);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(382, 24);
+            this.label3.Size = new System.Drawing.Size(302, 19);
             this.label3.TabIndex = 2;
             this.label3.Text = "Làm theo các bước để đặt lại mật khẩu ";
             // 
@@ -96,7 +96,7 @@
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             this.label2.Location = new System.Drawing.Point(197, 69);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(193, 29);
+            this.label2.Size = new System.Drawing.Size(160, 24);
             this.label2.TabIndex = 1;
             this.label2.Text = "Quên mật khẩu ";
             this.label2.Click += new System.EventHandler(this.label2_Click);
@@ -108,7 +108,7 @@
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             this.label1.Location = new System.Drawing.Point(160, 25);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(282, 38);
+            this.label1.Size = new System.Drawing.Size(241, 33);
             this.label1.TabIndex = 0;
             this.label1.Text = "FASHION STORE";
             // 
@@ -132,7 +132,7 @@
             this.lblEmail.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.lblEmail.Location = new System.Drawing.Point(64, 33);
             this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Size = new System.Drawing.Size(233, 29);
+            this.lblEmail.Size = new System.Drawing.Size(190, 24);
             this.lblEmail.TabIndex = 0;
             this.lblEmail.Text = "Xác minh tài khoản";
             // 
@@ -163,7 +163,7 @@
             this.txtEmail.Multiline = false;
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.ReadOnly = false;
-            this.txtEmail.Size = new System.Drawing.Size(487, 35);
+            this.txtEmail.Size = new System.Drawing.Size(487, 31);
             this.txtEmail.TabIndex = 3;
             this.txtEmail.TextAlignment = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtEmail.UseSystemPasswordChar = false;
@@ -175,7 +175,7 @@
             this.label4.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.label4.Location = new System.Drawing.Point(24, 73);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(313, 24);
+            this.label4.Size = new System.Drawing.Size(249, 19);
             this.label4.TabIndex = 2;
             this.label4.Text = "Nhập email đã đăng ký tài khoản";
             // 
@@ -217,6 +217,7 @@
             this.lnkResendOTP.Size = new System.Drawing.Size(113, 18);
             this.lnkResendOTP.TabIndex = 6;
             this.lnkResendOTP.Text = "Gửi lại mã OTP";
+            this.lnkResendOTP.Click += new ReaLTaiizor.FoxBase.ButtonFoxBase.ClickEventHandler(this.lnkResendOTP_Click);
             // 
             // btnVerifyOTP
             // 
@@ -245,7 +246,7 @@
             this.txtOTP.Multiline = false;
             this.txtOTP.Name = "txtOTP";
             this.txtOTP.ReadOnly = false;
-            this.txtOTP.Size = new System.Drawing.Size(487, 35);
+            this.txtOTP.Size = new System.Drawing.Size(487, 31);
             this.txtOTP.TabIndex = 4;
             this.txtOTP.TextAlignment = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtOTP.UseSystemPasswordChar = false;
@@ -257,7 +258,7 @@
             this.lblOTP.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.lblOTP.Location = new System.Drawing.Point(64, 37);
             this.lblOTP.Name = "lblOTP";
-            this.lblOTP.Size = new System.Drawing.Size(176, 29);
+            this.lblOTP.Size = new System.Drawing.Size(145, 24);
             this.lblOTP.TabIndex = 3;
             this.lblOTP.Text = "Xác minh OTP";
             // 
@@ -267,7 +268,7 @@
             this.label5.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.label5.Location = new System.Drawing.Point(24, 73);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(346, 24);
+            this.label5.Size = new System.Drawing.Size(276, 19);
             this.label5.TabIndex = 1;
             this.label5.Text = "Mã xác minh đã được gửi đến email";
             // 
@@ -309,6 +310,7 @@
             this.btnResetPassword.TabIndex = 9;
             this.btnResetPassword.Text = "Đặt lại mật khẩu ";
             this.btnResetPassword.UseVisualStyleBackColor = false;
+            this.btnResetPassword.Click += new System.EventHandler(this.btnResetPassword_Click);
             // 
             // label6
             // 
@@ -316,7 +318,7 @@
             this.label6.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.label6.Location = new System.Drawing.Point(24, 129);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(142, 24);
+            this.label6.Size = new System.Drawing.Size(113, 19);
             this.label6.TabIndex = 8;
             this.label6.Text = "Mật khẩu mới ";
             // 
@@ -326,7 +328,7 @@
             this.label8.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.label8.Location = new System.Drawing.Point(24, 61);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(142, 24);
+            this.label8.Size = new System.Drawing.Size(113, 19);
             this.label8.TabIndex = 7;
             this.label8.Text = "Mật khẩu mới ";
             // 
@@ -343,7 +345,7 @@
             this.txtConfirmPassword.Multiline = false;
             this.txtConfirmPassword.Name = "txtConfirmPassword";
             this.txtConfirmPassword.ReadOnly = false;
-            this.txtConfirmPassword.Size = new System.Drawing.Size(487, 35);
+            this.txtConfirmPassword.Size = new System.Drawing.Size(487, 31);
             this.txtConfirmPassword.TabIndex = 6;
             this.txtConfirmPassword.TextAlignment = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtConfirmPassword.UseSystemPasswordChar = true;
@@ -361,7 +363,7 @@
             this.txtNewPassword.Multiline = false;
             this.txtNewPassword.Name = "txtNewPassword";
             this.txtNewPassword.ReadOnly = false;
-            this.txtNewPassword.Size = new System.Drawing.Size(487, 35);
+            this.txtNewPassword.Size = new System.Drawing.Size(487, 31);
             this.txtNewPassword.TabIndex = 5;
             this.txtNewPassword.TextAlignment = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtNewPassword.UseSystemPasswordChar = true;
@@ -373,7 +375,7 @@
             this.label7.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.label7.Location = new System.Drawing.Point(64, 25);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(215, 29);
+            this.label7.Size = new System.Drawing.Size(177, 24);
             this.label7.TabIndex = 4;
             this.label7.Text = "Đặt mật khẩu mới";
             // 
@@ -390,9 +392,9 @@
             // pnlMain
             // 
             this.pnlMain.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.pnlMain.Controls.Add(this.pnlEmail);
-            this.pnlMain.Controls.Add(this.pnlOTP);
             this.pnlMain.Controls.Add(this.pnlNewPassword);
+            this.pnlMain.Controls.Add(this.pnlOTP);
+            this.pnlMain.Controls.Add(this.pnlEmail);
             this.pnlMain.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlMain.Location = new System.Drawing.Point(0, 141);
             this.pnlMain.Name = "pnlMain";
@@ -416,7 +418,7 @@
             // 
             // frmFogotPassword
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 23F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(542, 449);
