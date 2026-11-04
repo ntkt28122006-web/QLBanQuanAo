@@ -95,14 +95,13 @@ namespace QLBanQuanAo
                 if (userRole == "Admin")
                 {
                     // Mở Form Quản trị dành cho Admin
-                    // frmAdminMain adminForm = new frmAdminMain(u);
-                    // adminForm.Show();
+                    frmMainAdmin adminForm = new frmMainAdmin(u);
+                    adminForm.Show();
                 }
                 else
                 {
-                    // Mở Form Trang chủ/Bán hàng cho Khách hàng/Nhân viên
-                    // frmMain mainForm = new frmMain(u);
-                    // mainForm.Show();
+                    FrmCustomerHome frmCustomerHome = new FrmCustomerHome(u);
+                    frmCustomerHome.Show();
                 }
 
                 this.Hide(); // Ẩn form đăng nhập

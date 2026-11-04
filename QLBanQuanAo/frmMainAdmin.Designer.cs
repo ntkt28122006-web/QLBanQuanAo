@@ -30,13 +30,13 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMainAdmin));
             this.pnlSidebar = new System.Windows.Forms.Panel();
+            this.btnLogout = new System.Windows.Forms.Button();
+            this.btnManageCategory = new System.Windows.Forms.Button();
+            this.btnManageProduct = new System.Windows.Forms.Button();
+            this.btnManageOrder = new System.Windows.Forms.Button();
+            this.btnDashboard = new System.Windows.Forms.Button();
             this.pnlLogo = new System.Windows.Forms.Panel();
             this.lblLogo = new System.Windows.Forms.Label();
-            this.btnDashboard = new System.Windows.Forms.Button();
-            this.btnManageOrder = new System.Windows.Forms.Button();
-            this.btnManageProduct = new System.Windows.Forms.Button();
-            this.btnManageCategory = new System.Windows.Forms.Button();
-            this.btnLogout = new System.Windows.Forms.Button();
             this.pnlHeader = new System.Windows.Forms.Panel();
             this.lblTitle = new System.Windows.Forms.Label();
             this.pnlDesktop = new System.Windows.Forms.Panel();
@@ -60,101 +60,6 @@
             this.pnlSidebar.Size = new System.Drawing.Size(250, 644);
             this.pnlSidebar.TabIndex = 0;
             // 
-            // pnlLogo
-            // 
-            this.pnlLogo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(24)))), ((int)(((byte)(32)))));
-            this.pnlLogo.Controls.Add(this.lblLogo);
-            this.pnlLogo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlLogo.Location = new System.Drawing.Point(0, 0);
-            this.pnlLogo.Name = "pnlLogo";
-            this.pnlLogo.Size = new System.Drawing.Size(250, 80);
-            this.pnlLogo.TabIndex = 0;
-            // 
-            // lblLogo
-            // 
-            this.lblLogo.AutoSize = true;
-            this.lblLogo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblLogo.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLogo.ForeColor = System.Drawing.Color.White;
-            this.lblLogo.Location = new System.Drawing.Point(0, 0);
-            this.lblLogo.Name = "lblLogo";
-            this.lblLogo.Size = new System.Drawing.Size(248, 38);
-            this.lblLogo.TabIndex = 0;
-            this.lblLogo.Text = "CLOTHING STORE\r\n";
-            this.lblLogo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // btnDashboard
-            // 
-            this.btnDashboard.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnDashboard.FlatAppearance.BorderSize = 0;
-            this.btnDashboard.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(57)))), ((int)(((byte)(85)))));
-            this.btnDashboard.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
-            this.btnDashboard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDashboard.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDashboard.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnDashboard.Location = new System.Drawing.Point(0, 80);
-            this.btnDashboard.Name = "btnDashboard";
-            this.btnDashboard.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.btnDashboard.Size = new System.Drawing.Size(250, 55);
-            this.btnDashboard.TabIndex = 1;
-            this.btnDashboard.Text = "Dashboard";
-            this.btnDashboard.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDashboard.UseVisualStyleBackColor = true;
-            // 
-            // btnManageOrder
-            // 
-            this.btnManageOrder.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnManageOrder.FlatAppearance.BorderSize = 0;
-            this.btnManageOrder.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(57)))), ((int)(((byte)(85)))));
-            this.btnManageOrder.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
-            this.btnManageOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnManageOrder.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnManageOrder.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnManageOrder.Location = new System.Drawing.Point(0, 135);
-            this.btnManageOrder.Name = "btnManageOrder";
-            this.btnManageOrder.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.btnManageOrder.Size = new System.Drawing.Size(250, 55);
-            this.btnManageOrder.TabIndex = 2;
-            this.btnManageOrder.Text = "Quản Lý Đơn Hàng";
-            this.btnManageOrder.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnManageOrder.UseVisualStyleBackColor = true;
-            // 
-            // btnManageProduct
-            // 
-            this.btnManageProduct.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnManageProduct.FlatAppearance.BorderSize = 0;
-            this.btnManageProduct.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(57)))), ((int)(((byte)(85)))));
-            this.btnManageProduct.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
-            this.btnManageProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnManageProduct.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnManageProduct.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnManageProduct.Location = new System.Drawing.Point(0, 190);
-            this.btnManageProduct.Name = "btnManageProduct";
-            this.btnManageProduct.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.btnManageProduct.Size = new System.Drawing.Size(250, 55);
-            this.btnManageProduct.TabIndex = 3;
-            this.btnManageProduct.Text = "Quản Lý Sản Phẩm";
-            this.btnManageProduct.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnManageProduct.UseVisualStyleBackColor = true;
-            // 
-            // btnManageCategory
-            // 
-            this.btnManageCategory.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnManageCategory.FlatAppearance.BorderSize = 0;
-            this.btnManageCategory.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(57)))), ((int)(((byte)(85)))));
-            this.btnManageCategory.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
-            this.btnManageCategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnManageCategory.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnManageCategory.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnManageCategory.Location = new System.Drawing.Point(0, 245);
-            this.btnManageCategory.Name = "btnManageCategory";
-            this.btnManageCategory.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.btnManageCategory.Size = new System.Drawing.Size(250, 55);
-            this.btnManageCategory.TabIndex = 4;
-            this.btnManageCategory.Text = "Quản Lý Danh Mục";
-            this.btnManageCategory.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnManageCategory.UseVisualStyleBackColor = true;
-            // 
             // btnLogout
             // 
             this.btnLogout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
@@ -174,6 +79,101 @@
             this.btnLogout.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnLogout.UseVisualStyleBackColor = false;
             // 
+            // btnManageCategory
+            // 
+            this.btnManageCategory.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnManageCategory.FlatAppearance.BorderSize = 0;
+            this.btnManageCategory.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(57)))), ((int)(((byte)(85)))));
+            this.btnManageCategory.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
+            this.btnManageCategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnManageCategory.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnManageCategory.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnManageCategory.Location = new System.Drawing.Point(0, 245);
+            this.btnManageCategory.Name = "btnManageCategory";
+            this.btnManageCategory.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.btnManageCategory.Size = new System.Drawing.Size(250, 55);
+            this.btnManageCategory.TabIndex = 4;
+            this.btnManageCategory.Text = "Quản Lý Danh Mục";
+            this.btnManageCategory.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnManageCategory.UseVisualStyleBackColor = true;
+            // 
+            // btnManageProduct
+            // 
+            this.btnManageProduct.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnManageProduct.FlatAppearance.BorderSize = 0;
+            this.btnManageProduct.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(57)))), ((int)(((byte)(85)))));
+            this.btnManageProduct.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
+            this.btnManageProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnManageProduct.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnManageProduct.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnManageProduct.Location = new System.Drawing.Point(0, 190);
+            this.btnManageProduct.Name = "btnManageProduct";
+            this.btnManageProduct.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.btnManageProduct.Size = new System.Drawing.Size(250, 55);
+            this.btnManageProduct.TabIndex = 3;
+            this.btnManageProduct.Text = "Quản Lý Sản Phẩm";
+            this.btnManageProduct.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnManageProduct.UseVisualStyleBackColor = true;
+            // 
+            // btnManageOrder
+            // 
+            this.btnManageOrder.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnManageOrder.FlatAppearance.BorderSize = 0;
+            this.btnManageOrder.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(57)))), ((int)(((byte)(85)))));
+            this.btnManageOrder.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
+            this.btnManageOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnManageOrder.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnManageOrder.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnManageOrder.Location = new System.Drawing.Point(0, 135);
+            this.btnManageOrder.Name = "btnManageOrder";
+            this.btnManageOrder.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.btnManageOrder.Size = new System.Drawing.Size(250, 55);
+            this.btnManageOrder.TabIndex = 2;
+            this.btnManageOrder.Text = "Quản Lý Đơn Hàng";
+            this.btnManageOrder.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnManageOrder.UseVisualStyleBackColor = true;
+            // 
+            // btnDashboard
+            // 
+            this.btnDashboard.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnDashboard.FlatAppearance.BorderSize = 0;
+            this.btnDashboard.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(57)))), ((int)(((byte)(85)))));
+            this.btnDashboard.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
+            this.btnDashboard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDashboard.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDashboard.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnDashboard.Location = new System.Drawing.Point(0, 80);
+            this.btnDashboard.Name = "btnDashboard";
+            this.btnDashboard.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.btnDashboard.Size = new System.Drawing.Size(250, 55);
+            this.btnDashboard.TabIndex = 1;
+            this.btnDashboard.Text = "Dashboard";
+            this.btnDashboard.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDashboard.UseVisualStyleBackColor = true;
+            // 
+            // pnlLogo
+            // 
+            this.pnlLogo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(24)))), ((int)(((byte)(32)))));
+            this.pnlLogo.Controls.Add(this.lblLogo);
+            this.pnlLogo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlLogo.Location = new System.Drawing.Point(0, 0);
+            this.pnlLogo.Name = "pnlLogo";
+            this.pnlLogo.Size = new System.Drawing.Size(250, 80);
+            this.pnlLogo.TabIndex = 0;
+            // 
+            // lblLogo
+            // 
+            this.lblLogo.AutoSize = true;
+            this.lblLogo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblLogo.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLogo.ForeColor = System.Drawing.Color.White;
+            this.lblLogo.Location = new System.Drawing.Point(0, 0);
+            this.lblLogo.Name = "lblLogo";
+            this.lblLogo.Size = new System.Drawing.Size(213, 32);
+            this.lblLogo.TabIndex = 0;
+            this.lblLogo.Text = "CLOTHING STORE\r\n";
+            this.lblLogo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // pnlHeader
             // 
             this.pnlHeader.Controls.Add(this.lblTitle);
@@ -191,7 +191,7 @@
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
             this.lblTitle.Location = new System.Drawing.Point(0, 0);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(223, 45);
+            this.lblTitle.Size = new System.Drawing.Size(186, 37);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "DASHBOARD";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -207,7 +207,7 @@
             // 
             // frmMainAdmin
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 28F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1440, 644);
             this.Controls.Add(this.pnlDesktop);
