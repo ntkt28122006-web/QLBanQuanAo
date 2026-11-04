@@ -162,7 +162,7 @@
             this.cboFilterStatus.FormattingEnabled = true;
             this.cboFilterStatus.Location = new System.Drawing.Point(580, 18);
             this.cboFilterStatus.Name = "cboFilterStatus";
-            this.cboFilterStatus.Size = new System.Drawing.Size(220, 36);
+            this.cboFilterStatus.Size = new System.Drawing.Size(220, 31);
             this.cboFilterStatus.TabIndex = 3;
             this.cboFilterStatus.SelectedIndexChanged += new System.EventHandler(this.cboFilterStatus_SelectedIndexChanged);
             // 
@@ -173,7 +173,7 @@
             this.cboFilterCategory.FormattingEnabled = true;
             this.cboFilterCategory.Location = new System.Drawing.Point(340, 18);
             this.cboFilterCategory.Name = "cboFilterCategory";
-            this.cboFilterCategory.Size = new System.Drawing.Size(220, 36);
+            this.cboFilterCategory.Size = new System.Drawing.Size(220, 31);
             this.cboFilterCategory.TabIndex = 2;
             this.cboFilterCategory.SelectedIndexChanged += new System.EventHandler(this.cboFilterCategory_SelectedIndexChanged);
             // 
@@ -197,7 +197,7 @@
             this.txtSearchProduct.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtSearchProduct.Location = new System.Drawing.Point(20, 18);
             this.txtSearchProduct.Name = "txtSearchProduct";
-            this.txtSearchProduct.Size = new System.Drawing.Size(300, 34);
+            this.txtSearchProduct.Size = new System.Drawing.Size(300, 30);
             this.txtSearchProduct.TabIndex = 0;
             this.txtSearchProduct.Text = "Tìm kiếm sản phẩm...";
             this.txtSearchProduct.TextChanged += new System.EventHandler(this.txtSearchProduct_TextChanged);
@@ -417,7 +417,7 @@
             this.btnDeleteProduct.Name = "btnDeleteProduct";
             this.btnDeleteProduct.Size = new System.Drawing.Size(180, 38);
             this.btnDeleteProduct.TabIndex = 23;
-            this.btnDeleteProduct.Text = "Ngừng bán";
+            this.btnDeleteProduct.Text = "Xóa";
             this.btnDeleteProduct.UseVisualStyleBackColor = true;
             this.btnDeleteProduct.Click += new System.EventHandler(this.btnDeleteProduct_Click);
             // 
@@ -480,7 +480,7 @@
             this.cboProductStatus.FormattingEnabled = true;
             this.cboProductStatus.Location = new System.Drawing.Point(15, 520);
             this.cboProductStatus.Name = "cboProductStatus";
-            this.cboProductStatus.Size = new System.Drawing.Size(380, 33);
+            this.cboProductStatus.Size = new System.Drawing.Size(380, 28);
             this.cboProductStatus.TabIndex = 16;
             // 
             // lblProductStatus
@@ -498,7 +498,6 @@
             this.txtProductDescription.MaxLength = 2000;
             this.txtProductDescription.Multiline = true;
             this.txtProductDescription.Name = "txtProductDescription";
-            this.txtProductDescription.ReadOnly = true;
             this.txtProductDescription.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtProductDescription.Size = new System.Drawing.Size(380, 31);
             this.txtProductDescription.TabIndex = 14;
@@ -526,7 +525,7 @@
             0,
             0});
             this.numProductSalePrice.Name = "numProductSalePrice";
-            this.numProductSalePrice.Size = new System.Drawing.Size(380, 31);
+            this.numProductSalePrice.Size = new System.Drawing.Size(380, 27);
             this.numProductSalePrice.TabIndex = 12;
             this.numProductSalePrice.ThousandsSeparator = true;
             this.numProductSalePrice.ValueChanged += new System.EventHandler(this.numProductSalePrice_ValueChanged);
@@ -554,7 +553,7 @@
             0,
             0});
             this.numProductPrice.Name = "numProductPrice";
-            this.numProductPrice.Size = new System.Drawing.Size(380, 31);
+            this.numProductPrice.Size = new System.Drawing.Size(380, 27);
             this.numProductPrice.TabIndex = 10;
             this.numProductPrice.ThousandsSeparator = true;
             this.numProductPrice.ValueChanged += new System.EventHandler(this.numProductPrice_ValueChanged);
@@ -572,8 +571,7 @@
             this.txtProductBrand.Location = new System.Drawing.Point(15, 260);
             this.txtProductBrand.MaxLength = 100;
             this.txtProductBrand.Name = "txtProductBrand";
-            this.txtProductBrand.ReadOnly = true;
-            this.txtProductBrand.Size = new System.Drawing.Size(380, 31);
+            this.txtProductBrand.Size = new System.Drawing.Size(380, 27);
             this.txtProductBrand.TabIndex = 8;
             this.txtProductBrand.TextChanged += new System.EventHandler(this.txtProductBrand_TextChanged);
             // 
@@ -591,7 +589,7 @@
             this.cboCategory.FormattingEnabled = true;
             this.cboCategory.Location = new System.Drawing.Point(15, 190);
             this.cboCategory.Name = "cboCategory";
-            this.cboCategory.Size = new System.Drawing.Size(380, 33);
+            this.cboCategory.Size = new System.Drawing.Size(380, 28);
             this.cboCategory.TabIndex = 6;
             // 
             // lblProductCategory
@@ -607,8 +605,7 @@
             this.txtProductName.Location = new System.Drawing.Point(15, 132);
             this.txtProductName.MaxLength = 200;
             this.txtProductName.Name = "txtProductName";
-            this.txtProductName.ReadOnly = true;
-            this.txtProductName.Size = new System.Drawing.Size(380, 31);
+            this.txtProductName.Size = new System.Drawing.Size(380, 27);
             this.txtProductName.TabIndex = 4;
             this.txtProductName.TextChanged += new System.EventHandler(this.txtProductName_TextChanged);
             // 
@@ -617,7 +614,7 @@
             this.txtProductId.Location = new System.Drawing.Point(15, 80);
             this.txtProductId.Name = "txtProductId";
             this.txtProductId.ReadOnly = true;
-            this.txtProductId.Size = new System.Drawing.Size(380, 31);
+            this.txtProductId.Size = new System.Drawing.Size(380, 27);
             this.txtProductId.TabIndex = 3;
             this.txtProductId.TextChanged += new System.EventHandler(this.txtProductId_TextChanged);
             // 
@@ -650,7 +647,7 @@
             // 
             // frmAdminProduct
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
@@ -666,6 +663,7 @@
             this.Name = "frmAdminProduct";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Quản lí sản phẩm";
+            this.Load += new System.EventHandler(this.frmAdminProduct_Load);
             this.pnlProductHeader.ResumeLayout(false);
             this.pnlProductFilter.ResumeLayout(false);
             this.pnlProductFilter.PerformLayout();
