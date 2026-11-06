@@ -217,6 +217,7 @@
             this.lnkResendOTP.Size = new System.Drawing.Size(113, 18);
             this.lnkResendOTP.TabIndex = 6;
             this.lnkResendOTP.Text = "Gửi lại mã OTP";
+            this.lnkResendOTP.Click += new ReaLTaiizor.FoxBase.ButtonFoxBase.ClickEventHandler(this.lnkResendOTP_Click);
             // 
             // btnVerifyOTP
             // 
@@ -309,6 +310,7 @@
             this.btnResetPassword.TabIndex = 9;
             this.btnResetPassword.Text = "Đặt lại mật khẩu ";
             this.btnResetPassword.UseVisualStyleBackColor = false;
+            this.btnResetPassword.Click += new System.EventHandler(this.btnResetPassword_Click);
             // 
             // label6
             // 
@@ -390,9 +392,9 @@
             // pnlMain
             // 
             this.pnlMain.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.pnlMain.Controls.Add(this.pnlEmail);
-            this.pnlMain.Controls.Add(this.pnlOTP);
             this.pnlMain.Controls.Add(this.pnlNewPassword);
+            this.pnlMain.Controls.Add(this.pnlOTP);
+            this.pnlMain.Controls.Add(this.pnlEmail);
             this.pnlMain.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlMain.Location = new System.Drawing.Point(0, 141);
             this.pnlMain.Name = "pnlMain";
@@ -425,6 +427,7 @@
             this.Controls.Add(this.pnlTitle);
             this.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;

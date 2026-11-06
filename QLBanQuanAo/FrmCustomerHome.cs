@@ -12,11 +12,13 @@ namespace QLBanQuanAo
 {
     public partial class FrmCustomerHome : Form
     {
+        private user CurrentUser;
         private bool isLoaded = false;
         private string currentTab = "ALL";
-        public FrmCustomerHome()
+        public FrmCustomerHome(user u)
         {
             InitializeComponent();
+            this.CurrentUser = u;
         }
 
         private void FrmCustomerHome_Load(object sender, EventArgs e)

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAdminOrder));
             this.pnlOrderHeader = new System.Windows.Forms.Panel();
             this.lblOrderDescription = new System.Windows.Forms.Label();
             this.lblOrderTitle = new System.Windows.Forms.Label();
@@ -88,7 +89,7 @@
             this.lblOrderDescription.ForeColor = System.Drawing.Color.White;
             this.lblOrderDescription.Location = new System.Drawing.Point(30, 53);
             this.lblOrderDescription.Name = "lblOrderDescription";
-            this.lblOrderDescription.Size = new System.Drawing.Size(303, 20);
+            this.lblOrderDescription.Size = new System.Drawing.Size(367, 25);
             this.lblOrderDescription.TabIndex = 1;
             this.lblOrderDescription.Text = "Theo dõi đơn hàng, thanh toán và giao hàng";
             // 
@@ -131,6 +132,7 @@
             this.btnPrintInvoice.Text = "In Hóa Đơn";
             this.btnPrintInvoice.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnPrintInvoice.UseVisualStyleBackColor = true;
+            this.btnPrintInvoice.Click += new System.EventHandler(this.btnPrintInvoice_Click);
             // 
             // btnUpdateOrderStatus
             // 
@@ -141,6 +143,7 @@
             this.btnUpdateOrderStatus.Text = "Cập nhật trạng thái";
             this.btnUpdateOrderStatus.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnUpdateOrderStatus.UseVisualStyleBackColor = true;
+            this.btnUpdateOrderStatus.Click += new System.EventHandler(this.btnUpdateOrderStatus_Click);
             // 
             // btnViewOrderDetail
             // 
@@ -151,6 +154,7 @@
             this.btnViewOrderDetail.Text = "Xem chi tiết";
             this.btnViewOrderDetail.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnViewOrderDetail.UseVisualStyleBackColor = true;
+            this.btnViewOrderDetail.Click += new System.EventHandler(this.btnViewOrderDetail_Click);
             // 
             // btnResetOrderFilter
             // 
@@ -161,6 +165,7 @@
             this.btnResetOrderFilter.Text = "Reset";
             this.btnResetOrderFilter.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnResetOrderFilter.UseVisualStyleBackColor = true;
+            this.btnResetOrderFilter.Click += new System.EventHandler(this.btnResetOrderFilter_Click);
             // 
             // btnSearchOrder
             // 
@@ -171,6 +176,15 @@
             this.btnSearchOrder.Text = "Tìm kiếm đơn hàng";
             this.btnSearchOrder.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSearchOrder.UseVisualStyleBackColor = true;
+            this.btnSearchOrder.Click += new System.EventHandler(this.btnSearchOrder_Click);
+            // 
+            // dtpToDate
+            // 
+            this.dtpToDate.Location = new System.Drawing.Point(465, 55);
+            this.dtpToDate.Name = "dtpToDate";
+            this.dtpToDate.Size = new System.Drawing.Size(180, 31);
+            this.dtpToDate.TabIndex = 8;
+            this.dtpToDate.ValueChanged += new System.EventHandler(this.dtpToDate_ValueChanged);
             // 
             // dtpToDate
             // 
@@ -189,13 +203,15 @@
             this.cboFilterPaymentStatus.Name = "cboFilterPaymentStatus";
             this.cboFilterPaymentStatus.Size = new System.Drawing.Size(180, 28);
             this.cboFilterPaymentStatus.TabIndex = 7;
+            this.cboFilterPaymentStatus.SelectedIndexChanged += new System.EventHandler(this.cboFilterPaymentStatus_SelectedIndexChanged);
             // 
             // txtSearchOrder
             // 
             this.txtSearchOrder.Location = new System.Drawing.Point(15, 10);
             this.txtSearchOrder.Name = "txtSearchOrder";
-            this.txtSearchOrder.Size = new System.Drawing.Size(240, 27);
+            this.txtSearchOrder.Size = new System.Drawing.Size(240, 31);
             this.txtSearchOrder.TabIndex = 0;
+            this.txtSearchOrder.TextChanged += new System.EventHandler(this.txtSearchOrder_TextChanged);
             // 
             // cboFilterStatus
             // 
@@ -203,15 +219,17 @@
             this.cboFilterStatus.FormattingEnabled = true;
             this.cboFilterStatus.Location = new System.Drawing.Point(270, 10);
             this.cboFilterStatus.Name = "cboFilterStatus";
-            this.cboFilterStatus.Size = new System.Drawing.Size(180, 28);
+            this.cboFilterStatus.Size = new System.Drawing.Size(180, 33);
             this.cboFilterStatus.TabIndex = 1;
+            this.cboFilterStatus.SelectedIndexChanged += new System.EventHandler(this.cboFilterStatus_SelectedIndexChanged);
             // 
             // dtpFromDate
             // 
             this.dtpFromDate.Location = new System.Drawing.Point(270, 55);
             this.dtpFromDate.Name = "dtpFromDate";
-            this.dtpFromDate.Size = new System.Drawing.Size(180, 27);
+            this.dtpFromDate.Size = new System.Drawing.Size(180, 31);
             this.dtpFromDate.TabIndex = 4;
+            this.dtpFromDate.ValueChanged += new System.EventHandler(this.dtpFromDate_ValueChanged);
             // 
             // pnlOrderBody
             // 
@@ -269,6 +287,8 @@
             this.dgvOrders.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvOrders.Size = new System.Drawing.Size(1528, 242);
             this.dgvOrders.TabIndex = 0;
+            this.dgvOrders.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvOrders_CellClick);
+            this.dgvOrders.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvOrders_CellContentClick);
             // 
             // colOrderId
             // 
@@ -359,6 +379,7 @@
             this.dgvOrderDetails.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvOrderDetails.Size = new System.Drawing.Size(1528, 257);
             this.dgvOrderDetails.TabIndex = 1;
+            this.dgvOrderDetails.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvOrderDetails_CellContentClick);
             // 
             // colDetailProductName
             // 
@@ -426,11 +447,13 @@
             this.Controls.Add(this.pnlOrderFilter);
             this.Controls.Add(this.pnlOrderHeader);
             this.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimumSize = new System.Drawing.Size(1100, 650);
             this.Name = "frmAdminOrder";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Quản lí đơn hàng";
+            this.Load += new System.EventHandler(this.frmAdminOrder_Load);
             this.pnlOrderHeader.ResumeLayout(false);
             this.pnlOrderHeader.PerformLayout();
             this.pnlOrderFilter.ResumeLayout(false);

@@ -41,9 +41,9 @@ namespace QLBanQuanAo
             this.label3 = new System.Windows.Forms.Label();
             this.txtEmail = new ReaLTaiizor.DungeonTextBox();
             this.txtPassword = new ReaLTaiizor.DungeonTextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnLogIn = new System.Windows.Forms.Button();
             this.lnkForgotPassword = new ReaLTaiizor.FoxLinkLabel();
-            this.foxLinkLabel1 = new ReaLTaiizor.FoxLinkLabel();
+            this.lnkSignin = new ReaLTaiizor.FoxLinkLabel();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -131,21 +131,23 @@ namespace QLBanQuanAo
             this.txtPassword.TextAlignment = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtPassword.UseSystemPasswordChar = true;
             // 
-            // button1
+            // btnLogIn
             // 
-            this.button1.BackColor = System.Drawing.Color.Black;
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.button1.Location = new System.Drawing.Point(240, 553);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(260, 60);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "ĐĂNG NHẬP";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnLogIn.BackColor = System.Drawing.Color.Black;
+            this.btnLogIn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnLogIn.FlatAppearance.BorderSize = 0;
+            this.btnLogIn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
+            this.btnLogIn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnLogIn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLogIn.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.btnLogIn.Location = new System.Drawing.Point(240, 544);
+            this.btnLogIn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnLogIn.Name = "btnLogIn";
+            this.btnLogIn.Size = new System.Drawing.Size(231, 48);
+            this.btnLogIn.TabIndex = 6;
+            this.btnLogIn.Text = "ĐĂNG NHẬP";
+            this.btnLogIn.UseVisualStyleBackColor = false;
+            this.btnLogIn.Click += new System.EventHandler(this.btnLogIn_Click);
             // 
             // lnkForgotPassword
             // 
@@ -162,30 +164,31 @@ namespace QLBanQuanAo
             this.lnkForgotPassword.Text = "Quên mật khẩu?";
             this.lnkForgotPassword.Click += new ReaLTaiizor.FoxBase.ButtonFoxBase.ClickEventHandler(this.lnkForgotPassword_Click);
             // 
-            // foxLinkLabel1
+            // lnkSignin
             // 
-            this.foxLinkLabel1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.foxLinkLabel1.DownColor = System.Drawing.Color.White;
-            this.foxLinkLabel1.EnabledCalc = true;
-            this.foxLinkLabel1.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.foxLinkLabel1.ForeColor = System.Drawing.Color.Silver;
-            this.foxLinkLabel1.Location = new System.Drawing.Point(240, 619);
-            this.foxLinkLabel1.Name = "foxLinkLabel1";
-            this.foxLinkLabel1.OverColor = System.Drawing.Color.White;
-            this.foxLinkLabel1.Size = new System.Drawing.Size(295, 27);
-            this.foxLinkLabel1.TabIndex = 10;
-            this.foxLinkLabel1.Text = "Chưa có tài khoản? Đăng ký ngay";
-            this.foxLinkLabel1.Click += new ReaLTaiizor.FoxBase.ButtonFoxBase.ClickEventHandler(this.foxLinkLabel1_Click);
+            this.lnkSignin.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lnkSignin.DownColor = System.Drawing.Color.White;
+            this.lnkSignin.EnabledCalc = true;
+            this.lnkSignin.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.lnkSignin.ForeColor = System.Drawing.Color.Silver;
+            this.lnkSignin.Location = new System.Drawing.Point(227, 596);
+            this.lnkSignin.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.lnkSignin.Name = "lnkSignin";
+            this.lnkSignin.OverColor = System.Drawing.Color.White;
+            this.lnkSignin.Size = new System.Drawing.Size(262, 22);
+            this.lnkSignin.TabIndex = 10;
+            this.lnkSignin.Text = "Chưa có tài khoản? Đăng ký ngay";
+            this.lnkSignin.Click += new ReaLTaiizor.FoxBase.ButtonFoxBase.ClickEventHandler(this.lnkSignin_Click);
             // 
             // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.ClientSize = new System.Drawing.Size(734, 686);
-            this.Controls.Add(this.foxLinkLabel1);
+            this.ClientSize = new System.Drawing.Size(731, 670);
+            this.Controls.Add(this.lnkSignin);
             this.Controls.Add(this.lnkForgotPassword);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnLogIn);
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.label3);
@@ -195,6 +198,7 @@ namespace QLBanQuanAo
             this.Controls.Add(this.flowLayoutPanel1);
             this.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "LogIn";
@@ -212,9 +216,9 @@ namespace QLBanQuanAo
         private System.Windows.Forms.Label label3;
         private ReaLTaiizor.DungeonTextBox txtEmail;
         private ReaLTaiizor.DungeonTextBox txtPassword;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnLogIn;
         private ReaLTaiizor.FoxLinkLabel lnkForgotPassword;
-        private ReaLTaiizor.FoxLinkLabel foxLinkLabel1;
+        private ReaLTaiizor.FoxLinkLabel lnkSignin;
     }
 }
 

@@ -31,6 +31,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCategory));
             this.pnlCategoryHeader = new System.Windows.Forms.Panel();
             this.lblCategoryDescription = new System.Windows.Forms.Label();
             this.lblCategoryTitle = new System.Windows.Forms.Label();
@@ -130,6 +131,7 @@
             this.btnClearCategory.TabIndex = 8;
             this.btnClearCategory.Text = "Làm mới";
             this.btnClearCategory.UseVisualStyleBackColor = false;
+            this.btnClearCategory.Click += new System.EventHandler(this.btnClearCategory_Click);
             // 
             // btnDeleteCategory
             // 
@@ -145,6 +147,7 @@
             this.btnDeleteCategory.TabIndex = 7;
             this.btnDeleteCategory.Text = "Xóa danh mục";
             this.btnDeleteCategory.UseVisualStyleBackColor = false;
+            this.btnDeleteCategory.Click += new System.EventHandler(this.btnDeleteCategory_Click);
             // 
             // btnUpdateCategory
             // 
@@ -160,6 +163,7 @@
             this.btnUpdateCategory.TabIndex = 6;
             this.btnUpdateCategory.Text = "Cập nhật";
             this.btnUpdateCategory.UseVisualStyleBackColor = false;
+            this.btnUpdateCategory.Click += new System.EventHandler(this.btnUpdateCategory_Click);
             // 
             // btnAddCategory
             // 
@@ -175,6 +179,7 @@
             this.btnAddCategory.TabIndex = 5;
             this.btnAddCategory.Text = "Thêm danh mục";
             this.btnAddCategory.UseVisualStyleBackColor = false;
+            this.btnAddCategory.Click += new System.EventHandler(this.btnAddCategory_Click);
             // 
             // chkCategoryActive
             // 
@@ -186,6 +191,7 @@
             this.chkCategoryActive.TabIndex = 4;
             this.chkCategoryActive.Text = "Đang hoạt động";
             this.chkCategoryActive.UseVisualStyleBackColor = true;
+            this.chkCategoryActive.CheckedChanged += new System.EventHandler(this.chkCategoryActive_CheckedChanged);
             // 
             // cboParentCategory
             // 
@@ -195,6 +201,7 @@
             this.cboParentCategory.Name = "cboParentCategory";
             this.cboParentCategory.Size = new System.Drawing.Size(250, 36);
             this.cboParentCategory.TabIndex = 3;
+            this.cboParentCategory.SelectedIndexChanged += new System.EventHandler(this.cboParentCategory_SelectedIndexChanged);
             // 
             // lblParentCategory
             // 
@@ -214,6 +221,7 @@
             this.txtCategorySlug.ReadOnly = true;
             this.txtCategorySlug.Size = new System.Drawing.Size(180, 34);
             this.txtCategorySlug.TabIndex = 2;
+            this.txtCategorySlug.TextChanged += new System.EventHandler(this.txtCategorySlug_TextChanged);
             // 
             // lblCategorySlug
             // 
@@ -233,6 +241,7 @@
             this.txtCategoryName.ReadOnly = true;
             this.txtCategoryName.Size = new System.Drawing.Size(180, 34);
             this.txtCategoryName.TabIndex = 1;
+            this.txtCategoryName.TextChanged += new System.EventHandler(this.txtCategoryName_TextChanged);
             // 
             // lblCategoryName
             // 
@@ -252,6 +261,7 @@
             this.txtCategoryId.ReadOnly = true;
             this.txtCategoryId.Size = new System.Drawing.Size(180, 34);
             this.txtCategoryId.TabIndex = 0;
+            this.txtCategoryId.TextChanged += new System.EventHandler(this.txtCategoryId_TextChanged);
             // 
             // lblCategoryId
             // 
@@ -308,7 +318,7 @@
             this.dgvCategories.ReadOnly = true;
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
@@ -321,6 +331,8 @@
             this.dgvCategories.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvCategories.Size = new System.Drawing.Size(1198, 359);
             this.dgvCategories.TabIndex = 0;
+            this.dgvCategories.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCategories_CellClick);
+            this.dgvCategories.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCategories_CellContentClick);
             // 
             // colCategoryId
             // 
@@ -377,6 +389,7 @@
             this.Controls.Add(this.pnlCategoryInfo);
             this.Controls.Add(this.pnlCategoryHeader);
             this.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmCategory";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

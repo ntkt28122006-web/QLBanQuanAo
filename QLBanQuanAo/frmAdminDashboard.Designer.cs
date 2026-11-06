@@ -31,6 +31,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAdminDashboard));
             this.pnlDashboardHeader = new System.Windows.Forms.Panel();
             this.lblDashboardDescription = new System.Windows.Forms.Label();
             this.lblDashboardTitle = new System.Windows.Forms.Label();
@@ -44,26 +45,26 @@
             this.lblCustomerManagementTitle = new System.Windows.Forms.Label();
             this.pnlCustomerList = new System.Windows.Forms.Panel();
             this.dgvCustomers = new System.Windows.Forms.DataGridView();
-            this.lblCustomerListTitle = new System.Windows.Forms.Label();
             this.colCustomerId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colCustomerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colCustomerEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colCustomerPhone = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colCustomerStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colCustomerCreated = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lblCustomerListTitle = new System.Windows.Forms.Label();
             this.pnlCustomerDetail = new System.Windows.Forms.Panel();
-            this.lblCustomerDetailTitle = new System.Windows.Forms.Label();
-            this.lblDetailCustomerId = new System.Windows.Forms.Label();
-            this.txtDetailCustomerId = new System.Windows.Forms.TextBox();
-            this.lblDetailCustomerName = new System.Windows.Forms.Label();
-            this.txtDetailCustomerName = new System.Windows.Forms.TextBox();
-            this.lblDetailCustomerPhone = new System.Windows.Forms.Label();
-            this.lblDetailCustomerEmail = new System.Windows.Forms.Label();
-            this.txtDetailCustomerEmail = new System.Windows.Forms.TextBox();
-            this.txtDetailCustomerPhone = new System.Windows.Forms.TextBox();
-            this.lblCustomerStatus = new System.Windows.Forms.Label();
-            this.btnLockCustomer = new System.Windows.Forms.Button();
             this.btnUnlockCustomer = new System.Windows.Forms.Button();
+            this.btnLockCustomer = new System.Windows.Forms.Button();
+            this.lblCustomerStatus = new System.Windows.Forms.Label();
+            this.txtDetailCustomerPhone = new System.Windows.Forms.TextBox();
+            this.txtDetailCustomerEmail = new System.Windows.Forms.TextBox();
+            this.lblDetailCustomerEmail = new System.Windows.Forms.Label();
+            this.lblDetailCustomerPhone = new System.Windows.Forms.Label();
+            this.txtDetailCustomerName = new System.Windows.Forms.TextBox();
+            this.lblDetailCustomerName = new System.Windows.Forms.Label();
+            this.txtDetailCustomerId = new System.Windows.Forms.TextBox();
+            this.lblDetailCustomerId = new System.Windows.Forms.Label();
+            this.lblCustomerDetailTitle = new System.Windows.Forms.Label();
             this.pnlDashboardHeader.SuspendLayout();
             this.pnlCustomerToolbar.SuspendLayout();
             this.pnlCustomerList.SuspendLayout();
@@ -132,6 +133,7 @@
             this.btnRefreshCustomer.TabIndex = 3;
             this.btnRefreshCustomer.Text = "Làm mới";
             this.btnRefreshCustomer.UseVisualStyleBackColor = false;
+            this.btnRefreshCustomer.Click += new System.EventHandler(this.btnRefreshCustomer_Click);
             // 
             // btnSearchCustomer
             // 
@@ -147,6 +149,7 @@
             this.btnSearchCustomer.TabIndex = 2;
             this.btnSearchCustomer.Text = "Tìm kiếm";
             this.btnSearchCustomer.UseVisualStyleBackColor = false;
+            this.btnSearchCustomer.Click += new System.EventHandler(this.btnSearchCustomer_Click);
             // 
             // cboFilterCustomerStatus
             // 
@@ -156,6 +159,7 @@
             this.cboFilterCustomerStatus.Name = "cboFilterCustomerStatus";
             this.cboFilterCustomerStatus.Size = new System.Drawing.Size(350, 33);
             this.cboFilterCustomerStatus.TabIndex = 1;
+            this.cboFilterCustomerStatus.SelectedIndexChanged += new System.EventHandler(this.cboFilterCustomerStatus_SelectedIndexChanged);
             // 
             // lblFilterCustomerStatus
             // 
@@ -173,6 +177,7 @@
             this.txtSearchCustomer.Name = "txtSearchCustomer";
             this.txtSearchCustomer.Size = new System.Drawing.Size(350, 31);
             this.txtSearchCustomer.TabIndex = 0;
+            this.txtSearchCustomer.TextChanged += new System.EventHandler(this.txtSearchCustomer_TextChanged);
             // 
             // lblSearchCustomer
             // 
@@ -203,6 +208,7 @@
             this.pnlCustomerList.Name = "pnlCustomerList";
             this.pnlCustomerList.Size = new System.Drawing.Size(1278, 356);
             this.pnlCustomerList.TabIndex = 2;
+            this.pnlCustomerList.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlCustomerList_Paint);
             // 
             // dgvCustomers
             // 
@@ -251,14 +257,8 @@
             this.dgvCustomers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvCustomers.Size = new System.Drawing.Size(1308, 39);
             this.dgvCustomers.TabIndex = 1;
-            // 
-            // lblCustomerListTitle
-            // 
-            this.lblCustomerListTitle.Location = new System.Drawing.Point(25, 10);
-            this.lblCustomerListTitle.Name = "lblCustomerListTitle";
-            this.lblCustomerListTitle.Size = new System.Drawing.Size(400, 28);
-            this.lblCustomerListTitle.TabIndex = 0;
-            this.lblCustomerListTitle.Text = "\tTHÔNG TIN TÀI KHOẢN KHÁCH HÀNG";
+            this.dgvCustomers.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCustomers_CellClick);
+            this.dgvCustomers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCustomers_CellContentClick);
             // 
             // colCustomerId
             // 
@@ -314,6 +314,14 @@
             this.colCustomerCreated.Name = "colCustomerCreated";
             this.colCustomerCreated.ReadOnly = true;
             // 
+            // lblCustomerListTitle
+            // 
+            this.lblCustomerListTitle.Location = new System.Drawing.Point(25, 10);
+            this.lblCustomerListTitle.Name = "lblCustomerListTitle";
+            this.lblCustomerListTitle.Size = new System.Drawing.Size(400, 28);
+            this.lblCustomerListTitle.TabIndex = 0;
+            this.lblCustomerListTitle.Text = "\tTHÔNG TIN TÀI KHOẢN KHÁCH HÀNG";
+            // 
             // pnlCustomerDetail
             // 
             this.pnlCustomerDetail.Controls.Add(this.btnUnlockCustomer);
@@ -333,96 +341,22 @@
             this.pnlCustomerDetail.Size = new System.Drawing.Size(1278, 201);
             this.pnlCustomerDetail.TabIndex = 2;
             // 
-            // lblCustomerDetailTitle
+            // btnUnlockCustomer
             // 
-            this.lblCustomerDetailTitle.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCustomerDetailTitle.Location = new System.Drawing.Point(25, 8);
-            this.lblCustomerDetailTitle.Name = "lblCustomerDetailTitle";
-            this.lblCustomerDetailTitle.Size = new System.Drawing.Size(338, 27);
-            this.lblCustomerDetailTitle.TabIndex = 0;
-            this.lblCustomerDetailTitle.Text = "CHI TIẾT TÀI KHOẢN ĐƯỢC CHỌN";
-            // 
-            // lblDetailCustomerId
-            // 
-            this.lblDetailCustomerId.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDetailCustomerId.ForeColor = System.Drawing.Color.DimGray;
-            this.lblDetailCustomerId.Location = new System.Drawing.Point(25, 43);
-            this.lblDetailCustomerId.Name = "lblDetailCustomerId";
-            this.lblDetailCustomerId.Size = new System.Drawing.Size(200, 31);
-            this.lblDetailCustomerId.TabIndex = 1;
-            this.lblDetailCustomerId.Text = "Mã khách hàng";
-            // 
-            // txtDetailCustomerId
-            // 
-            this.txtDetailCustomerId.Location = new System.Drawing.Point(30, 77);
-            this.txtDetailCustomerId.Name = "txtDetailCustomerId";
-            this.txtDetailCustomerId.ReadOnly = true;
-            this.txtDetailCustomerId.Size = new System.Drawing.Size(220, 31);
-            this.txtDetailCustomerId.TabIndex = 2;
-            // 
-            // lblDetailCustomerName
-            // 
-            this.lblDetailCustomerName.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDetailCustomerName.ForeColor = System.Drawing.Color.DimGray;
-            this.lblDetailCustomerName.Location = new System.Drawing.Point(27, 121);
-            this.lblDetailCustomerName.Name = "lblDetailCustomerName";
-            this.lblDetailCustomerName.Size = new System.Drawing.Size(338, 27);
-            this.lblDetailCustomerName.TabIndex = 3;
-            this.lblDetailCustomerName.Text = "Họ và tên";
-            // 
-            // txtDetailCustomerName
-            // 
-            this.txtDetailCustomerName.Location = new System.Drawing.Point(30, 151);
-            this.txtDetailCustomerName.Name = "txtDetailCustomerName";
-            this.txtDetailCustomerName.ReadOnly = true;
-            this.txtDetailCustomerName.Size = new System.Drawing.Size(220, 31);
-            this.txtDetailCustomerName.TabIndex = 4;
-            // 
-            // lblDetailCustomerPhone
-            // 
-            this.lblDetailCustomerPhone.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDetailCustomerPhone.ForeColor = System.Drawing.Color.DimGray;
-            this.lblDetailCustomerPhone.Location = new System.Drawing.Point(373, 117);
-            this.lblDetailCustomerPhone.Name = "lblDetailCustomerPhone";
-            this.lblDetailCustomerPhone.Size = new System.Drawing.Size(200, 31);
-            this.lblDetailCustomerPhone.TabIndex = 5;
-            this.lblDetailCustomerPhone.Text = "SĐT";
-            // 
-            // lblDetailCustomerEmail
-            // 
-            this.lblDetailCustomerEmail.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDetailCustomerEmail.ForeColor = System.Drawing.Color.DimGray;
-            this.lblDetailCustomerEmail.Location = new System.Drawing.Point(373, 43);
-            this.lblDetailCustomerEmail.Name = "lblDetailCustomerEmail";
-            this.lblDetailCustomerEmail.Size = new System.Drawing.Size(200, 31);
-            this.lblDetailCustomerEmail.TabIndex = 6;
-            this.lblDetailCustomerEmail.Text = "Email";
-            // 
-            // txtDetailCustomerEmail
-            // 
-            this.txtDetailCustomerEmail.Location = new System.Drawing.Point(378, 77);
-            this.txtDetailCustomerEmail.Name = "txtDetailCustomerEmail";
-            this.txtDetailCustomerEmail.ReadOnly = true;
-            this.txtDetailCustomerEmail.Size = new System.Drawing.Size(220, 31);
-            this.txtDetailCustomerEmail.TabIndex = 7;
-            // 
-            // txtDetailCustomerPhone
-            // 
-            this.txtDetailCustomerPhone.Location = new System.Drawing.Point(378, 151);
-            this.txtDetailCustomerPhone.Name = "txtDetailCustomerPhone";
-            this.txtDetailCustomerPhone.ReadOnly = true;
-            this.txtDetailCustomerPhone.Size = new System.Drawing.Size(220, 31);
-            this.txtDetailCustomerPhone.TabIndex = 8;
-            // 
-            // lblCustomerStatus
-            // 
-            this.lblCustomerStatus.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCustomerStatus.ForeColor = System.Drawing.Color.DimGray;
-            this.lblCustomerStatus.Location = new System.Drawing.Point(647, 43);
-            this.lblCustomerStatus.Name = "lblCustomerStatus";
-            this.lblCustomerStatus.Size = new System.Drawing.Size(316, 31);
-            this.lblCustomerStatus.TabIndex = 9;
-            this.lblCustomerStatus.Text = "Trạng thái: Chưa chọn tài khoản";
+            this.btnUnlockCustomer.BackColor = System.Drawing.Color.Lime;
+            this.btnUnlockCustomer.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnUnlockCustomer.FlatAppearance.BorderSize = 0;
+            this.btnUnlockCustomer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUnlockCustomer.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUnlockCustomer.ForeColor = System.Drawing.Color.Black;
+            this.btnUnlockCustomer.Location = new System.Drawing.Point(1020, 97);
+            this.btnUnlockCustomer.Name = "btnUnlockCustomer";
+            this.btnUnlockCustomer.Size = new System.Drawing.Size(182, 38);
+            this.btnUnlockCustomer.TabIndex = 11;
+            this.btnUnlockCustomer.Text = "Mở khóa tài khoản";
+            this.btnUnlockCustomer.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnUnlockCustomer.UseVisualStyleBackColor = false;
+            this.btnUnlockCustomer.Click += new System.EventHandler(this.btnUnlockCustomer_Click);
             // 
             // btnLockCustomer
             // 
@@ -439,22 +373,102 @@
             this.btnLockCustomer.Text = "Khóa tài khoản";
             this.btnLockCustomer.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnLockCustomer.UseVisualStyleBackColor = false;
+            this.btnLockCustomer.Click += new System.EventHandler(this.btnLockCustomer_Click);
             // 
-            // btnUnlockCustomer
+            // lblCustomerStatus
             // 
-            this.btnUnlockCustomer.BackColor = System.Drawing.Color.Lime;
-            this.btnUnlockCustomer.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnUnlockCustomer.FlatAppearance.BorderSize = 0;
-            this.btnUnlockCustomer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUnlockCustomer.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUnlockCustomer.ForeColor = System.Drawing.Color.Black;
-            this.btnUnlockCustomer.Location = new System.Drawing.Point(1020, 97);
-            this.btnUnlockCustomer.Name = "btnUnlockCustomer";
-            this.btnUnlockCustomer.Size = new System.Drawing.Size(182, 38);
-            this.btnUnlockCustomer.TabIndex = 11;
-            this.btnUnlockCustomer.Text = "Mở khóa tài khoản";
-            this.btnUnlockCustomer.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnUnlockCustomer.UseVisualStyleBackColor = false;
+            this.lblCustomerStatus.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCustomerStatus.ForeColor = System.Drawing.Color.DimGray;
+            this.lblCustomerStatus.Location = new System.Drawing.Point(647, 43);
+            this.lblCustomerStatus.Name = "lblCustomerStatus";
+            this.lblCustomerStatus.Size = new System.Drawing.Size(316, 31);
+            this.lblCustomerStatus.TabIndex = 9;
+            this.lblCustomerStatus.Text = "Trạng thái: Chưa chọn tài khoản";
+            // 
+            // txtDetailCustomerPhone
+            // 
+            this.txtDetailCustomerPhone.Location = new System.Drawing.Point(378, 151);
+            this.txtDetailCustomerPhone.Name = "txtDetailCustomerPhone";
+            this.txtDetailCustomerPhone.ReadOnly = true;
+            this.txtDetailCustomerPhone.Size = new System.Drawing.Size(220, 31);
+            this.txtDetailCustomerPhone.TabIndex = 8;
+            // 
+            // txtDetailCustomerEmail
+            // 
+            this.txtDetailCustomerEmail.Location = new System.Drawing.Point(378, 77);
+            this.txtDetailCustomerEmail.Name = "txtDetailCustomerEmail";
+            this.txtDetailCustomerEmail.ReadOnly = true;
+            this.txtDetailCustomerEmail.Size = new System.Drawing.Size(220, 31);
+            this.txtDetailCustomerEmail.TabIndex = 7;
+            this.txtDetailCustomerEmail.TextChanged += new System.EventHandler(this.txtDetailCustomerEmail_TextChanged);
+            // 
+            // lblDetailCustomerEmail
+            // 
+            this.lblDetailCustomerEmail.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDetailCustomerEmail.ForeColor = System.Drawing.Color.DimGray;
+            this.lblDetailCustomerEmail.Location = new System.Drawing.Point(373, 43);
+            this.lblDetailCustomerEmail.Name = "lblDetailCustomerEmail";
+            this.lblDetailCustomerEmail.Size = new System.Drawing.Size(200, 31);
+            this.lblDetailCustomerEmail.TabIndex = 6;
+            this.lblDetailCustomerEmail.Text = "Email";
+            // 
+            // lblDetailCustomerPhone
+            // 
+            this.lblDetailCustomerPhone.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDetailCustomerPhone.ForeColor = System.Drawing.Color.DimGray;
+            this.lblDetailCustomerPhone.Location = new System.Drawing.Point(373, 117);
+            this.lblDetailCustomerPhone.Name = "lblDetailCustomerPhone";
+            this.lblDetailCustomerPhone.Size = new System.Drawing.Size(200, 31);
+            this.lblDetailCustomerPhone.TabIndex = 5;
+            this.lblDetailCustomerPhone.Text = "SĐT";
+            this.lblDetailCustomerPhone.Click += new System.EventHandler(this.lblDetailCustomerPhone_Click);
+            // 
+            // txtDetailCustomerName
+            // 
+            this.txtDetailCustomerName.Location = new System.Drawing.Point(30, 151);
+            this.txtDetailCustomerName.Name = "txtDetailCustomerName";
+            this.txtDetailCustomerName.ReadOnly = true;
+            this.txtDetailCustomerName.Size = new System.Drawing.Size(220, 31);
+            this.txtDetailCustomerName.TabIndex = 4;
+            // 
+            // lblDetailCustomerName
+            // 
+            this.lblDetailCustomerName.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDetailCustomerName.ForeColor = System.Drawing.Color.DimGray;
+            this.lblDetailCustomerName.Location = new System.Drawing.Point(27, 121);
+            this.lblDetailCustomerName.Name = "lblDetailCustomerName";
+            this.lblDetailCustomerName.Size = new System.Drawing.Size(338, 27);
+            this.lblDetailCustomerName.TabIndex = 3;
+            this.lblDetailCustomerName.Text = "Họ và tên";
+            this.lblDetailCustomerName.Click += new System.EventHandler(this.lblDetailCustomerName_Click);
+            // 
+            // txtDetailCustomerId
+            // 
+            this.txtDetailCustomerId.Location = new System.Drawing.Point(30, 77);
+            this.txtDetailCustomerId.Name = "txtDetailCustomerId";
+            this.txtDetailCustomerId.ReadOnly = true;
+            this.txtDetailCustomerId.Size = new System.Drawing.Size(220, 31);
+            this.txtDetailCustomerId.TabIndex = 2;
+            this.txtDetailCustomerId.TextChanged += new System.EventHandler(this.txtDetailCustomerId_TextChanged);
+            // 
+            // lblDetailCustomerId
+            // 
+            this.lblDetailCustomerId.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDetailCustomerId.ForeColor = System.Drawing.Color.DimGray;
+            this.lblDetailCustomerId.Location = new System.Drawing.Point(25, 43);
+            this.lblDetailCustomerId.Name = "lblDetailCustomerId";
+            this.lblDetailCustomerId.Size = new System.Drawing.Size(200, 31);
+            this.lblDetailCustomerId.TabIndex = 1;
+            this.lblDetailCustomerId.Text = "Mã khách hàng";
+            // 
+            // lblCustomerDetailTitle
+            // 
+            this.lblCustomerDetailTitle.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCustomerDetailTitle.Location = new System.Drawing.Point(25, 8);
+            this.lblCustomerDetailTitle.Name = "lblCustomerDetailTitle";
+            this.lblCustomerDetailTitle.Size = new System.Drawing.Size(338, 27);
+            this.lblCustomerDetailTitle.TabIndex = 0;
+            this.lblCustomerDetailTitle.Text = "CHI TIẾT TÀI KHOẢN ĐƯỢC CHỌN";
             // 
             // frmAdminDashboard
             // 
@@ -468,10 +482,12 @@
             this.Controls.Add(this.pnlDashboardHeader);
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "frmAdminDashboard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Quản lý tài khoản";
+            this.Load += new System.EventHandler(this.frmAdminDashboard_Load);
             this.pnlDashboardHeader.ResumeLayout(false);
             this.pnlCustomerToolbar.ResumeLayout(false);
             this.pnlCustomerToolbar.PerformLayout();
