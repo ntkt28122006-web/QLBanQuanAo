@@ -16,7 +16,7 @@ namespace QLBanQuanAo
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmAdminProduct());
+            Application.Run(new FrmCustomerHome());
         }
     }
 }

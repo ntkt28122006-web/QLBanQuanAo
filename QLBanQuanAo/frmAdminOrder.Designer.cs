@@ -186,13 +186,22 @@
             this.dtpToDate.TabIndex = 8;
             this.dtpToDate.ValueChanged += new System.EventHandler(this.dtpToDate_ValueChanged);
             // 
+            // dtpToDate
+            // 
+            this.dtpToDate.CustomFormat = "dd/MM/yyyy";
+            this.dtpToDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpToDate.Location = new System.Drawing.Point(465, 55);
+            this.dtpToDate.Name = "dtpToDate";
+            this.dtpToDate.Size = new System.Drawing.Size(180, 27);
+            this.dtpToDate.TabIndex = 8;
+            // 
             // cboFilterPaymentStatus
             // 
             this.cboFilterPaymentStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboFilterPaymentStatus.FormattingEnabled = true;
             this.cboFilterPaymentStatus.Location = new System.Drawing.Point(465, 10);
             this.cboFilterPaymentStatus.Name = "cboFilterPaymentStatus";
-            this.cboFilterPaymentStatus.Size = new System.Drawing.Size(180, 33);
+            this.cboFilterPaymentStatus.Size = new System.Drawing.Size(180, 28);
             this.cboFilterPaymentStatus.TabIndex = 7;
             this.cboFilterPaymentStatus.SelectedIndexChanged += new System.EventHandler(this.cboFilterPaymentStatus_SelectedIndexChanged);
             // 
@@ -430,7 +439,7 @@
             // 
             // frmAdminOrder
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1528, 688);
