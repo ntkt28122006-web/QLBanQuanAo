@@ -150,5 +150,10 @@ namespace QLBanQuanAo
         {
             this.Close();
         }
+
+        private void lblTotalAmount_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -171,7 +171,7 @@
             this.lblLogo.ForeColor = System.Drawing.Color.White;
             this.lblLogo.Location = new System.Drawing.Point(0, 0);
             this.lblLogo.Name = "lblLogo";
-            this.lblLogo.Size = new System.Drawing.Size(248, 38);
+            this.lblLogo.Size = new System.Drawing.Size(213, 32);
             this.lblLogo.TabIndex = 0;
             this.lblLogo.Text = "CLOTHING STORE\r\n";
             this.lblLogo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -189,7 +189,7 @@
             // 
             // frmMainAdmin
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 28F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1440, 644);
             this.Controls.Add(this.pnlDesktop);

@@ -25,7 +25,7 @@ namespace QLBanQuanAo
             {
                 new { Value = "all", Text = "-- Tất cả trạng thái --" },
                 new { Value = "active", Text = "Đang hoạt động (active)" },
-                new { Value = "locked", Text = "Tạm khóa (locked)" }
+                new { Value = "banned", Text = "Tạm khóa (locked)" }
             };
 
             if (cboFilterCustomerStatus != null)
@@ -147,7 +147,7 @@ namespace QLBanQuanAo
 
             if (usr != null)
             {
-                usr.status = "locked";
+                usr.status = "banned";
                 db.SubmitChanges();
                 MessageBox.Show("Đã khóa tài khoản khách hàng thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 loadCustomerData();
@@ -200,6 +200,11 @@ namespace QLBanQuanAo
         private void pnlCustomerList_Paint(object sender, PaintEventArgs e) { }
 
         private void pnlCustomerDetail_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void txtDetailCustomerPhone_TextChanged(object sender, EventArgs e)
         {
 
         }

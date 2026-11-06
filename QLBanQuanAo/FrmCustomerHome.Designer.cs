@@ -76,10 +76,11 @@ namespace QLBanQuanAo
             this.txtSearch.BackColor = System.Drawing.Color.White;
             this.txtSearch.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSearch.Location = new System.Drawing.Point(343, 20);
-            this.txtSearch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtSearch.Margin = new System.Windows.Forms.Padding(4);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(513, 34);
             this.txtSearch.TabIndex = 0;
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // btnSearch
             // 
@@ -88,52 +89,57 @@ namespace QLBanQuanAo
             this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSearch.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSearch.Location = new System.Drawing.Point(862, 20);
-            this.btnSearch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSearch.Margin = new System.Windows.Forms.Padding(4);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(115, 36);
             this.btnSearch.TabIndex = 1;
             this.btnSearch.Text = "Tìm kiếm";
             this.btnSearch.UseVisualStyleBackColor = false;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // cboCategory
             // 
             this.cboCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboCategory.FormattingEnabled = true;
             this.cboCategory.Location = new System.Drawing.Point(18, 84);
-            this.cboCategory.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboCategory.Margin = new System.Windows.Forms.Padding(4);
             this.cboCategory.Name = "cboCategory";
             this.cboCategory.Size = new System.Drawing.Size(223, 24);
             this.cboCategory.TabIndex = 2;
+            this.cboCategory.SelectedIndexChanged += new System.EventHandler(this.cboCategory_SelectedIndexChanged);
             // 
             // cboSize
             // 
             this.cboSize.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboSize.FormattingEnabled = true;
             this.cboSize.Location = new System.Drawing.Point(18, 158);
-            this.cboSize.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboSize.Margin = new System.Windows.Forms.Padding(4);
             this.cboSize.Name = "cboSize";
             this.cboSize.Size = new System.Drawing.Size(223, 24);
             this.cboSize.TabIndex = 3;
+            this.cboSize.SelectedIndexChanged += new System.EventHandler(this.cboSize_SelectedIndexChanged);
             // 
             // cboColor
             // 
             this.cboColor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboColor.FormattingEnabled = true;
             this.cboColor.Location = new System.Drawing.Point(18, 233);
-            this.cboColor.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboColor.Margin = new System.Windows.Forms.Padding(4);
             this.cboColor.Name = "cboColor";
             this.cboColor.Size = new System.Drawing.Size(223, 24);
             this.cboColor.TabIndex = 4;
+            this.cboColor.SelectedIndexChanged += new System.EventHandler(this.cboColor_SelectedIndexChanged);
             // 
             // cboPrice
             // 
             this.cboPrice.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboPrice.FormattingEnabled = true;
             this.cboPrice.Location = new System.Drawing.Point(18, 308);
-            this.cboPrice.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboPrice.Margin = new System.Windows.Forms.Padding(4);
             this.cboPrice.Name = "cboPrice";
             this.cboPrice.Size = new System.Drawing.Size(223, 24);
             this.cboPrice.TabIndex = 5;
+            this.cboPrice.SelectedIndexChanged += new System.EventHandler(this.cboPrice_SelectedIndexChanged);
             // 
             // btnReset
             // 
@@ -141,12 +147,13 @@ namespace QLBanQuanAo
             this.btnReset.FlatAppearance.BorderSize = 0;
             this.btnReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReset.Location = new System.Drawing.Point(18, 368);
-            this.btnReset.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnReset.Margin = new System.Windows.Forms.Padding(4);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(222, 38);
             this.btnReset.TabIndex = 6;
             this.btnReset.Text = "🔄 Đặt lại";
             this.btnReset.UseVisualStyleBackColor = false;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // pnlHeader
             // 
@@ -161,7 +168,7 @@ namespace QLBanQuanAo
             this.pnlHeader.Controls.Add(this.btnSearch);
             this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlHeader.Location = new System.Drawing.Point(0, 0);
-            this.pnlHeader.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlHeader.Margin = new System.Windows.Forms.Padding(4);
             this.pnlHeader.Name = "pnlHeader";
             this.pnlHeader.Size = new System.Drawing.Size(1468, 75);
             this.pnlHeader.TabIndex = 8;
@@ -176,7 +183,7 @@ namespace QLBanQuanAo
             this.btnLogout.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogout.ForeColor = System.Drawing.Color.White;
             this.btnLogout.Location = new System.Drawing.Point(1298, 41);
-            this.btnLogout.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnLogout.Margin = new System.Windows.Forms.Padding(4);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Size = new System.Drawing.Size(135, 43);
             this.btnLogout.TabIndex = 12;
@@ -193,7 +200,7 @@ namespace QLBanQuanAo
             this.btnUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUser.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUser.Location = new System.Drawing.Point(1292, 5);
-            this.btnUser.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnUser.Margin = new System.Windows.Forms.Padding(4);
             this.btnUser.Name = "btnUser";
             this.btnUser.Size = new System.Drawing.Size(172, 32);
             this.btnUser.TabIndex = 11;
@@ -218,7 +225,7 @@ namespace QLBanQuanAo
             this.btnHistory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnHistory.ForeColor = System.Drawing.Color.White;
             this.btnHistory.Location = new System.Drawing.Point(1143, 18);
-            this.btnHistory.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnHistory.Margin = new System.Windows.Forms.Padding(4);
             this.btnHistory.Name = "btnHistory";
             this.btnHistory.Size = new System.Drawing.Size(125, 41);
             this.btnHistory.TabIndex = 9;
@@ -268,7 +275,7 @@ namespace QLBanQuanAo
             this.pnlLeft.Controls.Add(this.cboPrice);
             this.pnlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlLeft.Location = new System.Drawing.Point(0, 75);
-            this.pnlLeft.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlLeft.Margin = new System.Windows.Forms.Padding(4);
             this.pnlLeft.Name = "pnlLeft";
             this.pnlLeft.Size = new System.Drawing.Size(263, 683);
             this.pnlLeft.TabIndex = 9;
@@ -278,7 +285,7 @@ namespace QLBanQuanAo
             // 
             this.pnlSeparator.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(77)))), ((int)(((byte)(45)))));
             this.pnlSeparator.Location = new System.Drawing.Point(0, 44);
-            this.pnlSeparator.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlSeparator.Margin = new System.Windows.Forms.Padding(4);
             this.pnlSeparator.Name = "pnlSeparator";
             this.pnlSeparator.Size = new System.Drawing.Size(263, 2);
             this.pnlSeparator.TabIndex = 13;
@@ -346,7 +353,7 @@ namespace QLBanQuanAo
             this.pnlRight.Controls.Add(this.picBanner);
             this.pnlRight.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlRight.Location = new System.Drawing.Point(263, 75);
-            this.pnlRight.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlRight.Margin = new System.Windows.Forms.Padding(4);
             this.pnlRight.Name = "pnlRight";
             this.pnlRight.Size = new System.Drawing.Size(1205, 683);
             this.pnlRight.TabIndex = 10;
@@ -357,7 +364,7 @@ namespace QLBanQuanAo
             this.flowProducts.BackColor = System.Drawing.Color.WhiteSmoke;
             this.flowProducts.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowProducts.Location = new System.Drawing.Point(0, 235);
-            this.flowProducts.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.flowProducts.Margin = new System.Windows.Forms.Padding(4);
             this.flowProducts.Name = "flowProducts";
             this.flowProducts.Padding = new System.Windows.Forms.Padding(18, 16, 18, 16);
             this.flowProducts.Size = new System.Drawing.Size(1205, 448);
@@ -373,7 +380,7 @@ namespace QLBanQuanAo
             this.pnlSubHead.Controls.Add(this.btnTabAll);
             this.pnlSubHead.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlSubHead.Location = new System.Drawing.Point(0, 128);
-            this.pnlSubHead.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlSubHead.Margin = new System.Windows.Forms.Padding(4);
             this.pnlSubHead.Name = "pnlSubHead";
             this.pnlSubHead.Size = new System.Drawing.Size(1205, 107);
             this.pnlSubHead.TabIndex = 14;
@@ -383,10 +390,11 @@ namespace QLBanQuanAo
             this.cboSort.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboSort.FormattingEnabled = true;
             this.cboSort.Location = new System.Drawing.Point(658, 62);
-            this.cboSort.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboSort.Margin = new System.Windows.Forms.Padding(4);
             this.cboSort.Name = "cboSort";
             this.cboSort.Size = new System.Drawing.Size(188, 24);
             this.cboSort.TabIndex = 5;
+            this.cboSort.SelectedIndexChanged += new System.EventHandler(this.cboSort_SelectedIndexChanged);
             // 
             // lblSort
             // 
@@ -403,23 +411,25 @@ namespace QLBanQuanAo
             // 
             this.btnTabHot.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTabHot.Location = new System.Drawing.Point(188, 58);
-            this.btnTabHot.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnTabHot.Margin = new System.Windows.Forms.Padding(4);
             this.btnTabHot.Name = "btnTabHot";
             this.btnTabHot.Size = new System.Drawing.Size(160, 38);
             this.btnTabHot.TabIndex = 3;
             this.btnTabHot.Text = "✨ Hàng Hot";
             this.btnTabHot.UseVisualStyleBackColor = true;
+            this.btnTabHot.Click += new System.EventHandler(this.btnTabHot_Click);
             // 
             // btnTabSale
             // 
             this.btnTabSale.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTabSale.Location = new System.Drawing.Point(360, 58);
-            this.btnTabSale.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnTabSale.Margin = new System.Windows.Forms.Padding(4);
             this.btnTabSale.Name = "btnTabSale";
             this.btnTabSale.Size = new System.Drawing.Size(160, 38);
             this.btnTabSale.TabIndex = 2;
             this.btnTabSale.Text = "🏷️ Đang giảm giá";
             this.btnTabSale.UseVisualStyleBackColor = true;
+            this.btnTabSale.Click += new System.EventHandler(this.btnTabSale_Click);
             // 
             // btnTabAll
             // 
@@ -427,20 +437,20 @@ namespace QLBanQuanAo
             this.btnTabAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTabAll.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnTabAll.Location = new System.Drawing.Point(18, 58);
-            this.btnTabAll.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnTabAll.Margin = new System.Windows.Forms.Padding(4);
             this.btnTabAll.Name = "btnTabAll";
             this.btnTabAll.Size = new System.Drawing.Size(160, 38);
             this.btnTabAll.TabIndex = 1;
             this.btnTabAll.Text = "Tất cả sản phẩm";
             this.btnTabAll.UseVisualStyleBackColor = false;
-            this.btnTabAll.Click += new System.EventHandler(this.btnTabAll_Click_1);
+            this.btnTabAll.Click += new System.EventHandler(this.btnTabAll_Click);
             // 
             // picBanner
             // 
             this.picBanner.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
             this.picBanner.Dock = System.Windows.Forms.DockStyle.Top;
             this.picBanner.Location = new System.Drawing.Point(0, 0);
-            this.picBanner.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.picBanner.Margin = new System.Windows.Forms.Padding(4);
             this.picBanner.Name = "picBanner";
             this.picBanner.Size = new System.Drawing.Size(1205, 128);
             this.picBanner.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -457,11 +467,11 @@ namespace QLBanQuanAo
             this.Controls.Add(this.pnlLeft);
             this.Controls.Add(this.pnlHeader);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmCustomerHome";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FASHION STORE";
-            this.Load += new System.EventHandler(this.FrmCustomerHome_Load_1);
+            this.Load += new System.EventHandler(this.FrmCustomerHome_Load);
             this.pnlHeader.ResumeLayout(false);
             this.pnlHeader.PerformLayout();
             this.pnlLeft.ResumeLayout(false);

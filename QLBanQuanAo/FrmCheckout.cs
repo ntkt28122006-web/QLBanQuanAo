@@ -146,6 +146,21 @@ namespace QLBanQuanAo
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }
-        } 
+        }
+
+        private void txtReceiverName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblFinalTotal_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

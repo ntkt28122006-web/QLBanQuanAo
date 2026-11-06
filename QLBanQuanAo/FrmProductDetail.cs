@@ -257,5 +257,15 @@ namespace QLBanQuanAo
         {
             this.Close();
         }
+
+        private void txtDescription_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void picProduct_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

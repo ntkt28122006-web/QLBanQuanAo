@@ -53,7 +53,7 @@ namespace QLBanQuanAo
             this.lblTitle.Location = new System.Drawing.Point(31, 25);
             this.lblTitle.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(349, 40);
+            this.lblTitle.Size = new System.Drawing.Size(290, 32);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "🛒 GIỎ HÀNG CỦA BẠN";
             // 
@@ -105,9 +105,10 @@ namespace QLBanQuanAo
             this.lblTotalAmount.ForeColor = System.Drawing.Color.Crimson;
             this.lblTotalAmount.Location = new System.Drawing.Point(634, 378);
             this.lblTotalAmount.Name = "lblTotalAmount";
-            this.lblTotalAmount.Size = new System.Drawing.Size(225, 36);
+            this.lblTotalAmount.Size = new System.Drawing.Size(191, 30);
             this.lblTotalAmount.TabIndex = 4;
             this.lblTotalAmount.Text = "Tổng tiền: 0 VNĐ";
+            this.lblTotalAmount.Click += new System.EventHandler(this.lblTotalAmount_Click);
             // 
             // btnClose
             // 
@@ -151,7 +152,7 @@ namespace QLBanQuanAo
             // 
             // FrmCart
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(17F, 40F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 32F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1037, 525);
             this.Controls.Add(this.btnDecrease);
