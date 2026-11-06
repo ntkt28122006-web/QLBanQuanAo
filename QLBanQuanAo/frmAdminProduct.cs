@@ -572,5 +572,10 @@ namespace QLBanQuanAo
         {
 
         }
+
+        private void pnlProductInfo_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

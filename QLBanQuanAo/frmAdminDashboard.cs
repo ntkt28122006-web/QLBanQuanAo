@@ -198,5 +198,10 @@ namespace QLBanQuanAo
         private void txtDetailCustomerId_TextChanged(object sender, EventArgs e) { }
         private void lblDetailCustomerName_Click(object sender, EventArgs e) { }
         private void pnlCustomerList_Paint(object sender, PaintEventArgs e) { }
+
+        private void pnlCustomerDetail_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

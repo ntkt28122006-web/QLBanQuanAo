@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCategory));
             this.pnlCategoryHeader = new System.Windows.Forms.Panel();
             this.lblCategoryDescription = new System.Windows.Forms.Label();
@@ -70,7 +70,7 @@
             this.pnlCategoryHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlCategoryHeader.Location = new System.Drawing.Point(0, 0);
             this.pnlCategoryHeader.Name = "pnlCategoryHeader";
-            this.pnlCategoryHeader.Size = new System.Drawing.Size(1228, 80);
+            this.pnlCategoryHeader.Size = new System.Drawing.Size(1100, 80);
             this.pnlCategoryHeader.TabIndex = 0;
             // 
             // lblCategoryDescription
@@ -96,6 +96,7 @@
             // 
             // pnlCategoryInfo
             // 
+            this.pnlCategoryInfo.AutoScroll = true;
             this.pnlCategoryInfo.BackColor = System.Drawing.Color.White;
             this.pnlCategoryInfo.Controls.Add(this.btnClearCategory);
             this.pnlCategoryInfo.Controls.Add(this.btnDeleteCategory);
@@ -114,7 +115,7 @@
             this.pnlCategoryInfo.Location = new System.Drawing.Point(0, 80);
             this.pnlCategoryInfo.Name = "pnlCategoryInfo";
             this.pnlCategoryInfo.Padding = new System.Windows.Forms.Padding(15, 10, 15, 10);
-            this.pnlCategoryInfo.Size = new System.Drawing.Size(1228, 195);
+            this.pnlCategoryInfo.Size = new System.Drawing.Size(1100, 195);
             this.pnlCategoryInfo.TabIndex = 1;
             // 
             // btnClearCategory
@@ -125,7 +126,7 @@
             this.btnClearCategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClearCategory.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClearCategory.ForeColor = System.Drawing.Color.Black;
-            this.btnClearCategory.Location = new System.Drawing.Point(914, 156);
+            this.btnClearCategory.Location = new System.Drawing.Point(752, 146);
             this.btnClearCategory.Name = "btnClearCategory";
             this.btnClearCategory.Size = new System.Drawing.Size(180, 36);
             this.btnClearCategory.TabIndex = 8;
@@ -141,7 +142,7 @@
             this.btnDeleteCategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDeleteCategory.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDeleteCategory.ForeColor = System.Drawing.Color.White;
-            this.btnDeleteCategory.Location = new System.Drawing.Point(693, 155);
+            this.btnDeleteCategory.Location = new System.Drawing.Point(553, 146);
             this.btnDeleteCategory.Name = "btnDeleteCategory";
             this.btnDeleteCategory.Size = new System.Drawing.Size(180, 36);
             this.btnDeleteCategory.TabIndex = 7;
@@ -157,7 +158,7 @@
             this.btnUpdateCategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUpdateCategory.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUpdateCategory.ForeColor = System.Drawing.Color.White;
-            this.btnUpdateCategory.Location = new System.Drawing.Point(914, 99);
+            this.btnUpdateCategory.Location = new System.Drawing.Point(752, 99);
             this.btnUpdateCategory.Name = "btnUpdateCategory";
             this.btnUpdateCategory.Size = new System.Drawing.Size(180, 36);
             this.btnUpdateCategory.TabIndex = 6;
@@ -173,7 +174,7 @@
             this.btnAddCategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddCategory.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddCategory.ForeColor = System.Drawing.Color.White;
-            this.btnAddCategory.Location = new System.Drawing.Point(693, 99);
+            this.btnAddCategory.Location = new System.Drawing.Point(553, 99);
             this.btnAddCategory.Name = "btnAddCategory";
             this.btnAddCategory.Size = new System.Drawing.Size(180, 36);
             this.btnAddCategory.TabIndex = 5;
@@ -275,21 +276,22 @@
             // 
             // pnlCategoryList
             // 
+            this.pnlCategoryList.AutoScroll = true;
             this.pnlCategoryList.BackColor = System.Drawing.Color.White;
             this.pnlCategoryList.Controls.Add(this.dgvCategories);
             this.pnlCategoryList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlCategoryList.Location = new System.Drawing.Point(0, 275);
             this.pnlCategoryList.Name = "pnlCategoryList";
             this.pnlCategoryList.Padding = new System.Windows.Forms.Padding(15);
-            this.pnlCategoryList.Size = new System.Drawing.Size(1228, 389);
+            this.pnlCategoryList.Size = new System.Drawing.Size(1100, 365);
             this.pnlCategoryList.TabIndex = 3;
             // 
             // dgvCategories
             // 
             this.dgvCategories.AllowUserToAddRows = false;
             this.dgvCategories.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.dgvCategories.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.dgvCategories.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvCategories.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvCategories.BackgroundColor = System.Drawing.Color.White;
             this.dgvCategories.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -301,14 +303,14 @@
             this.colCategorySlug,
             this.colCategoryParent,
             this.colCategoryStatus});
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvCategories.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvCategories.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvCategories.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvCategories.EnableHeadersVisualStyles = false;
             this.dgvCategories.GridColor = System.Drawing.Color.Gainsboro;
@@ -316,20 +318,20 @@
             this.dgvCategories.MultiSelect = false;
             this.dgvCategories.Name = "dgvCategories";
             this.dgvCategories.ReadOnly = true;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvCategories.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCategories.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvCategories.RowHeadersVisible = false;
             this.dgvCategories.RowHeadersWidth = 62;
             this.dgvCategories.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvCategories.RowTemplate.Height = 35;
             this.dgvCategories.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvCategories.Size = new System.Drawing.Size(1198, 359);
+            this.dgvCategories.Size = new System.Drawing.Size(1070, 335);
             this.dgvCategories.TabIndex = 0;
             this.dgvCategories.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCategories_CellClick);
             this.dgvCategories.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCategories_CellContentClick);
@@ -337,7 +339,7 @@
             // colCategoryId
             // 
             this.colCategoryId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colCategoryId.DataPropertyName = "id";
+            this.colCategoryId.DataPropertyName = "MaDanhMuc";
             this.colCategoryId.HeaderText = "Mã danh mục";
             this.colCategoryId.MinimumWidth = 8;
             this.colCategoryId.Name = "colCategoryId";
@@ -346,7 +348,7 @@
             // colCategoryName
             // 
             this.colCategoryName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colCategoryName.DataPropertyName = "name";
+            this.colCategoryName.DataPropertyName = "TenDanhMuc";
             this.colCategoryName.HeaderText = "Tên danh mục";
             this.colCategoryName.MinimumWidth = 8;
             this.colCategoryName.Name = "colCategoryName";
@@ -355,7 +357,7 @@
             // colCategorySlug
             // 
             this.colCategorySlug.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colCategorySlug.DataPropertyName = "slug";
+            this.colCategorySlug.DataPropertyName = "Slug";
             this.colCategorySlug.HeaderText = "Slug";
             this.colCategorySlug.MinimumWidth = 8;
             this.colCategorySlug.Name = "colCategorySlug";
@@ -364,7 +366,7 @@
             // colCategoryParent
             // 
             this.colCategoryParent.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colCategoryParent.DataPropertyName = "parent_name";
+            this.colCategoryParent.DataPropertyName = "TenDanhMucCha";
             this.colCategoryParent.HeaderText = "Danh mục cha";
             this.colCategoryParent.MinimumWidth = 8;
             this.colCategoryParent.Name = "colCategoryParent";
@@ -373,7 +375,7 @@
             // colCategoryStatus
             // 
             this.colCategoryStatus.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colCategoryStatus.DataPropertyName = "is_active";
+            this.colCategoryStatus.DataPropertyName = "TrangThai";
             this.colCategoryStatus.HeaderText = "Trạng thái";
             this.colCategoryStatus.MinimumWidth = 8;
             this.colCategoryStatus.Name = "colCategoryStatus";
@@ -383,17 +385,21 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 28F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(1228, 664);
+            this.ClientSize = new System.Drawing.Size(1100, 640);
             this.Controls.Add(this.pnlCategoryList);
             this.Controls.Add(this.pnlCategoryInfo);
             this.Controls.Add(this.pnlCategoryHeader);
             this.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
+            this.MinimumSize = new System.Drawing.Size(1100, 640);
             this.Name = "frmCategory";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Quản lý danh mục";
+            this.Load += new System.EventHandler(this.frmCategory_Load);
             this.pnlCategoryHeader.ResumeLayout(false);
             this.pnlCategoryInfo.ResumeLayout(false);
             this.pnlCategoryInfo.PerformLayout();

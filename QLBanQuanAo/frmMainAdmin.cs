@@ -16,7 +16,7 @@ namespace QLBanQuanAo
         public frmMainAdmin(user u)
         {
             InitializeComponent();
-            this.currentUser = u;
+            //this.currentUser = u;
         }
 
 
@@ -41,8 +41,7 @@ namespace QLBanQuanAo
                     currentButton.ForeColor = Color.White;
                     currentButton.Font = new Font("Segoe UI", 11.5F, FontStyle.Bold);
 
-                    // Cập nhật tiêu đề Header cho khớp với nút
-                    lblTitle.Text = currentButton.Text.ToUpper();
+                    
                 }
             }
         }
@@ -129,5 +128,35 @@ namespace QLBanQuanAo
             }
         }
         #endregion
+
+        
+        
+        private void pnlDesktop_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+        private void OpenChildForm(Form childForm)
+        {
+            // Đóng form hiện tại nếu có
+            if (activeForm != null)
+            {
+                activeForm.Close();
+            }
+
+            activeForm = childForm;
+
+            // Cấu hình nhúng Form con vào Panel
+            childForm.TopLevel = false;
+            childForm.FormBorderStyle = FormBorderStyle.None;
+            childForm.Dock = DockStyle.Fill; // Tự động co giãn 100% theo pnlDesktop
+
+            // Xóa các control cũ và thêm Form mới vào pnlDesktop
+            pnlDesktop.Controls.Clear();
+            pnlDesktop.Controls.Add(childForm);
+            pnlDesktop.Tag = childForm;
+
+            childForm.BringToFront();
+            childForm.Show();
+        }
     }
 }

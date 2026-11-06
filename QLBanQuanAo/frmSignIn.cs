@@ -121,5 +121,10 @@ namespace QLBanQuanAo
                 MessageBox.Show("Đăng ký thất bại:\n" + ex.Message);
             }
         }
+
+        private void frmSignIn_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

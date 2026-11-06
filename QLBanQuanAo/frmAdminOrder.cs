@@ -19,7 +19,8 @@ namespace QLBanQuanAo
                 dtpFromDate.Value = DateTime.Now.AddDays(-30);
                 dtpToDate.Value = DateTime.Now;
             }
-
+            dgvOrders.AutoGenerateColumns = false;
+            dgvOrderDetails.AutoGenerateColumns = false;
             loadFilterStatusComboBox();
             loadFilterPaymentStatusComboBox();
             loadOrdersData();
@@ -263,5 +264,10 @@ namespace QLBanQuanAo
 
         private void lblOrderTitle_Click(object sender, EventArgs e) { }
         private void dgvOrderDetails_CellContentClick(object sender, DataGridViewCellEventArgs e) { }
+
+        private void lblFromDate_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
