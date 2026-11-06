@@ -29,17 +29,20 @@
         private void InitializeComponent()
         {
             this.pnlOrderHeader = new System.Windows.Forms.Panel();
-            this.pnlOrderFilter = new System.Windows.Forms.Panel();
-            this.pnlOrderBody = new System.Windows.Forms.Panel();
-            this.lblOrderTitle = new System.Windows.Forms.Label();
             this.lblOrderDescription = new System.Windows.Forms.Label();
+            this.lblOrderTitle = new System.Windows.Forms.Label();
+            this.pnlOrderFilter = new System.Windows.Forms.Panel();
+            this.btnPrintInvoice = new System.Windows.Forms.Button();
+            this.btnUpdateOrderStatus = new System.Windows.Forms.Button();
+            this.btnViewOrderDetail = new System.Windows.Forms.Button();
+            this.btnResetOrderFilter = new System.Windows.Forms.Button();
+            this.btnSearchOrder = new System.Windows.Forms.Button();
+            this.dtpToDate = new System.Windows.Forms.DateTimePicker();
+            this.cboFilterPaymentStatus = new System.Windows.Forms.ComboBox();
             this.txtSearchOrder = new System.Windows.Forms.TextBox();
             this.cboFilterStatus = new System.Windows.Forms.ComboBox();
             this.dtpFromDate = new System.Windows.Forms.DateTimePicker();
-            this.btnSearchOrder = new System.Windows.Forms.Button();
-            this.cboFilterPaymentStatus = new System.Windows.Forms.ComboBox();
-            this.dtpToDate = new System.Windows.Forms.DateTimePicker();
-            this.btnResetOrderFilter = new System.Windows.Forms.Button();
+            this.pnlOrderBody = new System.Windows.Forms.Panel();
             this.splitOrderContent = new System.Windows.Forms.SplitContainer();
             this.dgvOrders = new System.Windows.Forms.DataGridView();
             this.colOrderId = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -57,9 +60,6 @@
             this.colDetailQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colDetailUnitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colDetailLineTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnUpdateOrderStatus = new System.Windows.Forms.Button();
-            this.btnViewOrderDetail = new System.Windows.Forms.Button();
-            this.btnPrintInvoice = new System.Windows.Forms.Button();
             this.pnlOrderHeader.SuspendLayout();
             this.pnlOrderFilter.SuspendLayout();
             this.pnlOrderBody.SuspendLayout();
@@ -82,6 +82,27 @@
             this.pnlOrderHeader.Size = new System.Drawing.Size(1528, 85);
             this.pnlOrderHeader.TabIndex = 0;
             // 
+            // lblOrderDescription
+            // 
+            this.lblOrderDescription.AutoSize = true;
+            this.lblOrderDescription.ForeColor = System.Drawing.Color.White;
+            this.lblOrderDescription.Location = new System.Drawing.Point(30, 53);
+            this.lblOrderDescription.Name = "lblOrderDescription";
+            this.lblOrderDescription.Size = new System.Drawing.Size(303, 20);
+            this.lblOrderDescription.TabIndex = 1;
+            this.lblOrderDescription.Text = "Theo dõi đơn hàng, thanh toán và giao hàng";
+            // 
+            // lblOrderTitle
+            // 
+            this.lblOrderTitle.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblOrderTitle.ForeColor = System.Drawing.Color.White;
+            this.lblOrderTitle.Location = new System.Drawing.Point(26, -7);
+            this.lblOrderTitle.Name = "lblOrderTitle";
+            this.lblOrderTitle.Size = new System.Drawing.Size(600, 60);
+            this.lblOrderTitle.TabIndex = 0;
+            this.lblOrderTitle.Text = "Quản lý đơn hàng";
+            this.lblOrderTitle.Click += new System.EventHandler(this.lblOrderTitle_Click);
+            // 
             // pnlOrderFilter
             // 
             this.pnlOrderFilter.BackColor = System.Drawing.Color.WhiteSmoke;
@@ -101,59 +122,45 @@
             this.pnlOrderFilter.Size = new System.Drawing.Size(1528, 100);
             this.pnlOrderFilter.TabIndex = 1;
             // 
-            // pnlOrderBody
+            // btnPrintInvoice
             // 
-            this.pnlOrderBody.Controls.Add(this.splitOrderContent);
-            this.pnlOrderBody.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlOrderBody.Location = new System.Drawing.Point(0, 185);
-            this.pnlOrderBody.Name = "pnlOrderBody";
-            this.pnlOrderBody.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.pnlOrderBody.Size = new System.Drawing.Size(1528, 503);
-            this.pnlOrderBody.TabIndex = 1;
+            this.btnPrintInvoice.Location = new System.Drawing.Point(1138, 12);
+            this.btnPrintInvoice.Name = "btnPrintInvoice";
+            this.btnPrintInvoice.Size = new System.Drawing.Size(200, 35);
+            this.btnPrintInvoice.TabIndex = 12;
+            this.btnPrintInvoice.Text = "In Hóa Đơn";
+            this.btnPrintInvoice.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPrintInvoice.UseVisualStyleBackColor = true;
             // 
-            // lblOrderTitle
+            // btnUpdateOrderStatus
             // 
-            this.lblOrderTitle.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblOrderTitle.ForeColor = System.Drawing.Color.White;
-            this.lblOrderTitle.Location = new System.Drawing.Point(26, -7);
-            this.lblOrderTitle.Name = "lblOrderTitle";
-            this.lblOrderTitle.Size = new System.Drawing.Size(600, 60);
-            this.lblOrderTitle.TabIndex = 0;
-            this.lblOrderTitle.Text = "Quản lý đơn hàng";
-            this.lblOrderTitle.Click += new System.EventHandler(this.lblOrderTitle_Click);
+            this.btnUpdateOrderStatus.Location = new System.Drawing.Point(912, 53);
+            this.btnUpdateOrderStatus.Name = "btnUpdateOrderStatus";
+            this.btnUpdateOrderStatus.Size = new System.Drawing.Size(200, 35);
+            this.btnUpdateOrderStatus.TabIndex = 7;
+            this.btnUpdateOrderStatus.Text = "Cập nhật trạng thái";
+            this.btnUpdateOrderStatus.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnUpdateOrderStatus.UseVisualStyleBackColor = true;
             // 
-            // lblOrderDescription
+            // btnViewOrderDetail
             // 
-            this.lblOrderDescription.AutoSize = true;
-            this.lblOrderDescription.ForeColor = System.Drawing.Color.White;
-            this.lblOrderDescription.Location = new System.Drawing.Point(30, 53);
-            this.lblOrderDescription.Name = "lblOrderDescription";
-            this.lblOrderDescription.Size = new System.Drawing.Size(367, 25);
-            this.lblOrderDescription.TabIndex = 1;
-            this.lblOrderDescription.Text = "Theo dõi đơn hàng, thanh toán và giao hàng";
+            this.btnViewOrderDetail.Location = new System.Drawing.Point(912, 12);
+            this.btnViewOrderDetail.Name = "btnViewOrderDetail";
+            this.btnViewOrderDetail.Size = new System.Drawing.Size(200, 35);
+            this.btnViewOrderDetail.TabIndex = 11;
+            this.btnViewOrderDetail.Text = "Xem chi tiết";
+            this.btnViewOrderDetail.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnViewOrderDetail.UseVisualStyleBackColor = true;
             // 
-            // txtSearchOrder
+            // btnResetOrderFilter
             // 
-            this.txtSearchOrder.Location = new System.Drawing.Point(15, 10);
-            this.txtSearchOrder.Name = "txtSearchOrder";
-            this.txtSearchOrder.Size = new System.Drawing.Size(240, 31);
-            this.txtSearchOrder.TabIndex = 0;
-            // 
-            // cboFilterStatus
-            // 
-            this.cboFilterStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboFilterStatus.FormattingEnabled = true;
-            this.cboFilterStatus.Location = new System.Drawing.Point(270, 10);
-            this.cboFilterStatus.Name = "cboFilterStatus";
-            this.cboFilterStatus.Size = new System.Drawing.Size(180, 33);
-            this.cboFilterStatus.TabIndex = 1;
-            // 
-            // dtpFromDate
-            // 
-            this.dtpFromDate.Location = new System.Drawing.Point(270, 55);
-            this.dtpFromDate.Name = "dtpFromDate";
-            this.dtpFromDate.Size = new System.Drawing.Size(180, 31);
-            this.dtpFromDate.TabIndex = 4;
+            this.btnResetOrderFilter.Location = new System.Drawing.Point(685, 53);
+            this.btnResetOrderFilter.Name = "btnResetOrderFilter";
+            this.btnResetOrderFilter.Size = new System.Drawing.Size(200, 35);
+            this.btnResetOrderFilter.TabIndex = 9;
+            this.btnResetOrderFilter.Text = "Reset";
+            this.btnResetOrderFilter.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnResetOrderFilter.UseVisualStyleBackColor = true;
             // 
             // btnSearchOrder
             // 
@@ -165,31 +172,56 @@
             this.btnSearchOrder.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSearchOrder.UseVisualStyleBackColor = true;
             // 
+            // dtpToDate
+            // 
+            this.dtpToDate.CustomFormat = "dd/MM/yyyy";
+            this.dtpToDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpToDate.Location = new System.Drawing.Point(465, 55);
+            this.dtpToDate.Name = "dtpToDate";
+            this.dtpToDate.Size = new System.Drawing.Size(180, 27);
+            this.dtpToDate.TabIndex = 8;
+            // 
             // cboFilterPaymentStatus
             // 
             this.cboFilterPaymentStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboFilterPaymentStatus.FormattingEnabled = true;
             this.cboFilterPaymentStatus.Location = new System.Drawing.Point(465, 10);
             this.cboFilterPaymentStatus.Name = "cboFilterPaymentStatus";
-            this.cboFilterPaymentStatus.Size = new System.Drawing.Size(180, 33);
+            this.cboFilterPaymentStatus.Size = new System.Drawing.Size(180, 28);
             this.cboFilterPaymentStatus.TabIndex = 7;
             // 
-            // dtpToDate
+            // txtSearchOrder
             // 
-            this.dtpToDate.Location = new System.Drawing.Point(465, 55);
-            this.dtpToDate.Name = "dtpToDate";
-            this.dtpToDate.Size = new System.Drawing.Size(180, 31);
-            this.dtpToDate.TabIndex = 8;
+            this.txtSearchOrder.Location = new System.Drawing.Point(15, 10);
+            this.txtSearchOrder.Name = "txtSearchOrder";
+            this.txtSearchOrder.Size = new System.Drawing.Size(240, 27);
+            this.txtSearchOrder.TabIndex = 0;
             // 
-            // btnResetOrderFilter
+            // cboFilterStatus
             // 
-            this.btnResetOrderFilter.Location = new System.Drawing.Point(685, 53);
-            this.btnResetOrderFilter.Name = "btnResetOrderFilter";
-            this.btnResetOrderFilter.Size = new System.Drawing.Size(200, 35);
-            this.btnResetOrderFilter.TabIndex = 9;
-            this.btnResetOrderFilter.Text = "Reset";
-            this.btnResetOrderFilter.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnResetOrderFilter.UseVisualStyleBackColor = true;
+            this.cboFilterStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboFilterStatus.FormattingEnabled = true;
+            this.cboFilterStatus.Location = new System.Drawing.Point(270, 10);
+            this.cboFilterStatus.Name = "cboFilterStatus";
+            this.cboFilterStatus.Size = new System.Drawing.Size(180, 28);
+            this.cboFilterStatus.TabIndex = 1;
+            // 
+            // dtpFromDate
+            // 
+            this.dtpFromDate.Location = new System.Drawing.Point(270, 55);
+            this.dtpFromDate.Name = "dtpFromDate";
+            this.dtpFromDate.Size = new System.Drawing.Size(180, 27);
+            this.dtpFromDate.TabIndex = 4;
+            // 
+            // pnlOrderBody
+            // 
+            this.pnlOrderBody.Controls.Add(this.splitOrderContent);
+            this.pnlOrderBody.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlOrderBody.Location = new System.Drawing.Point(0, 185);
+            this.pnlOrderBody.Name = "pnlOrderBody";
+            this.pnlOrderBody.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.pnlOrderBody.Size = new System.Drawing.Size(1528, 503);
+            this.pnlOrderBody.TabIndex = 1;
             // 
             // splitOrderContent
             // 
@@ -384,39 +416,9 @@
             this.colDetailLineTotal.Name = "colDetailLineTotal";
             this.colDetailLineTotal.ReadOnly = true;
             // 
-            // btnUpdateOrderStatus
-            // 
-            this.btnUpdateOrderStatus.Location = new System.Drawing.Point(912, 53);
-            this.btnUpdateOrderStatus.Name = "btnUpdateOrderStatus";
-            this.btnUpdateOrderStatus.Size = new System.Drawing.Size(200, 35);
-            this.btnUpdateOrderStatus.TabIndex = 7;
-            this.btnUpdateOrderStatus.Text = "Cập nhật trạng thái";
-            this.btnUpdateOrderStatus.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnUpdateOrderStatus.UseVisualStyleBackColor = true;
-            // 
-            // btnViewOrderDetail
-            // 
-            this.btnViewOrderDetail.Location = new System.Drawing.Point(912, 12);
-            this.btnViewOrderDetail.Name = "btnViewOrderDetail";
-            this.btnViewOrderDetail.Size = new System.Drawing.Size(200, 35);
-            this.btnViewOrderDetail.TabIndex = 11;
-            this.btnViewOrderDetail.Text = "Xem chi tiết";
-            this.btnViewOrderDetail.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnViewOrderDetail.UseVisualStyleBackColor = true;
-            // 
-            // btnPrintInvoice
-            // 
-            this.btnPrintInvoice.Location = new System.Drawing.Point(1138, 12);
-            this.btnPrintInvoice.Name = "btnPrintInvoice";
-            this.btnPrintInvoice.Size = new System.Drawing.Size(200, 35);
-            this.btnPrintInvoice.TabIndex = 12;
-            this.btnPrintInvoice.Text = "In Hóa Đơn";
-            this.btnPrintInvoice.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPrintInvoice.UseVisualStyleBackColor = true;
-            // 
             // frmAdminOrder
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1528, 688);

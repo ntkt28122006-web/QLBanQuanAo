@@ -166,9 +166,9 @@ namespace QLBanQuanAo
             this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogout.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogout.ForeColor = System.Drawing.Color.White;
-            this.btnLogout.Location = new System.Drawing.Point(1002, 33);
+            this.btnLogout.Location = new System.Drawing.Point(990, 33);
             this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(72, 25);
+            this.btnLogout.Size = new System.Drawing.Size(84, 31);
             this.btnLogout.TabIndex = 12;
             this.btnLogout.Text = "Đăng xuất";
             this.btnLogout.UseVisualStyleBackColor = false;
@@ -256,6 +256,7 @@ namespace QLBanQuanAo
             this.pnlLeft.Name = "pnlLeft";
             this.pnlLeft.Size = new System.Drawing.Size(197, 555);
             this.pnlLeft.TabIndex = 9;
+            this.pnlLeft.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlLeft_Paint);
             // 
             // pnlSeparator
             // 
@@ -402,6 +403,7 @@ namespace QLBanQuanAo
             this.btnTabAll.TabIndex = 1;
             this.btnTabAll.Text = "Tất cả sản phẩm";
             this.btnTabAll.UseVisualStyleBackColor = false;
+            this.btnTabAll.Click += new System.EventHandler(this.btnTabAll_Click_1);
             // 
             // picBanner
             // 
@@ -426,6 +428,7 @@ namespace QLBanQuanAo
             this.Name = "FrmCustomerHome";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FASHION STORE";
+            this.Load += new System.EventHandler(this.FrmCustomerHome_Load_1);
             this.pnlHeader.ResumeLayout(false);
             this.pnlHeader.PerformLayout();
             this.pnlLeft.ResumeLayout(false);

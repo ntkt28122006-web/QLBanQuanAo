@@ -331,5 +331,20 @@ namespace QLBanQuanAo
             frm.ShowDialog();
             CapNhatHeader();
         }
+
+        private void FrmCustomerHome_Load_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnTabAll_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pnlLeft_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
