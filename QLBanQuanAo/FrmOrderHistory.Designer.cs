@@ -37,8 +37,9 @@ namespace QLBanQuanAo
             this.dgvOrders = new System.Windows.Forms.DataGridView();
             this.dgvOrderItems = new System.Windows.Forms.DataGridView();
             this.lblSubTitle = new System.Windows.Forms.Label();
-            this.btnCancelOrder = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
+            this.btnPrint = new System.Windows.Forms.Button();
+            this.btnCancelOrder = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrders)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrderItems)).BeginInit();
             this.SuspendLayout();
@@ -85,6 +86,28 @@ namespace QLBanQuanAo
             this.lblSubTitle.TabIndex = 2;
             this.lblSubTitle.Text = "Chi tiết sản phẩm trong đơn hàng chọn:";
             // 
+            // btnClose
+            // 
+            this.btnClose.BackColor = System.Drawing.Color.Gainsboro;
+            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClose.Location = new System.Drawing.Point(626, 403);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(111, 33);
+            this.btnClose.TabIndex = 4;
+            this.btnClose.Text = "Đóng";
+            this.btnClose.UseVisualStyleBackColor = false;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // btnPrint
+            // 
+            this.btnPrint.Location = new System.Drawing.Point(163, 403);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(120, 33);
+            this.btnPrint.TabIndex = 5;
+            this.btnPrint.Text = "🖨 In hóa đơn";
+            this.btnPrint.UseVisualStyleBackColor = true;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
+            // 
             // btnCancelOrder
             // 
             this.btnCancelOrder.BackColor = System.Drawing.Color.Crimson;
@@ -117,6 +140,7 @@ namespace QLBanQuanAo
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1137, 682);
+            this.Controls.Add(this.btnPrint);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnCancelOrder);
             this.Controls.Add(this.lblSubTitle);
@@ -140,7 +164,8 @@ namespace QLBanQuanAo
         private DataGridView dgvOrders;
         private DataGridView dgvOrderItems;
         private Label lblSubTitle;
-        private Button btnCancelOrder;
         private Button btnClose;
+        private Button btnPrint;
+        private Button btnCancelOrder;
     }
 }

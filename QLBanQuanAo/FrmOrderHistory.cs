@@ -36,8 +36,10 @@ namespace QLBanQuanAo
         }
         private void TaiDanhSachDonHang()
         {
+
             using (var db = new QLBanHangDataContext())
             {
+                
                 var donHangs = (from o in db.orders
                                  where o.user_id == UserSession.CurrentUserId
                                  orderby o.created_at descending
@@ -139,6 +141,19 @@ namespace QLBanQuanAo
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            if (dgvOrders.CurrentRow == null)
+            {
+                MessageBox.Show("Vui lòng chọn một đơn hàng để in hóa đơn!", "Thông báo");
+                return;
+            }
+
+            int orderId = Convert.ToInt32(dgvOrders.CurrentRow.Cells["MaDonHang"].Value);
+            FrmInHoaDon frm = new FrmInHoaDon(orderId);
+            frm.ShowDialog();
         }
     }
 }

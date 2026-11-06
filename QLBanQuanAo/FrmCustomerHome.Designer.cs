@@ -272,6 +272,7 @@ namespace QLBanQuanAo
             this.pnlLeft.Name = "pnlLeft";
             this.pnlLeft.Size = new System.Drawing.Size(263, 683);
             this.pnlLeft.TabIndex = 9;
+            this.pnlLeft.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlLeft_Paint);
             // 
             // pnlSeparator
             // 
@@ -432,6 +433,7 @@ namespace QLBanQuanAo
             this.btnTabAll.TabIndex = 1;
             this.btnTabAll.Text = "Tất cả sản phẩm";
             this.btnTabAll.UseVisualStyleBackColor = false;
+            this.btnTabAll.Click += new System.EventHandler(this.btnTabAll_Click_1);
             // 
             // picBanner
             // 
