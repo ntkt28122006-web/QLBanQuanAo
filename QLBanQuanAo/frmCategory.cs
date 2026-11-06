@@ -14,6 +14,7 @@ namespace QLBanQuanAo
 
         private void frmCategory_Load(object sender, EventArgs e)
         {
+            dgvCategories.AutoGenerateColumns = false;
             loadParentCategoryComboBox();
             loadCategoryData();
         }

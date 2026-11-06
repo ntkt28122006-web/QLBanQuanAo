@@ -126,7 +126,7 @@
             this.btnClearCategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClearCategory.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClearCategory.ForeColor = System.Drawing.Color.Black;
-            this.btnClearCategory.Location = new System.Drawing.Point(914, 156);
+            this.btnClearCategory.Location = new System.Drawing.Point(752, 146);
             this.btnClearCategory.Name = "btnClearCategory";
             this.btnClearCategory.Size = new System.Drawing.Size(180, 36);
             this.btnClearCategory.TabIndex = 8;
@@ -142,7 +142,7 @@
             this.btnDeleteCategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDeleteCategory.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDeleteCategory.ForeColor = System.Drawing.Color.White;
-            this.btnDeleteCategory.Location = new System.Drawing.Point(693, 155);
+            this.btnDeleteCategory.Location = new System.Drawing.Point(553, 146);
             this.btnDeleteCategory.Name = "btnDeleteCategory";
             this.btnDeleteCategory.Size = new System.Drawing.Size(180, 36);
             this.btnDeleteCategory.TabIndex = 7;
@@ -158,7 +158,7 @@
             this.btnUpdateCategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUpdateCategory.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUpdateCategory.ForeColor = System.Drawing.Color.White;
-            this.btnUpdateCategory.Location = new System.Drawing.Point(914, 99);
+            this.btnUpdateCategory.Location = new System.Drawing.Point(752, 99);
             this.btnUpdateCategory.Name = "btnUpdateCategory";
             this.btnUpdateCategory.Size = new System.Drawing.Size(180, 36);
             this.btnUpdateCategory.TabIndex = 6;
@@ -174,7 +174,7 @@
             this.btnAddCategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddCategory.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddCategory.ForeColor = System.Drawing.Color.White;
-            this.btnAddCategory.Location = new System.Drawing.Point(693, 99);
+            this.btnAddCategory.Location = new System.Drawing.Point(553, 99);
             this.btnAddCategory.Name = "btnAddCategory";
             this.btnAddCategory.Size = new System.Drawing.Size(180, 36);
             this.btnAddCategory.TabIndex = 5;
@@ -339,7 +339,7 @@
             // colCategoryId
             // 
             this.colCategoryId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colCategoryId.DataPropertyName = "id";
+            this.colCategoryId.DataPropertyName = "MaDanhMuc";
             this.colCategoryId.HeaderText = "Mã danh mục";
             this.colCategoryId.MinimumWidth = 8;
             this.colCategoryId.Name = "colCategoryId";
@@ -348,7 +348,7 @@
             // colCategoryName
             // 
             this.colCategoryName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colCategoryName.DataPropertyName = "name";
+            this.colCategoryName.DataPropertyName = "TenDanhMuc";
             this.colCategoryName.HeaderText = "Tên danh mục";
             this.colCategoryName.MinimumWidth = 8;
             this.colCategoryName.Name = "colCategoryName";
@@ -357,7 +357,7 @@
             // colCategorySlug
             // 
             this.colCategorySlug.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colCategorySlug.DataPropertyName = "slug";
+            this.colCategorySlug.DataPropertyName = "Slug";
             this.colCategorySlug.HeaderText = "Slug";
             this.colCategorySlug.MinimumWidth = 8;
             this.colCategorySlug.Name = "colCategorySlug";
@@ -366,7 +366,7 @@
             // colCategoryParent
             // 
             this.colCategoryParent.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colCategoryParent.DataPropertyName = "parent_name";
+            this.colCategoryParent.DataPropertyName = "TenDanhMucCha";
             this.colCategoryParent.HeaderText = "Danh mục cha";
             this.colCategoryParent.MinimumWidth = 8;
             this.colCategoryParent.Name = "colCategoryParent";
@@ -375,7 +375,7 @@
             // colCategoryStatus
             // 
             this.colCategoryStatus.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colCategoryStatus.DataPropertyName = "is_active";
+            this.colCategoryStatus.DataPropertyName = "TrangThai";
             this.colCategoryStatus.HeaderText = "Trạng thái";
             this.colCategoryStatus.MinimumWidth = 8;
             this.colCategoryStatus.Name = "colCategoryStatus";

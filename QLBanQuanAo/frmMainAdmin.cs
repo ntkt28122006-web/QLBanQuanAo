@@ -7,15 +7,18 @@ namespace QLBanQuanAo
 {
     public partial class frmMainAdmin : Form
     {
+        private user currentUser; // Biến lưu thông tin người dùng hiện tại
         // Biến lưu trữ form con hiện tại
         private Form activeForm;
         // Biến lưu trữ nút đang được chọn
         private Button currentButton;
 
-        public frmMainAdmin()
+        public frmMainAdmin(user u)
         {
             InitializeComponent();
+            //this.currentUser = u;
         }
+
 
         private void frmMainAdmin_Load(object sender, EventArgs e)
         {

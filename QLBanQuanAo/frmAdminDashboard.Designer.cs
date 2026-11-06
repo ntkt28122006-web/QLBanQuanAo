@@ -44,12 +44,6 @@
             this.lblSearchCustomer = new System.Windows.Forms.Label();
             this.pnlCustomerList = new System.Windows.Forms.Panel();
             this.dgvCustomers = new System.Windows.Forms.DataGridView();
-            this.colCustomerId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colCustomerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colCustomerEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colCustomerPhone = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colCustomerStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colCustomerCreated = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblCustomerListTitle = new System.Windows.Forms.Label();
             this.pnlCustomerDetail = new System.Windows.Forms.Panel();
             this.btnUnlockCustomer = new System.Windows.Forms.Button();
@@ -64,6 +58,12 @@
             this.txtDetailCustomerId = new System.Windows.Forms.TextBox();
             this.lblDetailCustomerId = new System.Windows.Forms.Label();
             this.lblCustomerDetailTitle = new System.Windows.Forms.Label();
+            this.colCustomerId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCustomerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCustomerEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCustomerPhone = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCustomerStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCustomerCreated = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlDashboardHeader.SuspendLayout();
             this.pnlCustomerToolbar.SuspendLayout();
             this.pnlCustomerList.SuspendLayout();
@@ -248,64 +248,10 @@
             this.dgvCustomers.RowHeadersWidth = 62;
             this.dgvCustomers.RowTemplate.Height = 28;
             this.dgvCustomers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvCustomers.Size = new System.Drawing.Size(1309, 335);
+            this.dgvCustomers.Size = new System.Drawing.Size(1221, 335);
             this.dgvCustomers.TabIndex = 1;
             this.dgvCustomers.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCustomers_CellClick);
             this.dgvCustomers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCustomers_CellContentClick);
-            // 
-            // colCustomerId
-            // 
-            this.colCustomerId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colCustomerId.DataPropertyName = "id";
-            this.colCustomerId.HeaderText = "Mã KH";
-            this.colCustomerId.MinimumWidth = 8;
-            this.colCustomerId.Name = "colCustomerId";
-            this.colCustomerId.ReadOnly = true;
-            // 
-            // colCustomerName
-            // 
-            this.colCustomerName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colCustomerName.DataPropertyName = "full_name";
-            this.colCustomerName.HeaderText = "Họ và tên";
-            this.colCustomerName.MinimumWidth = 8;
-            this.colCustomerName.Name = "colCustomerName";
-            this.colCustomerName.ReadOnly = true;
-            // 
-            // colCustomerEmail
-            // 
-            this.colCustomerEmail.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colCustomerEmail.DataPropertyName = "email";
-            this.colCustomerEmail.HeaderText = "Email";
-            this.colCustomerEmail.MinimumWidth = 8;
-            this.colCustomerEmail.Name = "colCustomerEmail";
-            this.colCustomerEmail.ReadOnly = true;
-            // 
-            // colCustomerPhone
-            // 
-            this.colCustomerPhone.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colCustomerPhone.DataPropertyName = "phone";
-            this.colCustomerPhone.HeaderText = "SĐT";
-            this.colCustomerPhone.MinimumWidth = 8;
-            this.colCustomerPhone.Name = "colCustomerPhone";
-            this.colCustomerPhone.ReadOnly = true;
-            // 
-            // colCustomerStatus
-            // 
-            this.colCustomerStatus.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colCustomerStatus.DataPropertyName = "status";
-            this.colCustomerStatus.HeaderText = "Trạng thái";
-            this.colCustomerStatus.MinimumWidth = 8;
-            this.colCustomerStatus.Name = "colCustomerStatus";
-            this.colCustomerStatus.ReadOnly = true;
-            // 
-            // colCustomerCreated
-            // 
-            this.colCustomerCreated.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colCustomerCreated.DataPropertyName = "created_at";
-            this.colCustomerCreated.HeaderText = "Ngày tạo tài khoản";
-            this.colCustomerCreated.MinimumWidth = 8;
-            this.colCustomerCreated.Name = "colCustomerCreated";
-            this.colCustomerCreated.ReadOnly = true;
             // 
             // lblCustomerListTitle
             // 
@@ -468,6 +414,60 @@
             this.lblCustomerDetailTitle.TabIndex = 0;
             this.lblCustomerDetailTitle.Text = "CHI TIẾT TÀI KHOẢN ĐƯỢC CHỌN";
             // 
+            // colCustomerId
+            // 
+            this.colCustomerId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colCustomerId.DataPropertyName = "MaKH";
+            this.colCustomerId.HeaderText = "Mã KH";
+            this.colCustomerId.MinimumWidth = 8;
+            this.colCustomerId.Name = "colCustomerId";
+            this.colCustomerId.ReadOnly = true;
+            // 
+            // colCustomerName
+            // 
+            this.colCustomerName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colCustomerName.DataPropertyName = "HoTen";
+            this.colCustomerName.HeaderText = "Họ và tên";
+            this.colCustomerName.MinimumWidth = 8;
+            this.colCustomerName.Name = "colCustomerName";
+            this.colCustomerName.ReadOnly = true;
+            // 
+            // colCustomerEmail
+            // 
+            this.colCustomerEmail.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colCustomerEmail.DataPropertyName = "Email";
+            this.colCustomerEmail.HeaderText = "Email";
+            this.colCustomerEmail.MinimumWidth = 8;
+            this.colCustomerEmail.Name = "colCustomerEmail";
+            this.colCustomerEmail.ReadOnly = true;
+            // 
+            // colCustomerPhone
+            // 
+            this.colCustomerPhone.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colCustomerPhone.DataPropertyName = "SoDienThoai";
+            this.colCustomerPhone.HeaderText = "SĐT";
+            this.colCustomerPhone.MinimumWidth = 8;
+            this.colCustomerPhone.Name = "colCustomerPhone";
+            this.colCustomerPhone.ReadOnly = true;
+            // 
+            // colCustomerStatus
+            // 
+            this.colCustomerStatus.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colCustomerStatus.DataPropertyName = "TrangThai";
+            this.colCustomerStatus.HeaderText = "Trạng thái";
+            this.colCustomerStatus.MinimumWidth = 8;
+            this.colCustomerStatus.Name = "colCustomerStatus";
+            this.colCustomerStatus.ReadOnly = true;
+            // 
+            // colCustomerCreated
+            // 
+            this.colCustomerCreated.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colCustomerCreated.DataPropertyName = "NgayTao";
+            this.colCustomerCreated.HeaderText = "Ngày tạo tài khoản";
+            this.colCustomerCreated.MinimumWidth = 8;
+            this.colCustomerCreated.Name = "colCustomerCreated";
+            this.colCustomerCreated.ReadOnly = true;
+            // 
             // frmAdminDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
@@ -514,12 +514,6 @@
         private System.Windows.Forms.Panel pnlCustomerList;
         private System.Windows.Forms.DataGridView dgvCustomers;
         private System.Windows.Forms.Label lblCustomerListTitle;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colCustomerId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colCustomerName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colCustomerEmail;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colCustomerPhone;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colCustomerStatus;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colCustomerCreated;
         private System.Windows.Forms.Panel pnlCustomerDetail;
         private System.Windows.Forms.Label lblCustomerDetailTitle;
         private System.Windows.Forms.TextBox txtDetailCustomerName;
@@ -533,5 +527,11 @@
         private System.Windows.Forms.Label lblDetailCustomerEmail;
         private System.Windows.Forms.Label lblDetailCustomerPhone;
         private System.Windows.Forms.Button btnUnlockCustomer;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colCustomerId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colCustomerName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colCustomerEmail;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colCustomerPhone;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colCustomerStatus;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colCustomerCreated;
     }
 }

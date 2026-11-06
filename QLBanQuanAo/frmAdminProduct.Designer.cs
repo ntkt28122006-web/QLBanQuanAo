@@ -35,11 +35,11 @@
             this.lblPageDescription = new System.Windows.Forms.Label();
             this.lblPageTitle = new System.Windows.Forms.Label();
             this.pnlProductFilter = new System.Windows.Forms.Panel();
-            this.btnResetFilter = new System.Windows.Forms.Button();
             this.cboFilterStatus = new System.Windows.Forms.ComboBox();
             this.cboFilterCategory = new System.Windows.Forms.ComboBox();
             this.btnSearchProduct = new System.Windows.Forms.Button();
             this.txtSearchProduct = new System.Windows.Forms.TextBox();
+            this.btnResetFilter = new System.Windows.Forms.Button();
             this.pnlProductBody = new System.Windows.Forms.Panel();
             this.splitProductContent = new System.Windows.Forms.SplitContainer();
             this.dgvProducts = new System.Windows.Forms.DataGridView();
@@ -93,14 +93,13 @@
             // 
             // pnlProductHeader
             // 
-            this.pnlProductHeader.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlProductHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(41)))), ((int)(((byte)(55)))));
             this.pnlProductHeader.Controls.Add(this.lblPageDescription);
             this.pnlProductHeader.Controls.Add(this.lblPageTitle);
+            this.pnlProductHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlProductHeader.Location = new System.Drawing.Point(0, 0);
             this.pnlProductHeader.Name = "pnlProductHeader";
-            this.pnlProductHeader.Size = new System.Drawing.Size(1212, 90);
+            this.pnlProductHeader.Size = new System.Drawing.Size(1190, 90);
             this.pnlProductHeader.TabIndex = 0;
             // 
             // lblPageDescription
@@ -126,41 +125,27 @@
             // 
             // pnlProductFilter
             // 
-            this.pnlProductFilter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlProductFilter.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.pnlProductFilter.Controls.Add(this.btnResetFilter);
             this.pnlProductFilter.Controls.Add(this.cboFilterStatus);
             this.pnlProductFilter.Controls.Add(this.cboFilterCategory);
             this.pnlProductFilter.Controls.Add(this.btnSearchProduct);
             this.pnlProductFilter.Controls.Add(this.txtSearchProduct);
+            this.pnlProductFilter.Controls.Add(this.btnResetFilter);
+            this.pnlProductFilter.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlProductFilter.ForeColor = System.Drawing.SystemColors.ControlText;
             this.pnlProductFilter.Location = new System.Drawing.Point(0, 90);
             this.pnlProductFilter.Name = "pnlProductFilter";
-            this.pnlProductFilter.Size = new System.Drawing.Size(1212, 70);
+            this.pnlProductFilter.Size = new System.Drawing.Size(1190, 70);
             this.pnlProductFilter.TabIndex = 1;
-            // 
-            // btnResetFilter
-            // 
-            this.btnResetFilter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(65)))), ((int)(((byte)(81)))));
-            this.btnResetFilter.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnResetFilter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnResetFilter.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnResetFilter.ForeColor = System.Drawing.Color.White;
-            this.btnResetFilter.Location = new System.Drawing.Point(991, 14);
-            this.btnResetFilter.Name = "btnResetFilter";
-            this.btnResetFilter.Size = new System.Drawing.Size(110, 38);
-            this.btnResetFilter.TabIndex = 4;
-            this.btnResetFilter.Text = "Làm mới";
-            this.btnResetFilter.UseVisualStyleBackColor = false;
-            this.btnResetFilter.Click += new System.EventHandler(this.btnResetFilter_Click);
             // 
             // cboFilterStatus
             // 
             this.cboFilterStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboFilterStatus.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cboFilterStatus.FormattingEnabled = true;
-            this.cboFilterStatus.Location = new System.Drawing.Point(580, 18);
+            this.cboFilterStatus.Items.AddRange(new object[] {
+            "Đang kinh doanh (active)"});
+            this.cboFilterStatus.Location = new System.Drawing.Point(512, 18);
             this.cboFilterStatus.Name = "cboFilterStatus";
             this.cboFilterStatus.Size = new System.Drawing.Size(220, 36);
             this.cboFilterStatus.TabIndex = 3;
@@ -171,7 +156,7 @@
             this.cboFilterCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboFilterCategory.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cboFilterCategory.FormattingEnabled = true;
-            this.cboFilterCategory.Location = new System.Drawing.Point(340, 18);
+            this.cboFilterCategory.Location = new System.Drawing.Point(264, 18);
             this.cboFilterCategory.Name = "cboFilterCategory";
             this.cboFilterCategory.Size = new System.Drawing.Size(220, 36);
             this.cboFilterCategory.TabIndex = 2;
@@ -184,7 +169,7 @@
             this.btnSearchProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSearchProduct.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSearchProduct.ForeColor = System.Drawing.Color.White;
-            this.btnSearchProduct.Location = new System.Drawing.Point(845, 14);
+            this.btnSearchProduct.Location = new System.Drawing.Point(760, 14);
             this.btnSearchProduct.Name = "btnSearchProduct";
             this.btnSearchProduct.Size = new System.Drawing.Size(110, 38);
             this.btnSearchProduct.TabIndex = 1;
@@ -197,28 +182,41 @@
             this.txtSearchProduct.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtSearchProduct.Location = new System.Drawing.Point(20, 18);
             this.txtSearchProduct.Name = "txtSearchProduct";
-            this.txtSearchProduct.Size = new System.Drawing.Size(300, 34);
+            this.txtSearchProduct.Size = new System.Drawing.Size(216, 34);
             this.txtSearchProduct.TabIndex = 0;
             this.txtSearchProduct.Text = "Tìm kiếm sản phẩm...";
             this.txtSearchProduct.TextChanged += new System.EventHandler(this.txtSearchProduct_TextChanged);
             // 
+            // btnResetFilter
+            // 
+            this.btnResetFilter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(65)))), ((int)(((byte)(81)))));
+            this.btnResetFilter.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnResetFilter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnResetFilter.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnResetFilter.ForeColor = System.Drawing.Color.White;
+            this.btnResetFilter.Location = new System.Drawing.Point(898, 14);
+            this.btnResetFilter.Name = "btnResetFilter";
+            this.btnResetFilter.Size = new System.Drawing.Size(110, 38);
+            this.btnResetFilter.TabIndex = 4;
+            this.btnResetFilter.Text = "Làm mới";
+            this.btnResetFilter.UseVisualStyleBackColor = false;
+            this.btnResetFilter.Click += new System.EventHandler(this.btnResetFilter_Click);
+            // 
             // pnlProductBody
             // 
-            this.pnlProductBody.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlProductBody.AutoScroll = true;
+            this.pnlProductBody.AutoScrollMinSize = new System.Drawing.Size(0, 900);
             this.pnlProductBody.Controls.Add(this.splitProductContent);
+            this.pnlProductBody.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlProductBody.Location = new System.Drawing.Point(0, 160);
             this.pnlProductBody.Name = "pnlProductBody";
-            this.pnlProductBody.Size = new System.Drawing.Size(1212, 536);
+            this.pnlProductBody.Size = new System.Drawing.Size(1190, 480);
             this.pnlProductBody.TabIndex = 2;
             // 
             // splitProductContent
             // 
-            this.splitProductContent.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.splitProductContent.Location = new System.Drawing.Point(15, 15);
+            this.splitProductContent.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitProductContent.Location = new System.Drawing.Point(0, 0);
             this.splitProductContent.Name = "splitProductContent";
             // 
             // splitProductContent.Panel1
@@ -230,8 +228,8 @@
             // 
             this.splitProductContent.Panel2.Controls.Add(this.pnlProductInfo);
             this.splitProductContent.Panel2MinSize = 400;
-            this.splitProductContent.Size = new System.Drawing.Size(1182, 506);
-            this.splitProductContent.SplitterDistance = 667;
+            this.splitProductContent.Size = new System.Drawing.Size(1164, 900);
+            this.splitProductContent.SplitterDistance = 656;
             this.splitProductContent.TabIndex = 0;
             // 
             // dgvProducts
@@ -276,7 +274,7 @@
             this.dgvProducts.RowHeadersWidth = 62;
             this.dgvProducts.RowTemplate.Height = 28;
             this.dgvProducts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvProducts.Size = new System.Drawing.Size(667, 506);
+            this.dgvProducts.Size = new System.Drawing.Size(656, 900);
             this.dgvProducts.TabIndex = 0;
             this.dgvProducts.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProducts_CellClick);
             this.dgvProducts.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProducts_CellContentClick);
@@ -378,8 +376,9 @@
             this.pnlProductInfo.Location = new System.Drawing.Point(0, 0);
             this.pnlProductInfo.Name = "pnlProductInfo";
             this.pnlProductInfo.Padding = new System.Windows.Forms.Padding(12);
-            this.pnlProductInfo.Size = new System.Drawing.Size(511, 506);
+            this.pnlProductInfo.Size = new System.Drawing.Size(504, 900);
             this.pnlProductInfo.TabIndex = 0;
+            this.pnlProductInfo.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlProductInfo_Paint);
             // 
             // btnExit
             // 
@@ -417,7 +416,7 @@
             this.btnDeleteProduct.Name = "btnDeleteProduct";
             this.btnDeleteProduct.Size = new System.Drawing.Size(180, 38);
             this.btnDeleteProduct.TabIndex = 23;
-            this.btnDeleteProduct.Text = "Ngừng bán";
+            this.btnDeleteProduct.Text = "Xóa";
             this.btnDeleteProduct.UseVisualStyleBackColor = true;
             this.btnDeleteProduct.Click += new System.EventHandler(this.btnDeleteProduct_Click);
             // 
@@ -498,7 +497,6 @@
             this.txtProductDescription.MaxLength = 2000;
             this.txtProductDescription.Multiline = true;
             this.txtProductDescription.Name = "txtProductDescription";
-            this.txtProductDescription.ReadOnly = true;
             this.txtProductDescription.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtProductDescription.Size = new System.Drawing.Size(380, 31);
             this.txtProductDescription.TabIndex = 14;
@@ -572,7 +570,6 @@
             this.txtProductBrand.Location = new System.Drawing.Point(15, 260);
             this.txtProductBrand.MaxLength = 100;
             this.txtProductBrand.Name = "txtProductBrand";
-            this.txtProductBrand.ReadOnly = true;
             this.txtProductBrand.Size = new System.Drawing.Size(380, 31);
             this.txtProductBrand.TabIndex = 8;
             this.txtProductBrand.TextChanged += new System.EventHandler(this.txtProductBrand_TextChanged);
@@ -607,7 +604,6 @@
             this.txtProductName.Location = new System.Drawing.Point(15, 132);
             this.txtProductName.MaxLength = 200;
             this.txtProductName.Name = "txtProductName";
-            this.txtProductName.ReadOnly = true;
             this.txtProductName.Size = new System.Drawing.Size(380, 31);
             this.txtProductName.TabIndex = 4;
             this.txtProductName.TextChanged += new System.EventHandler(this.txtProductName_TextChanged);
@@ -652,7 +648,6 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoScroll = true;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1190, 640);
@@ -667,6 +662,7 @@
             this.Name = "frmAdminProduct";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Quản lí sản phẩm";
+            this.Load += new System.EventHandler(this.frmAdminProduct_Load);
             this.pnlProductHeader.ResumeLayout(false);
             this.pnlProductFilter.ResumeLayout(false);
             this.pnlProductFilter.PerformLayout();
