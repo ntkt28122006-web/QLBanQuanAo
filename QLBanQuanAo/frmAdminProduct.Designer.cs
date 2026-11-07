@@ -150,6 +150,7 @@
             this.lblPageTitle.Size = new System.Drawing.Size(1280, 90);
             this.lblPageTitle.TabIndex = 0;
             this.lblPageTitle.Text = "Quản lí sản phầm";
+            this.lblPageTitle.Click += new System.EventHandler(this.lblPageTitle_Click);
             // 
             // pnlProductFilter
             // 
@@ -388,7 +389,7 @@
             this.tabProductInfo.Location = new System.Drawing.Point(12, 12);
             this.tabProductInfo.Name = "tabProductInfo";
             this.tabProductInfo.SelectedIndex = 0;
-            this.tabProductInfo.Size = new System.Drawing.Size(480, 876);
+            this.tabProductInfo.Size = new System.Drawing.Size(484, 876);
             this.tabProductInfo.TabIndex = 0;
             // 
             // tabProductGeneral
@@ -421,17 +422,17 @@
             this.tabProductGeneral.Controls.Add(this.lblProductId);
             this.tabProductGeneral.Controls.Add(this.lblProductName);
             this.tabProductGeneral.Controls.Add(this.lblProductInfoTitle);
-            this.tabProductGeneral.Location = new System.Drawing.Point(4, 34);
+            this.tabProductGeneral.Location = new System.Drawing.Point(4, 24);
             this.tabProductGeneral.Name = "tabProductGeneral";
             this.tabProductGeneral.Padding = new System.Windows.Forms.Padding(3);
-            this.tabProductGeneral.Size = new System.Drawing.Size(472, 838);
+            this.tabProductGeneral.Size = new System.Drawing.Size(476, 848);
             this.tabProductGeneral.TabIndex = 0;
             this.tabProductGeneral.Text = "Thông tin chung";
             this.tabProductGeneral.UseVisualStyleBackColor = true;
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(375, 727);
+            this.btnExit.Location = new System.Drawing.Point(394, 723);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(76, 81);
             this.btnExit.TabIndex = 26;
@@ -715,10 +716,10 @@
             this.tabProductVariants.Controls.Add(this.cboVariantColor);
             this.tabProductVariants.Controls.Add(this.lblVariantColor);
             this.tabProductVariants.Controls.Add(this.lblVariantTitle);
-            this.tabProductVariants.Location = new System.Drawing.Point(4, 29);
+            this.tabProductVariants.Location = new System.Drawing.Point(4, 22);
             this.tabProductVariants.Name = "tabProductVariants";
             this.tabProductVariants.Padding = new System.Windows.Forms.Padding(3);
-            this.tabProductVariants.Size = new System.Drawing.Size(472, 843);
+            this.tabProductVariants.Size = new System.Drawing.Size(472, 850);
             this.tabProductVariants.TabIndex = 1;
             this.tabProductVariants.Text = "Biến thể & tồn kho";
             this.tabProductVariants.UseVisualStyleBackColor = true;
@@ -801,7 +802,7 @@
             this.chkVariantActive.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkVariantActive.Location = new System.Drawing.Point(235, 198);
             this.chkVariantActive.Name = "chkVariantActive";
-            this.chkVariantActive.Size = new System.Drawing.Size(175, 29);
+            this.chkVariantActive.Size = new System.Drawing.Size(117, 19);
             this.chkVariantActive.TabIndex = 11;
             this.chkVariantActive.Text = "Đang kinh doanh";
             this.chkVariantActive.UseVisualStyleBackColor = true;
@@ -815,7 +816,7 @@
             0,
             0});
             this.numVariantStock.Name = "numVariantStock";
-            this.numVariantStock.Size = new System.Drawing.Size(205, 31);
+            this.numVariantStock.Size = new System.Drawing.Size(205, 23);
             this.numVariantStock.TabIndex = 10;
             this.numVariantStock.ThousandsSeparator = true;
             // 
@@ -836,7 +837,7 @@
             0,
             0});
             this.numVariantPrice.Name = "numVariantPrice";
-            this.numVariantPrice.Size = new System.Drawing.Size(205, 31);
+            this.numVariantPrice.Size = new System.Drawing.Size(205, 23);
             this.numVariantPrice.TabIndex = 8;
             this.numVariantPrice.ThousandsSeparator = true;
             // 
@@ -853,7 +854,7 @@
             this.txtVariantSku.Location = new System.Drawing.Point(15, 136);
             this.txtVariantSku.MaxLength = 64;
             this.txtVariantSku.Name = "txtVariantSku";
-            this.txtVariantSku.Size = new System.Drawing.Size(205, 31);
+            this.txtVariantSku.Size = new System.Drawing.Size(205, 23);
             this.txtVariantSku.TabIndex = 6;
             // 
             // lblVariantSku
@@ -870,7 +871,7 @@
             this.cboVariantSize.FormattingEnabled = true;
             this.cboVariantSize.Location = new System.Drawing.Point(235, 76);
             this.cboVariantSize.Name = "cboVariantSize";
-            this.cboVariantSize.Size = new System.Drawing.Size(205, 33);
+            this.cboVariantSize.Size = new System.Drawing.Size(205, 23);
             this.cboVariantSize.TabIndex = 4;
             // 
             // lblVariantSize
@@ -887,7 +888,7 @@
             this.cboVariantColor.FormattingEnabled = true;
             this.cboVariantColor.Location = new System.Drawing.Point(15, 76);
             this.cboVariantColor.Name = "cboVariantColor";
-            this.cboVariantColor.Size = new System.Drawing.Size(205, 33);
+            this.cboVariantColor.Size = new System.Drawing.Size(205, 23);
             this.cboVariantColor.TabIndex = 2;
             // 
             // lblVariantColor

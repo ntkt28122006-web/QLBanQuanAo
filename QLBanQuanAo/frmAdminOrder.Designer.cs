@@ -86,6 +86,7 @@
             this.pnlOrderHeader.Name = "pnlOrderHeader";
             this.pnlOrderHeader.Size = new System.Drawing.Size(1090, 85);
             this.pnlOrderHeader.TabIndex = 0;
+            this.pnlOrderHeader.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlOrderHeader_Paint);
             // 
             // lblOrderDescription
             // 
@@ -93,7 +94,7 @@
             this.lblOrderDescription.ForeColor = System.Drawing.Color.White;
             this.lblOrderDescription.Location = new System.Drawing.Point(30, 53);
             this.lblOrderDescription.Name = "lblOrderDescription";
-            this.lblOrderDescription.Size = new System.Drawing.Size(367, 25);
+            this.lblOrderDescription.Size = new System.Drawing.Size(243, 15);
             this.lblOrderDescription.TabIndex = 1;
             this.lblOrderDescription.Text = "Theo dõi đơn hàng, thanh toán và giao hàng";
             // 
@@ -134,7 +135,7 @@
             this.lblTodate.AutoSize = true;
             this.lblTodate.Location = new System.Drawing.Point(365, 54);
             this.lblTodate.Name = "lblTodate";
-            this.lblTodate.Size = new System.Drawing.Size(88, 25);
+            this.lblTodate.Size = new System.Drawing.Size(57, 15);
             this.lblTodate.TabIndex = 14;
             this.lblTodate.Text = "Đến ngày";
             this.lblTodate.Click += new System.EventHandler(this.lblTodate_Click);
@@ -144,7 +145,7 @@
             this.lblFromDate.AutoSize = true;
             this.lblFromDate.Location = new System.Drawing.Point(56, 54);
             this.lblFromDate.Name = "lblFromDate";
-            this.lblFromDate.Size = new System.Drawing.Size(76, 25);
+            this.lblFromDate.Size = new System.Drawing.Size(50, 15);
             this.lblFromDate.TabIndex = 13;
             this.lblFromDate.Text = "Từ ngày";
             this.lblFromDate.Click += new System.EventHandler(this.lblFromDate_Click);
@@ -210,7 +211,7 @@
             this.dtpToDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpToDate.Location = new System.Drawing.Point(465, 54);
             this.dtpToDate.Name = "dtpToDate";
-            this.dtpToDate.Size = new System.Drawing.Size(180, 31);
+            this.dtpToDate.Size = new System.Drawing.Size(180, 23);
             this.dtpToDate.TabIndex = 8;
             this.dtpToDate.ValueChanged += new System.EventHandler(this.dtpToDate_ValueChanged);
             // 
@@ -220,7 +221,7 @@
             this.cboFilterPaymentStatus.FormattingEnabled = true;
             this.cboFilterPaymentStatus.Location = new System.Drawing.Point(471, 10);
             this.cboFilterPaymentStatus.Name = "cboFilterPaymentStatus";
-            this.cboFilterPaymentStatus.Size = new System.Drawing.Size(180, 33);
+            this.cboFilterPaymentStatus.Size = new System.Drawing.Size(180, 23);
             this.cboFilterPaymentStatus.TabIndex = 7;
             this.cboFilterPaymentStatus.SelectedIndexChanged += new System.EventHandler(this.cboFilterPaymentStatus_SelectedIndexChanged);
             // 
@@ -228,7 +229,7 @@
             // 
             this.txtSearchOrder.Location = new System.Drawing.Point(15, 10);
             this.txtSearchOrder.Name = "txtSearchOrder";
-            this.txtSearchOrder.Size = new System.Drawing.Size(240, 31);
+            this.txtSearchOrder.Size = new System.Drawing.Size(240, 23);
             this.txtSearchOrder.TabIndex = 0;
             this.txtSearchOrder.TextChanged += new System.EventHandler(this.txtSearchOrder_TextChanged);
             // 
@@ -238,7 +239,7 @@
             this.cboFilterStatus.FormattingEnabled = true;
             this.cboFilterStatus.Location = new System.Drawing.Point(273, 10);
             this.cboFilterStatus.Name = "cboFilterStatus";
-            this.cboFilterStatus.Size = new System.Drawing.Size(180, 33);
+            this.cboFilterStatus.Size = new System.Drawing.Size(180, 23);
             this.cboFilterStatus.TabIndex = 1;
             this.cboFilterStatus.SelectedIndexChanged += new System.EventHandler(this.cboFilterStatus_SelectedIndexChanged);
             // 
@@ -248,7 +249,7 @@
             this.dtpFromDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpFromDate.Location = new System.Drawing.Point(162, 54);
             this.dtpFromDate.Name = "dtpFromDate";
-            this.dtpFromDate.Size = new System.Drawing.Size(180, 31);
+            this.dtpFromDate.Size = new System.Drawing.Size(180, 23);
             this.dtpFromDate.TabIndex = 4;
             this.dtpFromDate.ValueChanged += new System.EventHandler(this.dtpFromDate_ValueChanged);
             // 
@@ -475,7 +476,7 @@
             // 
             // frmAdminOrder
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;

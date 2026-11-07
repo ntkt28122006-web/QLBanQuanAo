@@ -124,20 +124,17 @@ namespace QLBanQuanAo
 
                 var query = db.products.AsQueryable();
 
-                // 1. Khắc phục lỗi NULL ở p.brand
                 if (!string.IsNullOrEmpty(keyword))
                 {
                     query = query.Where(p => p.name.ToLower().Contains(keyword) ||
                                             (p.brand != null && p.brand.ToLower().Contains(keyword)));
                 }
 
-                // 2. Lọc theo Danh mục
                 if (cboFilterCategory?.SelectedValue != null && int.TryParse(cboFilterCategory.SelectedValue.ToString(), out int catId) && catId > 0)
                 {
                     query = query.Where(p => p.category_id == catId);
                 }
 
-                // 3. Lọc theo Trạng thái
                 string selectedStatus = (cboFilterStatus != null && cboFilterStatus.SelectedValue != null)
                     ? cboFilterStatus.SelectedValue.ToString()
                     : "all";
@@ -146,8 +143,7 @@ namespace QLBanQuanAo
                     query = query.Where(p => p.status == selectedStatus);
                 }
 
-                // 4. Đặt tên thuộc tính KHỚP 100% với DataPropertyName trong Designer.cs
-                var productList = query
+                var rawList = query
                     .Select(p => new
                     {
                         id = p.id,
@@ -155,11 +151,22 @@ namespace QLBanQuanAo
                         CategoryName = p.category != null ? p.category.name : "N/A",
                         price = p.price,
                         sale_price = p.sale_price,
-                        // Tính tổng tồn kho từ các biến thể sản phẩm (khớp với DB WIN_FASHION_v2)
                         StockQuantity = p.product_variants.SelectMany(v => v.inventories).Sum(i => (int?)i.stock_quantity) ?? 0,
                         status = p.status
                     })
                     .OrderByDescending(p => p.id)
+                    .ToList();
+                var productList = rawList
+                    .Select(p => new
+                    {
+                        id = p.id,
+                        name = p.name,
+                        CategoryName = p.CategoryName,
+                        price = string.Format("{0:N0} VNĐ", p.price),
+                        sale_price = p.sale_price.HasValue ? string.Format("{0:N0} VNĐ", p.sale_price.Value) : "",
+                        StockQuantity = p.StockQuantity,
+                        status = p.status
+                    })
                     .ToList();
 
                 if (dgvProducts != null)
@@ -312,7 +319,6 @@ namespace QLBanQuanAo
                 return;
             }
 
-            // Nếu là đường dẫn tuyệt đối (VD: C:\...)
             if (Path.IsPathRooted(relativeOrAbsolutePath) && File.Exists(relativeOrAbsolutePath))
             {
                 using (FileStream fs = new FileStream(relativeOrAbsolutePath, FileMode.Open, FileAccess.Read))
@@ -322,13 +328,10 @@ namespace QLBanQuanAo
                 return;
             }
 
-            // Nếu là đường dẫn tương đối: CẮT BỎ tất cả dấu / hoặc \ ở đầu chuỗi
             string cleanRelativePath = relativeOrAbsolutePath.TrimStart('/', '\\').Replace('/', '\\');
 
-            // Tìm ảnh trong thư mục bin/Debug
             string fullPath = Path.Combine(Application.StartupPath, cleanRelativePath);
 
-            // Nếu không thấy trong bin/Debug thì tìm tiếp trong thư mục Project gốc
             if (!File.Exists(fullPath))
             {
                 fullPath = Path.Combine(GetProjectFolder(), cleanRelativePath);
@@ -358,13 +361,11 @@ namespace QLBanQuanAo
                     string relFolder = Path.Combine("uploads", "products");
                     string fileName = "prod_" + DateTime.Now.Ticks + Path.GetExtension(dialog.FileName);
 
-                    // Copy vào thư mục bin/Debug lúc ứng dụng đang chạy
                     string binFolder = Path.Combine(Application.StartupPath, relFolder);
                     if (!Directory.Exists(binFolder)) Directory.CreateDirectory(binFolder);
                     string binFilePath = Path.Combine(binFolder, fileName);
                     File.Copy(dialog.FileName, binFilePath, true);
 
-                    // Copy vào thư mục Project gốc trong Visual Studio
                     string projectFolder = Path.Combine(GetProjectFolder(), relFolder);
                     if (!Directory.Exists(projectFolder)) Directory.CreateDirectory(projectFolder);
                     string projectFilePath = Path.Combine(projectFolder, fileName);
@@ -374,10 +375,8 @@ namespace QLBanQuanAo
                         File.Copy(dialog.FileName, projectFilePath, true);
                     }
 
-                    // Gán đường dẫn tương đối chuẩn: uploads/products/prod_123.jpg
                     selectedRelativeImagePath = relFolder.Replace("\\", "/") + "/" + fileName;
 
-                    // Hiển thị ảnh
                     DisplayImageToPictureBox(binFilePath);
                 }
             }
@@ -676,7 +675,7 @@ namespace QLBanQuanAo
         {
             using (QLBanHangDataContext db = new QLBanHangDataContext())
             {
-                var variantList = db.product_variants
+                var rawVariants = db.product_variants
                     .Where(v => v.product_id == productId)
                     .OrderBy(v => v.id)
                     .Select(v => new
@@ -685,8 +684,21 @@ namespace QLBanQuanAo
                         sku = v.sku,
                         ColorName = v.product_color != null ? v.product_color.name : "Không phân loại",
                         SizeName = v.product_size != null ? v.product_size.name : "Không phân loại",
-                        PriceOverride = v.price_override,
+                        price_override = v.price_override,
                         StockQuantity = v.inventories.Select(i => (int?)i.stock_quantity).FirstOrDefault() ?? 0,
+                        is_active = v.is_active
+                    })
+                    .ToList();
+
+                var variantList = rawVariants
+                    .Select(v => new
+                    {
+                        id = v.id,
+                        sku = v.sku,
+                        ColorName = v.ColorName,
+                        SizeName = v.SizeName,
+                        PriceOverride = v.price_override.HasValue ? string.Format("{0:N0} VNĐ", v.price_override.Value) : "Theo giá SP",
+                        StockQuantity = v.StockQuantity,
                         Status = v.is_active ? "Đang kinh doanh" : "Ngừng kinh doanh"
                     })
                     .ToList();
@@ -761,7 +773,20 @@ namespace QLBanQuanAo
             if (e.RowIndex < 0 || dgvVariants.Rows[e.RowIndex].IsNewRow)
                 return;
 
-            object idValue = dgvVariants.Rows[e.RowIndex].Cells["colVariantId"].Value;
+            var row = dgvVariants.Rows[e.RowIndex];
+            object idValue = null;
+
+            if (dgvVariants.Columns.Contains("colVariantId"))
+                idValue = row.Cells["colVariantId"].Value;
+            else if (dgvVariants.Columns.Contains("VariantId"))
+                idValue = row.Cells["VariantId"].Value;
+            else if (dgvVariants.Columns.Contains("Id"))
+                idValue = row.Cells["Id"].Value;
+            else if (dgvVariants.Columns.Contains("id"))
+                idValue = row.Cells["id"].Value;
+            else if (row.Cells.Count > 0)
+                idValue = row.Cells[0].Value;
+
             if (idValue == null || idValue == DBNull.Value)
                 return;
 
@@ -947,6 +972,11 @@ namespace QLBanQuanAo
         }
 
         private void pnlProductInfo_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void lblPageTitle_Click(object sender, EventArgs e)
         {
 
         }

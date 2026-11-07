@@ -53,7 +53,7 @@ namespace QLBanQuanAo
             this.lblTitle.Location = new System.Drawing.Point(31, 25);
             this.lblTitle.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(290, 32);
+            this.lblTitle.Size = new System.Drawing.Size(224, 25);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "🛒 GIỎ HÀNG CỦA BẠN";
             // 
@@ -78,7 +78,7 @@ namespace QLBanQuanAo
             this.btnIncrease.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnIncrease.Location = new System.Drawing.Point(20, 370);
             this.btnIncrease.Name = "btnIncrease";
-            this.btnIncrease.Size = new System.Drawing.Size(184, 52);
+            this.btnIncrease.Size = new System.Drawing.Size(120, 52);
             this.btnIncrease.TabIndex = 2;
             this.btnIncrease.Text = "➕ Tăng SL";
             this.btnIncrease.UseVisualStyleBackColor = false;
@@ -90,9 +90,9 @@ namespace QLBanQuanAo
             this.btnRemove.BackColor = System.Drawing.Color.Crimson;
             this.btnRemove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRemove.ForeColor = System.Drawing.Color.White;
-            this.btnRemove.Location = new System.Drawing.Point(386, 370);
+            this.btnRemove.Location = new System.Drawing.Point(439, 370);
             this.btnRemove.Name = "btnRemove";
-            this.btnRemove.Size = new System.Drawing.Size(272, 52);
+            this.btnRemove.Size = new System.Drawing.Size(175, 52);
             this.btnRemove.TabIndex = 3;
             this.btnRemove.Text = "🗑️ Xóa sản phẩm";
             this.btnRemove.UseVisualStyleBackColor = false;
@@ -103,9 +103,9 @@ namespace QLBanQuanAo
             this.lblTotalAmount.AutoSize = true;
             this.lblTotalAmount.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotalAmount.ForeColor = System.Drawing.Color.Crimson;
-            this.lblTotalAmount.Location = new System.Drawing.Point(634, 378);
+            this.lblTotalAmount.Location = new System.Drawing.Point(673, 386);
             this.lblTotalAmount.Name = "lblTotalAmount";
-            this.lblTotalAmount.Size = new System.Drawing.Size(191, 30);
+            this.lblTotalAmount.Size = new System.Drawing.Size(149, 23);
             this.lblTotalAmount.TabIndex = 4;
             this.lblTotalAmount.Text = "Tổng tiền: 0 VNĐ";
             this.lblTotalAmount.Click += new System.EventHandler(this.lblTotalAmount_Click);
@@ -115,7 +115,7 @@ namespace QLBanQuanAo
             this.btnClose.BackColor = System.Drawing.Color.Gainsboro;
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnClose.Location = new System.Drawing.Point(20, 425);
+            this.btnClose.Location = new System.Drawing.Point(20, 453);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(120, 37);
             this.btnClose.TabIndex = 5;
@@ -129,7 +129,7 @@ namespace QLBanQuanAo
             this.btnBuy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBuy.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBuy.ForeColor = System.Drawing.Color.White;
-            this.btnBuy.Location = new System.Drawing.Point(610, 425);
+            this.btnBuy.Location = new System.Drawing.Point(652, 453);
             this.btnBuy.Name = "btnBuy";
             this.btnBuy.Size = new System.Drawing.Size(200, 40);
             this.btnBuy.TabIndex = 6;
@@ -142,9 +142,9 @@ namespace QLBanQuanAo
             this.btnDecrease.AutoSize = true;
             this.btnDecrease.BackColor = System.Drawing.Color.WhiteSmoke;
             this.btnDecrease.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDecrease.Location = new System.Drawing.Point(199, 370);
+            this.btnDecrease.Location = new System.Drawing.Point(217, 370);
             this.btnDecrease.Name = "btnDecrease";
-            this.btnDecrease.Size = new System.Drawing.Size(189, 52);
+            this.btnDecrease.Size = new System.Drawing.Size(140, 52);
             this.btnDecrease.TabIndex = 7;
             this.btnDecrease.Text = "➖ Giảm SL";
             this.btnDecrease.UseVisualStyleBackColor = false;
@@ -152,9 +152,9 @@ namespace QLBanQuanAo
             // 
             // FrmCart
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 32F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1037, 525);
+            this.ClientSize = new System.Drawing.Size(864, 510);
             this.Controls.Add(this.btnDecrease);
             this.Controls.Add(this.btnBuy);
             this.Controls.Add(this.btnClose);

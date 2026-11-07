@@ -286,23 +286,36 @@ namespace QLBanQuanAo
                                select v).FirstOrDefault();
                 if (variant == null)
                 {
-                    variant = new product_variant
+                    variant = db.product_variants.FirstOrDefault(v => v.product_id == _productId && v.color_id == null && v.size_id == null)
+                              ?? db.product_variants.FirstOrDefault(v => v.product_id == _productId);
+
+                    if (variant != null)
                     {
-                        product_id = _productId,
-                        sku = "SKU-" + _productId + "-" + DateTime.Now.Ticks.ToString().Substring(10),
-                        price_override = null,
-                        is_active = true,
-                    };
-                    db.product_variants.InsertOnSubmit(variant);
-                    db.SubmitChanges();
-                    inventory newInv = new inventory
+                        variant.is_active = true;
+                        db.SubmitChanges();
+                    }
+                    else
                     {
-                        variant_id = variant.id,
-                        stock_quantity = 100,
-                        updated_at = DateTime.Now
-                    };
-                    db.inventories.InsertOnSubmit(newInv);
-                    db.SubmitChanges();
+                        variant = new product_variant
+                        {
+                            product_id = _productId,
+                            sku = "SKU-" + _productId + "-" + DateTime.Now.Ticks.ToString().Substring(10),
+                            price_override = null,
+                            is_active = true,
+                        };
+                        db.product_variants.InsertOnSubmit(variant);
+                        db.SubmitChanges();
+                        inventory newInv = new inventory
+                        {
+                            variant_id = variant.id,
+                            stock_quantity = 100,
+                            updated_at = DateTime.Now
+                        };
+                        db.inventories.InsertOnSubmit(newInv);
+                        db.SubmitChanges();
+                    }
+
+
                 }
                 var tonKho = (from inv in db.inventories
                               where inv.variant_id == variant.id
@@ -364,6 +377,11 @@ namespace QLBanQuanAo
         }
 
         private void picProduct_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblProductName_Click_1(object sender, EventArgs e)
         {
 
         }

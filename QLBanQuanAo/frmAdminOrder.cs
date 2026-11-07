@@ -126,9 +126,9 @@ namespace QLBanQuanAo
                         KhachHang = o.user != null ? o.user.full_name : o.recipient_name,
                         NguoiNhan = o.recipient_name,
                         SDT = o.recipient_phone,
-                        TongTien = o.total_amount,
+                        TongTien = string.Format("{0:N0} VNĐ", o.total_amount),
                         TrangThai = o.status,
-                        ThanhToan = o.payment_status,
+                        ThanhToan = string.Format("{0:N0} VNĐ", o.payment_status),
                         NgayDat = o.created_at
                     })
                     .ToList();
@@ -160,8 +160,8 @@ namespace QLBanQuanAo
                         MauSac = oi.color_name,
                         KichThuoc = oi.size_name,
                         SoLuong = oi.quantity,
-                        DonGia = oi.unit_price,
-                        ThanhTien = oi.line_total
+                        DonGia = string.Format("{0:N0} VNĐ", oi.unit_price),
+                        ThanhTien = string.Format("{0:N0} VNĐ", oi.line_total)
                     })
                     .ToList();
             }
@@ -418,6 +418,11 @@ namespace QLBanQuanAo
         private void lblFromDate_Click(object sender, EventArgs e) { }
 
         private void lblTodate_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pnlOrderHeader_Paint(object sender, PaintEventArgs e)
         {
 
         }

@@ -340,17 +340,36 @@ namespace QLBanQuanAo
                 }
             }
 
-            // Cập nhật tên hiển thị sau khi khách hàng sửa hồ sơ.
             CapNhatHeader();
         }
 
         private void btnUser_Click_1(object sender, EventArgs e)
         {
-            if (UserSession.IsLoggedIn) return;
+            if (UserSession.IsLoggedIn)
+            {
+                using (frmInforCustomer frm = new frmInforCustomer())
+                {
+                    frm.ShowDialog();
+                }
+                CapNhatHeader();
+                return;
+            }
 
-            frmLogin loginForm = new frmLogin();
-            loginForm.Show();
             this.Hide();
+            using (frmLogin login = new frmLogin())
+            {
+                login.ShowDialog();
+            }
+
+            bool daMoFormMoi = Application.OpenForms.Cast<Form>()
+                        .Any(f => f != this && (f is FrmCustomerHome || f is frmMainAdmin) && f.Visible);
+
+            if (!daMoFormMoi)
+            {
+                CapNhatHeader();
+                LocVaHienThiSanPham();
+                this.Show();
+            }
         }
 
         private void btnLogout_Click_1(object sender, EventArgs e)
@@ -395,6 +414,11 @@ namespace QLBanQuanAo
         }
 
         private void picBanner_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pnlSubHead_Paint_1(object sender, PaintEventArgs e)
         {
 
         }
