@@ -734,7 +734,7 @@
     <Height>5.08333in</Height>
     <Style />
   </Body>
-  <Width>14.47792in</Width>
+  <Width>9.39459in</Width>
   <Page>
     <PageHeader>
       <Height>1.76042in</Height>
@@ -784,6 +784,16 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
+                  <Value>Tên:</Value>
+                  <Style>
+                    <FontStyle>Normal</FontStyle>
+                    <FontFamily>Courier New</FontFamily>
+                    <FontWeight>Normal</FontWeight>
+                    <TextDecoration>None</TextDecoration>
+                    <Color>#000000</Color>
+                  </Style>
+                </TextRun>
+                <TextRun>
                   <Value>=Fields!NguoiNhan.Value</Value>
                   <Style>
                     <FontStyle>Normal</FontStyle>
@@ -819,6 +829,16 @@
           <Paragraphs>
             <Paragraph>
               <TextRuns>
+                <TextRun>
+                  <Value>Ngày đặt:</Value>
+                  <Style>
+                    <FontStyle>Normal</FontStyle>
+                    <FontFamily>Courier New</FontFamily>
+                    <FontWeight>Normal</FontWeight>
+                    <TextDecoration>None</TextDecoration>
+                    <Color>#000000</Color>
+                  </Style>
+                </TextRun>
                 <TextRun>
                   <Value>=Fields!NgayDat.Value</Value>
                   <Style>
@@ -856,6 +876,16 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
+                  <Value>SĐT:</Value>
+                  <Style>
+                    <FontStyle>Normal</FontStyle>
+                    <FontFamily>Courier New</FontFamily>
+                    <FontWeight>Normal</FontWeight>
+                    <TextDecoration>None</TextDecoration>
+                    <Color>#000000</Color>
+                  </Style>
+                </TextRun>
+                <TextRun>
                   <Value>=Fields!SoDienThoai.Value</Value>
                   <Style>
                     <FontStyle>Normal</FontStyle>
@@ -891,6 +921,16 @@
           <Paragraphs>
             <Paragraph>
               <TextRuns>
+                <TextRun>
+                  <Value>Địa chị:</Value>
+                  <Style>
+                    <FontStyle>Normal</FontStyle>
+                    <FontFamily>Courier New</FontFamily>
+                    <FontWeight>Normal</FontWeight>
+                    <TextDecoration>None</TextDecoration>
+                    <Color>#000000</Color>
+                  </Style>
+                </TextRun>
                 <TextRun>
                   <Value>=Fields!DiaChiGiao.Value</Value>
                   <Style>

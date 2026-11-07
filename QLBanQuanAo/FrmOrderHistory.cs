@@ -53,7 +53,7 @@ namespace QLBanQuanAo
                                      NguoiNhan = o.recipient_name,
                                      SoDienThoai = o.recipient_phone,
                                      DiaChiGiao = o.shipping_address,
-                                     TongTien = o.total_amount,
+                                     TongTien = string.Format("{0:N0} VNĐ", o.total_amount),
                                      TrangThai = HienThiTrangThai(o.status)
                                  }).ToList();
                 dgvOrders.DataSource = dsHienThi;
@@ -80,8 +80,8 @@ namespace QLBanQuanAo
                                      MauSac = oi.color_name,
                                      KichCo = oi.size_name,
                                      SoLuong = oi.quantity,
-                                     DonGia = oi.unit_price,
-                                     ThanhTien = oi.line_total
+                                     DonGia = string.Format("{0:N0} VNĐ", oi.unit_price),
+                                     ThanhTien = string.Format("{0:N0} VNĐ", oi.line_total ?? (oi.quantity * oi.unit_price))
                                  }).ToList();
                 dgvOrderItems.DataSource = dsChiTiet;
             
@@ -167,6 +167,9 @@ namespace QLBanQuanAo
             frm.ShowDialog();
         }
 
-       
+        private void dgvOrders_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
