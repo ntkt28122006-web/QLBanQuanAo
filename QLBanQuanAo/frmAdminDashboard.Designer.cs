@@ -73,7 +73,7 @@
             // 
             // pnlDashboardHeader
             // 
-            this.pnlDashboardHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
+            this.pnlDashboardHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(77)))), ((int)(((byte)(45)))));
             this.pnlDashboardHeader.Controls.Add(this.lblDashboardDescription);
             this.pnlDashboardHeader.Controls.Add(this.lblDashboardTitle);
             this.pnlDashboardHeader.Dock = System.Windows.Forms.DockStyle.Top;
@@ -157,7 +157,7 @@
             this.cboFilterCustomerStatus.FormattingEnabled = true;
             this.cboFilterCustomerStatus.Location = new System.Drawing.Point(338, 62);
             this.cboFilterCustomerStatus.Name = "cboFilterCustomerStatus";
-            this.cboFilterCustomerStatus.Size = new System.Drawing.Size(350, 28);
+            this.cboFilterCustomerStatus.Size = new System.Drawing.Size(350, 33);
             this.cboFilterCustomerStatus.TabIndex = 1;
             this.cboFilterCustomerStatus.SelectedIndexChanged += new System.EventHandler(this.cboFilterCustomerStatus_SelectedIndexChanged);
             // 
@@ -175,7 +175,7 @@
             // 
             this.txtSearchCustomer.Location = new System.Drawing.Point(338, 28);
             this.txtSearchCustomer.Name = "txtSearchCustomer";
-            this.txtSearchCustomer.Size = new System.Drawing.Size(350, 27);
+            this.txtSearchCustomer.Size = new System.Drawing.Size(350, 31);
             this.txtSearchCustomer.TabIndex = 0;
             this.txtSearchCustomer.TextChanged += new System.EventHandler(this.txtSearchCustomer_TextChanged);
             // 
@@ -201,7 +201,6 @@
             this.pnlCustomerList.Name = "pnlCustomerList";
             this.pnlCustomerList.Size = new System.Drawing.Size(1312, 274);
             this.pnlCustomerList.TabIndex = 2;
-            this.pnlCustomerList.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlCustomerList_Paint);
             // 
             // dgvCustomers
             // 
@@ -251,7 +250,6 @@
             this.dgvCustomers.Size = new System.Drawing.Size(1221, 335);
             this.dgvCustomers.TabIndex = 1;
             this.dgvCustomers.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCustomers_CellClick);
-            this.dgvCustomers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCustomers_CellContentClick);
             // 
             // colCustomerId
             // 
@@ -335,7 +333,6 @@
             this.pnlCustomerDetail.Name = "pnlCustomerDetail";
             this.pnlCustomerDetail.Size = new System.Drawing.Size(1309, 201);
             this.pnlCustomerDetail.TabIndex = 2;
-            this.pnlCustomerDetail.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlCustomerDetail_Paint);
             // 
             // btnUnlockCustomer
             // 
@@ -358,12 +355,12 @@
             // btnLockCustomer
             // 
             this.btnLockCustomer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnLockCustomer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnLockCustomer.BackColor = System.Drawing.Color.Red;
             this.btnLockCustomer.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnLockCustomer.FlatAppearance.BorderSize = 0;
             this.btnLockCustomer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLockCustomer.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLockCustomer.ForeColor = System.Drawing.Color.White;
+            this.btnLockCustomer.ForeColor = System.Drawing.Color.Black;
             this.btnLockCustomer.Location = new System.Drawing.Point(742, 97);
             this.btnLockCustomer.Name = "btnLockCustomer";
             this.btnLockCustomer.Size = new System.Drawing.Size(162, 38);
@@ -388,18 +385,16 @@
             this.txtDetailCustomerPhone.Location = new System.Drawing.Point(304, 152);
             this.txtDetailCustomerPhone.Name = "txtDetailCustomerPhone";
             this.txtDetailCustomerPhone.ReadOnly = true;
-            this.txtDetailCustomerPhone.Size = new System.Drawing.Size(220, 27);
+            this.txtDetailCustomerPhone.Size = new System.Drawing.Size(220, 31);
             this.txtDetailCustomerPhone.TabIndex = 8;
-            this.txtDetailCustomerPhone.TextChanged += new System.EventHandler(this.txtDetailCustomerPhone_TextChanged);
             // 
             // txtDetailCustomerEmail
             // 
             this.txtDetailCustomerEmail.Location = new System.Drawing.Point(304, 83);
             this.txtDetailCustomerEmail.Name = "txtDetailCustomerEmail";
             this.txtDetailCustomerEmail.ReadOnly = true;
-            this.txtDetailCustomerEmail.Size = new System.Drawing.Size(220, 27);
+            this.txtDetailCustomerEmail.Size = new System.Drawing.Size(220, 31);
             this.txtDetailCustomerEmail.TabIndex = 7;
-            this.txtDetailCustomerEmail.TextChanged += new System.EventHandler(this.txtDetailCustomerEmail_TextChanged);
             // 
             // lblDetailCustomerEmail
             // 
@@ -420,14 +415,13 @@
             this.lblDetailCustomerPhone.Size = new System.Drawing.Size(200, 31);
             this.lblDetailCustomerPhone.TabIndex = 5;
             this.lblDetailCustomerPhone.Text = "SĐT";
-            this.lblDetailCustomerPhone.Click += new System.EventHandler(this.lblDetailCustomerPhone_Click);
             // 
             // txtDetailCustomerName
             // 
             this.txtDetailCustomerName.Location = new System.Drawing.Point(30, 151);
             this.txtDetailCustomerName.Name = "txtDetailCustomerName";
             this.txtDetailCustomerName.ReadOnly = true;
-            this.txtDetailCustomerName.Size = new System.Drawing.Size(220, 27);
+            this.txtDetailCustomerName.Size = new System.Drawing.Size(220, 31);
             this.txtDetailCustomerName.TabIndex = 4;
             // 
             // lblDetailCustomerName
@@ -439,16 +433,14 @@
             this.lblDetailCustomerName.Size = new System.Drawing.Size(338, 27);
             this.lblDetailCustomerName.TabIndex = 3;
             this.lblDetailCustomerName.Text = "Họ và tên";
-            this.lblDetailCustomerName.Click += new System.EventHandler(this.lblDetailCustomerName_Click);
             // 
             // txtDetailCustomerId
             // 
             this.txtDetailCustomerId.Location = new System.Drawing.Point(30, 77);
             this.txtDetailCustomerId.Name = "txtDetailCustomerId";
             this.txtDetailCustomerId.ReadOnly = true;
-            this.txtDetailCustomerId.Size = new System.Drawing.Size(220, 27);
+            this.txtDetailCustomerId.Size = new System.Drawing.Size(220, 31);
             this.txtDetailCustomerId.TabIndex = 2;
-            this.txtDetailCustomerId.TextChanged += new System.EventHandler(this.txtDetailCustomerId_TextChanged);
             // 
             // lblDetailCustomerId
             // 
@@ -471,7 +463,7 @@
             // 
             // frmAdminDashboard
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.WhiteSmoke;

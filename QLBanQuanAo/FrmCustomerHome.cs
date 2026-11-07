@@ -104,12 +104,12 @@ namespace QLBanQuanAo
                 });
                 cboSort.SelectedIndex = 0;
             }
-                
+
             isLoaded = true;
             CapNhatHeader();
             DoiMauNutTab();
             LocVaHienThiSanPham();
-            
+
 
         }
         private void CapNhatHeader()
@@ -195,7 +195,7 @@ namespace QLBanQuanAo
                                  && (currentTab == "ALL"
                                         || (currentTab == "HOT" && sp.is_hot == true)
                                         || (currentTab == "SALE" && sp.is_sale == true))
-                                    select sp;
+                                 select sp;
 
 
                 if (sapXep == 1)
@@ -321,7 +321,7 @@ namespace QLBanQuanAo
             }
         }
 
-        private void btnUser_Click_1(object sender, EventArgs e)
+        private void btnCustomerProfile_Click(object sender, EventArgs e)
         {
             if (!UserSession.IsLoggedIn)
             {
@@ -339,6 +339,18 @@ namespace QLBanQuanAo
                     this.Show();
                 }
             }
+
+            // Cập nhật tên hiển thị sau khi khách hàng sửa hồ sơ.
+            CapNhatHeader();
+        }
+
+        private void btnUser_Click_1(object sender, EventArgs e)
+        {
+            if (UserSession.IsLoggedIn) return;
+
+            frmLogin loginForm = new frmLogin();
+            loginForm.Show();
+            this.Hide();
         }
 
         private void btnLogout_Click_1(object sender, EventArgs e)

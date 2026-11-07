@@ -11,6 +11,7 @@ namespace QLBanQuanAo
     public partial class frmAdminProduct : Form
     {
         private string selectedRelativeImagePath = "";
+        private int selectedVariantId = 0;
 
         public frmAdminProduct()
         {
@@ -26,6 +27,8 @@ namespace QLBanQuanAo
             loadFilterStatusComboBox();
             loadDetailCategoryComboBox();
             loadDetailStatusComboBox();
+            loadVariantLookups();
+            ResetVariantEditor();
             loadProductData();
         }
 
@@ -204,6 +207,9 @@ namespace QLBanQuanAo
                         selectedRelativeImagePath = "";
                         picProductImage.Image = null;
                     }
+
+                    loadVariantData(productId);
+                    ResetVariantEditor();
                 }
             }
         }
@@ -376,7 +382,7 @@ namespace QLBanQuanAo
                 }
             }
         }
-        
+
 
         private void btnAddProduct_Click(object sender, EventArgs e)
         {
@@ -470,13 +476,13 @@ namespace QLBanQuanAo
         {
             if (string.IsNullOrEmpty(txtProductId.Text))
             {
-                MessageBox.Show("Vui lòng chọn sản phẩm cần xóa!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Vui lòng chọn sản phẩm cần ngừng kinh doanh!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             int productId = Convert.ToInt32(txtProductId.Text);
-            var confirm = MessageBox.Show("Bạn có chắc chắn muốn XÓA VĨNH VIỄN sản phẩm này khỏi cơ sở dữ liệu không?\n(Lưu ý: Hành động này không thể hoàn tác!)",
-                                          "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            var confirm = MessageBox.Show("Bạn có chắc chắn muốn NGỪNG KINH DOANH sản phẩm này không?\nSản phẩm và các biến thể sẽ được ẩn khỏi hoạt động mua bán, nhưng lịch sử đơn hàng vẫn được giữ lại.",
+                                          "Xác nhận ngừng kinh doanh", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (confirm == DialogResult.Yes)
             {
@@ -487,19 +493,26 @@ namespace QLBanQuanAo
                     {
                         try
                         {
-                            // LINQ to SQL: Xóa sản phẩm trực tiếp khỏi Database
-                            db.products.DeleteOnSubmit(p);
+                            // Không xóa vật lý để giữ lịch sử đơn hàng và dữ liệu liên quan.
+                            p.status = "inactive";
+                            p.updated_at = DateTime.Now;
+
+                            foreach (var variant in db.product_variants.Where(v => v.product_id == productId))
+                            {
+                                variant.is_active = false;
+                            }
+
                             db.SubmitChanges();
 
-                            MessageBox.Show("Xóa sản phẩm thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("Đã ngừng kinh doanh sản phẩm và các biến thể liên quan.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             loadProductData();
                             btnClearProduct_Click(sender, e);
                         }
                         catch (Exception ex)
                         {
                             // Tránh văng ứng dụng nếu sản phẩm bị dính khóa ngoại (đã có trong Đơn hàng/Đánh giá)
-                            MessageBox.Show("Không thể xóa sản phẩm này vì đã có dữ liệu liên quan (Đơn hàng hoặc Đánh giá) trong hệ thống!",
-                                            "Lỗi xóa dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Không thể cập nhật trạng thái sản phẩm. Chi tiết: " + ex.Message,
+                                            "Lỗi cập nhật", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                 }
@@ -517,7 +530,22 @@ namespace QLBanQuanAo
             int productId = Convert.ToInt32(txtProductId.Text);
 
             bool isSale = chkIsSale.Checked;
-            decimal? salePrice = isSale ? (decimal?)numProductSalePrice.Value : null;
+            decimal? salePrice = null;
+            if (isSale)
+            {
+                if (numProductSalePrice.Value <= 0 || numProductSalePrice.Value >= numProductPrice.Value)
+                {
+                    MessageBox.Show("Giá khuyến mãi phải lớn hơn 0 và nhỏ hơn giá bán gốc!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                salePrice = numProductSalePrice.Value;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtProductName.Text) || cboCategory.SelectedValue == null)
+            {
+                MessageBox.Show("Vui lòng nhập tên sản phẩm và chọn danh mục!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
             using (QLBanHangDataContext db = new QLBanHangDataContext())
             {
@@ -600,7 +628,317 @@ namespace QLBanQuanAo
             if (cboCategory.Items.Count > 0) cboCategory.SelectedIndex = 0;
             if (cboProductStatus.Items.Count > 0) cboProductStatus.SelectedIndex = 0;
 
+            dgvVariants.DataSource = null;
+            ResetVariantEditor();
             txtProductName.Focus();
+        }
+
+        private void loadVariantLookups()
+        {
+            using (QLBanHangDataContext db = new QLBanHangDataContext())
+            {
+                var colorOptions = db.product_colors
+                    .OrderBy(c => c.name)
+                    .Select(c => new { Id = (int?)c.id, Name = c.name })
+                    .ToList();
+                colorOptions.Insert(0, new { Id = (int?)null, Name = "-- Không phân loại --" });
+
+                cboVariantColor.DisplayMember = "Name";
+                cboVariantColor.ValueMember = "Id";
+                cboVariantColor.DataSource = colorOptions;
+
+                var sizeOptions = db.product_sizes
+                    .OrderBy(z => z.sort_order)
+                    .ThenBy(z => z.name)
+                    .Select(z => new { Id = (int?)z.id, Name = z.name })
+                    .ToList();
+                sizeOptions.Insert(0, new { Id = (int?)null, Name = "-- Không phân loại --" });
+
+                cboVariantSize.DisplayMember = "Name";
+                cboVariantSize.ValueMember = "Id";
+                cboVariantSize.DataSource = sizeOptions;
+            }
+        }
+
+        private int? GetNullableComboValue(ComboBox combo)
+        {
+            if (combo.SelectedValue == null || combo.SelectedValue == DBNull.Value)
+                return null;
+
+            int value;
+            if (int.TryParse(combo.SelectedValue.ToString(), out value))
+                return value;
+
+            return null;
+        }
+
+        private void loadVariantData(int productId)
+        {
+            using (QLBanHangDataContext db = new QLBanHangDataContext())
+            {
+                var variantList = db.product_variants
+                    .Where(v => v.product_id == productId)
+                    .OrderBy(v => v.id)
+                    .Select(v => new
+                    {
+                        id = v.id,
+                        sku = v.sku,
+                        ColorName = v.product_color != null ? v.product_color.name : "Không phân loại",
+                        SizeName = v.product_size != null ? v.product_size.name : "Không phân loại",
+                        PriceOverride = v.price_override,
+                        StockQuantity = v.inventories.Select(i => (int?)i.stock_quantity).FirstOrDefault() ?? 0,
+                        Status = v.is_active ? "Đang kinh doanh" : "Ngừng kinh doanh"
+                    })
+                    .ToList();
+
+                dgvVariants.DataSource = variantList;
+            }
+        }
+
+        private bool TryGetSelectedProductId(out int productId)
+        {
+            return int.TryParse(txtProductId.Text, out productId) && productId > 0;
+        }
+
+        private string BuildVariantSku(int productId, int? colorId, int? sizeId, QLBanHangDataContext db)
+        {
+            string baseSku = "SP" + productId.ToString("D4") +
+                             "-C" + (colorId.HasValue ? colorId.Value.ToString() : "0") +
+                             "-S" + (sizeId.HasValue ? sizeId.Value.ToString() : "0");
+            string candidate = baseSku;
+            int suffix = 1;
+
+            while (db.product_variants.Any(v => v.sku == candidate))
+            {
+                candidate = baseSku + "-" + suffix.ToString();
+                suffix++;
+            }
+
+            return candidate;
+        }
+
+        private void SetVariantButtons()
+        {
+            int productId;
+            bool hasProduct = TryGetSelectedProductId(out productId);
+            btnAddVariant.Enabled = hasProduct && selectedVariantId == 0;
+            btnUpdateVariant.Enabled = hasProduct && selectedVariantId > 0;
+            btnDisableVariant.Enabled = hasProduct && selectedVariantId > 0;
+            btnClearVariant.Enabled = hasProduct;
+
+            cboVariantColor.Enabled = hasProduct && selectedVariantId == 0;
+            cboVariantSize.Enabled = hasProduct && selectedVariantId == 0;
+            txtVariantSku.Enabled = hasProduct && selectedVariantId == 0;
+            numVariantPrice.Enabled = hasProduct;
+            numVariantStock.Enabled = hasProduct;
+            chkVariantActive.Enabled = hasProduct;
+
+            lblVariantHint.Text = hasProduct
+                ? "Đang quản lý biến thể của sản phẩm mã " + productId + ". Chọn một dòng để cập nhật tồn kho hoặc trạng thái."
+                : "Chọn một sản phẩm ở danh sách bên trái trước khi thêm hoặc cập nhật biến thể.";
+        }
+
+        private void ResetVariantEditor()
+        {
+            selectedVariantId = 0;
+            txtVariantSku.Clear();
+            numVariantPrice.Value = 0;
+            numVariantStock.Value = 0;
+            chkVariantActive.Checked = true;
+
+            cboVariantColor.Enabled = true;
+            cboVariantSize.Enabled = true;
+            txtVariantSku.Enabled = true;
+
+            if (cboVariantColor.Items.Count > 0) cboVariantColor.SelectedIndex = 0;
+            if (cboVariantSize.Items.Count > 0) cboVariantSize.SelectedIndex = 0;
+
+            SetVariantButtons();
+        }
+
+        private void dgvVariants_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0 || dgvVariants.Rows[e.RowIndex].IsNewRow)
+                return;
+
+            object idValue = dgvVariants.Rows[e.RowIndex].Cells["colVariantId"].Value;
+            if (idValue == null || idValue == DBNull.Value)
+                return;
+
+            int variantId = Convert.ToInt32(idValue);
+            using (QLBanHangDataContext db = new QLBanHangDataContext())
+            {
+                var variant = db.product_variants.FirstOrDefault(v => v.id == variantId);
+                if (variant == null) return;
+
+                selectedVariantId = variant.id;
+                txtVariantSku.Text = variant.sku;
+                if (variant.color_id.HasValue)
+                    cboVariantColor.SelectedValue = variant.color_id.Value;
+                else if (cboVariantColor.Items.Count > 0)
+                    cboVariantColor.SelectedIndex = 0;
+
+                if (variant.size_id.HasValue)
+                    cboVariantSize.SelectedValue = variant.size_id.Value;
+                else if (cboVariantSize.Items.Count > 0)
+                    cboVariantSize.SelectedIndex = 0;
+                numVariantPrice.Value = variant.price_override.HasValue ? variant.price_override.Value : 0;
+                chkVariantActive.Checked = variant.is_active;
+
+                var stock = variant.inventories.FirstOrDefault();
+                numVariantStock.Value = stock != null ? stock.stock_quantity : 0;
+
+                // Không đổi tổ hợp màu/size của biến thể đã tạo; tránh làm sai dữ liệu giỏ hàng.
+                cboVariantColor.Enabled = false;
+                cboVariantSize.Enabled = false;
+                txtVariantSku.Enabled = false;
+                SetVariantButtons();
+            }
+        }
+
+        private void btnAddVariant_Click(object sender, EventArgs e)
+        {
+            int productId;
+            if (!TryGetSelectedProductId(out productId))
+            {
+                MessageBox.Show("Vui lòng chọn hoặc lưu sản phẩm trước khi thêm biến thể.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            int? colorId = GetNullableComboValue(cboVariantColor);
+            int? sizeId = GetNullableComboValue(cboVariantSize);
+            string sku = txtVariantSku.Text.Trim();
+
+            using (QLBanHangDataContext db = new QLBanHangDataContext())
+            {
+                bool duplicatedCombination = db.product_variants.Any(v =>
+                    v.product_id == productId && v.color_id == colorId && v.size_id == sizeId);
+
+                if (duplicatedCombination)
+                {
+                    MessageBox.Show("Tổ hợp màu sắc và kích thước này đã tồn tại. Hãy chọn biến thể đó trong danh sách để cập nhật.",
+                                    "Trùng biến thể", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (string.IsNullOrWhiteSpace(sku))
+                    sku = BuildVariantSku(productId, colorId, sizeId, db);
+
+                if (db.product_variants.Any(v => v.sku == sku))
+                {
+                    MessageBox.Show("Mã SKU đã tồn tại. Vui lòng nhập mã khác.", "Trùng SKU", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtVariantSku.Focus();
+                    return;
+                }
+
+                product_variant newVariant = new product_variant
+                {
+                    product_id = productId,
+                    sku = sku,
+                    color_id = colorId,
+                    size_id = sizeId,
+                    price_override = numVariantPrice.Value > 0 ? (decimal?)numVariantPrice.Value : null,
+                    is_active = chkVariantActive.Checked,
+                    created_at = DateTime.Now
+                };
+
+                // Thêm inventory qua quan hệ LINQ to SQL để variant và tồn kho được lưu cùng SubmitChanges.
+                newVariant.inventories.Add(new inventory
+                {
+                    stock_quantity = (int)numVariantStock.Value,
+                    updated_at = DateTime.Now
+                });
+
+                db.product_variants.InsertOnSubmit(newVariant);
+                db.SubmitChanges();
+            }
+
+            loadVariantData(productId);
+            loadProductData();
+            ResetVariantEditor();
+            MessageBox.Show("Đã thêm biến thể và khởi tạo tồn kho.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void btnUpdateVariant_Click(object sender, EventArgs e)
+        {
+            int productId;
+            if (!TryGetSelectedProductId(out productId) || selectedVariantId <= 0)
+            {
+                MessageBox.Show("Vui lòng chọn biến thể cần cập nhật trong danh sách.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            using (QLBanHangDataContext db = new QLBanHangDataContext())
+            {
+                var variant = db.product_variants.FirstOrDefault(v => v.id == selectedVariantId && v.product_id == productId);
+                if (variant == null)
+                {
+                    MessageBox.Show("Không tìm thấy biến thể cần cập nhật.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    loadVariantData(productId);
+                    ResetVariantEditor();
+                    return;
+                }
+
+                variant.price_override = numVariantPrice.Value > 0 ? (decimal?)numVariantPrice.Value : null;
+                variant.is_active = chkVariantActive.Checked;
+
+                var stock = variant.inventories.FirstOrDefault();
+                if (stock == null)
+                {
+                    variant.inventories.Add(new inventory
+                    {
+                        stock_quantity = (int)numVariantStock.Value,
+                        updated_at = DateTime.Now
+                    });
+                }
+                else
+                {
+                    stock.stock_quantity = (int)numVariantStock.Value;
+                    stock.updated_at = DateTime.Now;
+                }
+
+                db.SubmitChanges();
+            }
+
+            loadVariantData(productId);
+            loadProductData();
+            ResetVariantEditor();
+            MessageBox.Show("Đã cập nhật giá riêng, tồn kho và trạng thái biến thể.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void btnDisableVariant_Click(object sender, EventArgs e)
+        {
+            int productId;
+            if (!TryGetSelectedProductId(out productId) || selectedVariantId <= 0)
+            {
+                MessageBox.Show("Vui lòng chọn biến thể cần ngừng kinh doanh.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            DialogResult confirm = MessageBox.Show(
+                "Ngừng kinh doanh biến thể này? Dữ liệu đơn hàng cũ và tồn kho vẫn được giữ lại.",
+                "Xác nhận ngừng bán", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (confirm != DialogResult.Yes) return;
+
+            using (QLBanHangDataContext db = new QLBanHangDataContext())
+            {
+                var variant = db.product_variants.FirstOrDefault(v => v.id == selectedVariantId && v.product_id == productId);
+                if (variant == null) return;
+
+                variant.is_active = false;
+                db.SubmitChanges();
+            }
+
+            loadVariantData(productId);
+            loadProductData();
+            ResetVariantEditor();
+            MessageBox.Show("Đã ngừng kinh doanh biến thể.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void btnClearVariant_Click(object sender, EventArgs e)
+        {
+            ResetVariantEditor();
         }
 
         private void btnExit_Click(object sender, EventArgs e)

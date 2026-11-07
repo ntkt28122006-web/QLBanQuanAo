@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Data;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -7,6 +6,9 @@ namespace QLBanQuanAo
 {
     public partial class frmAdminDashboard : Form
     {
+        private bool _isBindingStatusFilter;
+        private bool _isResettingControls;
+
         public frmAdminDashboard()
         {
             InitializeComponent();
@@ -14,107 +16,187 @@ namespace QLBanQuanAo
 
         private void frmAdminDashboard_Load(object sender, EventArgs e)
         {
+            dgvCustomers.AutoGenerateColumns = false;
+            dgvCustomers.ReadOnly = true;
+            dgvCustomers.AllowUserToAddRows = false;
+            dgvCustomers.AllowUserToDeleteRows = false;
+            dgvCustomers.MultiSelect = false;
+            dgvCustomers.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvCustomers.ClearSelection();
+
+            btnLockCustomer.Enabled = false;
+            btnUnlockCustomer.Enabled = false;
+
             loadFilterCustomerStatusComboBox();
             loadCustomerData();
         }
 
-        // Đổ danh sách trạng thái tài khoản vào ComboBox lọc
+        // Đổ đầy đủ ba trạng thái có trong bảng users.
         private void loadFilterCustomerStatusComboBox()
         {
             var statusList = new[]
             {
                 new { Value = "all", Text = "-- Tất cả trạng thái --" },
-                new { Value = "active", Text = "Đang hoạt động (active)" },
-                new { Value = "banned", Text = "Tạm khóa (locked)" }
+                new { Value = "active", Text = "Đang hoạt động" },
+                new { Value = "inactive", Text = "Ngừng hoạt động" },
+                new { Value = "banned", Text = "Đã khóa" }
             };
 
-            if (cboFilterCustomerStatus != null)
+            _isBindingStatusFilter = true;
+            try
             {
-                cboFilterCustomerStatus.DataSource = statusList.ToList();
+                cboFilterCustomerStatus.DataSource = statusList;
                 cboFilterCustomerStatus.DisplayMember = "Text";
                 cboFilterCustomerStatus.ValueMember = "Value";
+                cboFilterCustomerStatus.SelectedValue = "all";
+            }
+            finally
+            {
+                _isBindingStatusFilter = false;
             }
         }
 
-        // Truy vấn danh sách khách hàng bằng LINQ to SQL Lambda
+        // Chỉ lấy tài khoản có vai trò Customer; loại trừ tài khoản có vai trò Admin.
         private void loadCustomerData()
         {
-            QLBanHangDataContext db = new QLBanHangDataContext();
-            string keyword = txtSearchCustomer != null ? txtSearchCustomer.Text.Trim().ToLower() : "";
-            string selectedStatus = (cboFilterCustomerStatus != null && cboFilterCustomerStatus.SelectedValue != null)
-                ? cboFilterCustomerStatus.SelectedValue.ToString()
-                : "all";
+            if (_isResettingControls) return;
 
-            var query = db.users.AsQueryable();
+            string keyword = txtSearchCustomer.Text.Trim().ToLower();
+            string selectedStatus = cboFilterCustomerStatus.SelectedValue == null
+                ? "all"
+                : cboFilterCustomerStatus.SelectedValue.ToString();
 
-            // Tìm kiếm theo Họ tên, Email hoặc Số điện thoại
-            if (!string.IsNullOrEmpty(keyword))
+            try
             {
-                query = query.Where(u => u.full_name.ToLower().Contains(keyword) ||
-                                         u.email.ToLower().Contains(keyword) ||
-                                         u.phone.Contains(keyword));
-            }
-
-            // Lọc theo trạng thái tài khoản
-            if (selectedStatus != "all")
-            {
-                query = query.Where(u => u.status == selectedStatus);
-            }
-
-            var result = query
-                .Select(u => new
+                using (QLBanHangDataContext db = new QLBanHangDataContext())
                 {
-                    MaKH = u.id,
-                    HoTen = u.full_name,
-                    Email = u.email,
-                    SoDienThoai = u.phone,
-                    TrangThai = u.status == "active" ? "Hoạt động" : "Tạm khóa",
-                    NgayTao = u.created_at
-                })
-                .OrderByDescending(u => u.MaKH)
-                .ToList();
+                    var query = db.users.Where(u =>
+                        u.user_roles.Any(ur => ur.role.name == "Customer") &&
+                        !u.user_roles.Any(ur => ur.role.name == "Admin"));
 
-            if (dgvCustomers != null)
-            {
-                dgvCustomers.DataSource = result;
-            }
+                    if (!string.IsNullOrWhiteSpace(keyword))
+                    {
+                        query = query.Where(u =>
+                            u.full_name.ToLower().Contains(keyword) ||
+                            u.email.ToLower().Contains(keyword) ||
+                            (u.phone != null && u.phone.Contains(keyword)));
+                    }
 
-            if (result.Count > 0)
-            {
-                hienthiDuLieuDong(0);
+                    if (selectedStatus != "all")
+                    {
+                        query = query.Where(u => u.status == selectedStatus);
+                    }
+
+                    var result = query
+                        .OrderByDescending(u => u.created_at)
+                        .Select(u => new
+                        {
+                            MaKH = u.id,
+                            HoTen = u.full_name,
+                            Email = u.email,
+                            SoDienThoai = u.phone ?? "",
+                            TrangThai = u.status == "active"
+                                ? "Đang hoạt động"
+                                : (u.status == "inactive" ? "Ngừng hoạt động" : "Đã khóa"),
+                            NgayTao = u.created_at
+                        })
+                        .ToList();
+
+                    dgvCustomers.DataSource = result;
+                }
+
+                if (dgvCustomers.Rows.Count > 0)
+                {
+                    hienthiDuLieuDong(0);
+                }
+                else
+                {
+                    clearCustomerDetails();
+                }
             }
-            else
+            catch (Exception ex)
             {
-                clearCustomerForm();
+                dgvCustomers.DataSource = null;
+                clearCustomerDetails();
+                MessageBox.Show(
+                    "Không thể tải danh sách khách hàng.\nChi tiết: " + ex.Message,
+                    "Lỗi dữ liệu",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
             }
         }
 
         private void hienthiDuLieuDong(int idrow)
         {
-            if (dgvCustomers == null || idrow < 0 || idrow >= dgvCustomers.Rows.Count) return;
+            if (idrow < 0 || idrow >= dgvCustomers.Rows.Count) return;
 
-            QLBanHangDataContext db = new QLBanHangDataContext();
-            int id = Convert.ToInt32(dgvCustomers.Rows[idrow].Cells[0].Value);
-
-            var usr = db.users.SingleOrDefault(u => u.id == id);
-            if (usr != null)
+            object idValue = dgvCustomers.Rows[idrow].Cells["colCustomerId"].Value;
+            if (idValue == null || idValue == DBNull.Value)
             {
-                if (txtDetailCustomerId != null) txtDetailCustomerId.Text = usr.id.ToString();
-                if (txtDetailCustomerName != null) txtDetailCustomerName.Text = usr.full_name;
-                if (txtDetailCustomerEmail != null) txtDetailCustomerEmail.Text = usr.email;
+                clearCustomerDetails();
+                return;
+            }
+
+            int userId;
+            if (!int.TryParse(idValue.ToString(), out userId))
+            {
+                clearCustomerDetails();
+                return;
+            }
+
+            try
+            {
+                using (QLBanHangDataContext db = new QLBanHangDataContext())
+                {
+                    var usr = db.users.SingleOrDefault(u =>
+                        u.id == userId &&
+                        u.user_roles.Any(ur => ur.role.name == "Customer") &&
+                        !u.user_roles.Any(ur => ur.role.name == "Admin"));
+
+                    if (usr == null)
+                    {
+                        clearCustomerDetails();
+                        return;
+                    }
+
+                    txtDetailCustomerId.Text = usr.id.ToString();
+                    txtDetailCustomerName.Text = usr.full_name;
+                    txtDetailCustomerEmail.Text = usr.email;
+                    txtDetailCustomerPhone.Text = usr.phone ?? "";
+                    lblCustomerStatus.Text = "Trạng thái: " + getCustomerStatusText(usr.status);
+
+                    btnLockCustomer.Enabled = usr.status != "banned";
+                    btnUnlockCustomer.Enabled = usr.status != "active";
+                }
+            }
+            catch (Exception ex)
+            {
+                clearCustomerDetails();
+                MessageBox.Show(
+                    "Không thể tải thông tin tài khoản.\nChi tiết: " + ex.Message,
+                    "Lỗi dữ liệu",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+        }
+
+        private string getCustomerStatusText(string status)
+        {
+            switch (status)
+            {
+                case "active": return "Đang hoạt động";
+                case "inactive": return "Ngừng hoạt động";
+                case "banned": return "Đã khóa";
+                default: return "Không xác định";
             }
         }
 
         private void dgvCustomers_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-
-        }
-
-        private void dgvCustomers_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            int idrow = e.RowIndex;
-            if (idrow == -1) return;
-            hienthiDuLieuDong(idrow);
+            if (e.RowIndex >= 0)
+            {
+                hienthiDuLieuDong(e.RowIndex);
+            }
         }
 
         private void btnSearchCustomer_Click(object sender, EventArgs e)
@@ -124,89 +206,133 @@ namespace QLBanQuanAo
 
         private void txtSearchCustomer_TextChanged(object sender, EventArgs e)
         {
-            loadCustomerData();
+            if (!_isResettingControls)
+            {
+                loadCustomerData();
+            }
         }
 
         private void cboFilterCustomerStatus_SelectedIndexChanged(object sender, EventArgs e)
         {
-            loadCustomerData();
+            if (!_isBindingStatusFilter && !_isResettingControls)
+            {
+                loadCustomerData();
+            }
         }
 
-        // Khóa tài khoản khách hàng
         private void btnLockCustomer_Click(object sender, EventArgs e)
         {
-            if (txtDetailCustomerId == null || string.IsNullOrEmpty(txtDetailCustomerId.Text))
-            {
-                MessageBox.Show("Vui lòng chọn tài khoản khách hàng cần khóa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            int userId = Convert.ToInt32(txtDetailCustomerId.Text);
-            QLBanHangDataContext db = new QLBanHangDataContext();
-            var usr = db.users.SingleOrDefault(u => u.id == userId);
-
-            if (usr != null)
-            {
-                usr.status = "banned";
-                db.SubmitChanges();
-                MessageBox.Show("Đã khóa tài khoản khách hàng thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                loadCustomerData();
-            }
+            changeCustomerStatus("banned", "khóa");
         }
 
-        // Mở khóa tài khoản khách hàng
         private void btnUnlockCustomer_Click(object sender, EventArgs e)
         {
-            if (txtDetailCustomerId == null || string.IsNullOrEmpty(txtDetailCustomerId.Text))
+            changeCustomerStatus("active", "mở khóa");
+        }
+
+        private void changeCustomerStatus(string newStatus, string actionText)
+        {
+            int userId;
+            if (!int.TryParse(txtDetailCustomerId.Text, out userId))
             {
-                MessageBox.Show("Vui lòng chọn tài khoản khách hàng cần mở khóa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(
+                    "Vui lòng chọn tài khoản khách hàng cần thao tác!",
+                    "Thông báo",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
                 return;
             }
 
-            int userId = Convert.ToInt32(txtDetailCustomerId.Text);
-            QLBanHangDataContext db = new QLBanHangDataContext();
-            var usr = db.users.SingleOrDefault(u => u.id == userId);
+            DialogResult confirm = MessageBox.Show(
+                "Bạn có chắc chắn muốn " + actionText + " tài khoản khách hàng này không?",
+                "Xác nhận",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
 
-            if (usr != null)
+            if (confirm != DialogResult.Yes) return;
+
+            try
             {
-                usr.status = "active";
-                db.SubmitChanges();
-                MessageBox.Show("Đã mở khóa tài khoản thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                using (QLBanHangDataContext db = new QLBanHangDataContext())
+                {
+                    var usr = db.users.SingleOrDefault(u =>
+                        u.id == userId &&
+                        u.user_roles.Any(ur => ur.role.name == "Customer") &&
+                        !u.user_roles.Any(ur => ur.role.name == "Admin"));
+
+                    if (usr == null)
+                    {
+                        MessageBox.Show(
+                            "Tài khoản không còn thuộc nhóm khách hàng hoặc đã được thay đổi vai trò.",
+                            "Không thể thực hiện",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Warning);
+                        loadCustomerData();
+                        return;
+                    }
+
+                    if (usr.status == newStatus)
+                    {
+                        MessageBox.Show(
+                            "Tài khoản đang ở trạng thái này rồi.",
+                            "Thông báo",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Information);
+                        hienthiDuLieuDong(dgvCustomers.CurrentRow == null ? -1 : dgvCustomers.CurrentRow.Index);
+                        return;
+                    }
+
+                    usr.status = newStatus;
+                    usr.updated_at = DateTime.Now;
+                    db.SubmitChanges();
+                }
+
+                MessageBox.Show(
+                    "Đã " + actionText + " tài khoản khách hàng thành công!",
+                    "Thông báo",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+
                 loadCustomerData();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    "Không thể cập nhật trạng thái tài khoản.\nChi tiết: " + ex.Message,
+                    "Lỗi dữ liệu",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
             }
         }
 
         private void btnRefreshCustomer_Click(object sender, EventArgs e)
         {
-            clearCustomerForm();
+            _isResettingControls = true;
+            try
+            {
+                txtSearchCustomer.Clear();
+                if (cboFilterCustomerStatus.Items.Count > 0)
+                {
+                    cboFilterCustomerStatus.SelectedValue = "all";
+                }
+            }
+            finally
+            {
+                _isResettingControls = false;
+            }
+
             loadCustomerData();
         }
 
-        private void clearCustomerForm()
+        private void clearCustomerDetails()
         {
-            if (txtSearchCustomer != null) txtSearchCustomer.Clear();
-            if (txtDetailCustomerId != null) txtDetailCustomerId.Clear();
-            if (txtDetailCustomerName != null) txtDetailCustomerName.Clear();
-            if (txtDetailCustomerEmail != null) txtDetailCustomerEmail.Clear();
-            if (cboFilterCustomerStatus != null && cboFilterCustomerStatus.Items.Count > 0)
-                cboFilterCustomerStatus.SelectedIndex = 0;
-        }
-
-        private void lblCustomerManagementTitle_Click(object sender, EventArgs e) { }
-        private void txtDetailCustomerEmail_TextChanged(object sender, EventArgs e) { }
-        private void lblDetailCustomerPhone_Click(object sender, EventArgs e) { }
-        private void txtDetailCustomerId_TextChanged(object sender, EventArgs e) { }
-        private void lblDetailCustomerName_Click(object sender, EventArgs e) { }
-        private void pnlCustomerList_Paint(object sender, PaintEventArgs e) { }
-
-        private void pnlCustomerDetail_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void txtDetailCustomerPhone_TextChanged(object sender, EventArgs e)
-        {
-
+            txtDetailCustomerId.Clear();
+            txtDetailCustomerName.Clear();
+            txtDetailCustomerEmail.Clear();
+            txtDetailCustomerPhone.Clear();
+            lblCustomerStatus.Text = "Trạng thái: Chưa chọn tài khoản";
+            btnLockCustomer.Enabled = false;
+            btnUnlockCustomer.Enabled = false;
         }
     }
 }

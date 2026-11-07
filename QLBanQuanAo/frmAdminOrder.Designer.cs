@@ -50,6 +50,13 @@
             this.pnlOrderBody = new System.Windows.Forms.Panel();
             this.splitOrderContent = new System.Windows.Forms.SplitContainer();
             this.dgvOrders = new System.Windows.Forms.DataGridView();
+            this.colOrderStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colOrderPaymentStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colOrderTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colOrderDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colOrderPhone = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colOrderCustomer = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colOrderId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvOrderDetails = new System.Windows.Forms.DataGridView();
             this.colDetailLineTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colDetailUnitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -58,13 +65,6 @@
             this.colDetailColor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colDetailSKU = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colDetailProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colOrderStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colOrderPaymentStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colOrderTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colOrderDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colOrderPhone = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colOrderCustomer = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colOrderId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlOrderHeader.SuspendLayout();
             this.pnlOrderFilter.SuspendLayout();
             this.pnlOrderBody.SuspendLayout();
@@ -78,7 +78,7 @@
             // 
             // pnlOrderHeader
             // 
-            this.pnlOrderHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(41)))), ((int)(((byte)(55)))));
+            this.pnlOrderHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(77)))), ((int)(((byte)(45)))));
             this.pnlOrderHeader.Controls.Add(this.lblOrderDescription);
             this.pnlOrderHeader.Controls.Add(this.lblOrderTitle);
             this.pnlOrderHeader.Dock = System.Windows.Forms.DockStyle.Top;
@@ -132,11 +132,12 @@
             // lblTodate
             // 
             this.lblTodate.AutoSize = true;
-            this.lblTodate.Location = new System.Drawing.Point(365, 49);
+            this.lblTodate.Location = new System.Drawing.Point(365, 54);
             this.lblTodate.Name = "lblTodate";
             this.lblTodate.Size = new System.Drawing.Size(88, 25);
             this.lblTodate.TabIndex = 14;
             this.lblTodate.Text = "Đến ngày";
+            this.lblTodate.Click += new System.EventHandler(this.lblTodate_Click);
             // 
             // lblFromDate
             // 
@@ -205,21 +206,13 @@
             // 
             // dtpToDate
             // 
+            this.dtpToDate.CustomFormat = "dd/MM/yyyy";
             this.dtpToDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpToDate.Location = new System.Drawing.Point(471, 49);
+            this.dtpToDate.Location = new System.Drawing.Point(465, 54);
             this.dtpToDate.Name = "dtpToDate";
             this.dtpToDate.Size = new System.Drawing.Size(180, 31);
             this.dtpToDate.TabIndex = 8;
             this.dtpToDate.ValueChanged += new System.EventHandler(this.dtpToDate_ValueChanged);
-            // 
-            // dtpToDate
-            // 
-            this.dtpToDate.CustomFormat = "dd/MM/yyyy";
-            this.dtpToDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpToDate.Location = new System.Drawing.Point(465, 55);
-            this.dtpToDate.Name = "dtpToDate";
-            this.dtpToDate.Size = new System.Drawing.Size(180, 27);
-            this.dtpToDate.TabIndex = 8;
             // 
             // cboFilterPaymentStatus
             // 
@@ -227,7 +220,7 @@
             this.cboFilterPaymentStatus.FormattingEnabled = true;
             this.cboFilterPaymentStatus.Location = new System.Drawing.Point(471, 10);
             this.cboFilterPaymentStatus.Name = "cboFilterPaymentStatus";
-            this.cboFilterPaymentStatus.Size = new System.Drawing.Size(180, 28);
+            this.cboFilterPaymentStatus.Size = new System.Drawing.Size(180, 33);
             this.cboFilterPaymentStatus.TabIndex = 7;
             this.cboFilterPaymentStatus.SelectedIndexChanged += new System.EventHandler(this.cboFilterPaymentStatus_SelectedIndexChanged);
             // 
@@ -251,8 +244,9 @@
             // 
             // dtpFromDate
             // 
+            this.dtpFromDate.CustomFormat = "dd/MM/yyyy";
             this.dtpFromDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpFromDate.Location = new System.Drawing.Point(165, 49);
+            this.dtpFromDate.Location = new System.Drawing.Point(162, 54);
             this.dtpFromDate.Name = "dtpFromDate";
             this.dtpFromDate.Size = new System.Drawing.Size(180, 31);
             this.dtpFromDate.TabIndex = 4;
@@ -323,7 +317,69 @@
             this.dgvOrders.Size = new System.Drawing.Size(1090, 218);
             this.dgvOrders.TabIndex = 0;
             this.dgvOrders.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvOrders_CellClick);
-            this.dgvOrders.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvOrders_CellContentClick);
+            // 
+            // colOrderStatus
+            // 
+            this.colOrderStatus.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colOrderStatus.DataPropertyName = "TrangThai";
+            this.colOrderStatus.HeaderText = "Trạng thái";
+            this.colOrderStatus.MinimumWidth = 8;
+            this.colOrderStatus.Name = "colOrderStatus";
+            this.colOrderStatus.ReadOnly = true;
+            // 
+            // colOrderPaymentStatus
+            // 
+            this.colOrderPaymentStatus.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colOrderPaymentStatus.DataPropertyName = "ThanhToan";
+            this.colOrderPaymentStatus.HeaderText = "Thanh toán";
+            this.colOrderPaymentStatus.MinimumWidth = 8;
+            this.colOrderPaymentStatus.Name = "colOrderPaymentStatus";
+            this.colOrderPaymentStatus.ReadOnly = true;
+            // 
+            // colOrderTotal
+            // 
+            this.colOrderTotal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colOrderTotal.DataPropertyName = "TongTien";
+            this.colOrderTotal.HeaderText = "Tổng tiền";
+            this.colOrderTotal.MinimumWidth = 8;
+            this.colOrderTotal.Name = "colOrderTotal";
+            this.colOrderTotal.ReadOnly = true;
+            // 
+            // colOrderDate
+            // 
+            this.colOrderDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colOrderDate.DataPropertyName = "NgayDat";
+            this.colOrderDate.HeaderText = "Ngày đặt";
+            this.colOrderDate.MinimumWidth = 8;
+            this.colOrderDate.Name = "colOrderDate";
+            this.colOrderDate.ReadOnly = true;
+            // 
+            // colOrderPhone
+            // 
+            this.colOrderPhone.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colOrderPhone.DataPropertyName = "SDT";
+            this.colOrderPhone.HeaderText = "Số điện thoại";
+            this.colOrderPhone.MinimumWidth = 8;
+            this.colOrderPhone.Name = "colOrderPhone";
+            this.colOrderPhone.ReadOnly = true;
+            // 
+            // colOrderCustomer
+            // 
+            this.colOrderCustomer.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colOrderCustomer.DataPropertyName = "KhachHang";
+            this.colOrderCustomer.HeaderText = "Người nhận";
+            this.colOrderCustomer.MinimumWidth = 8;
+            this.colOrderCustomer.Name = "colOrderCustomer";
+            this.colOrderCustomer.ReadOnly = true;
+            // 
+            // colOrderId
+            // 
+            this.colOrderId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colOrderId.DataPropertyName = "MaDonHang";
+            this.colOrderId.HeaderText = "Mã đơn";
+            this.colOrderId.MinimumWidth = 8;
+            this.colOrderId.Name = "colOrderId";
+            this.colOrderId.ReadOnly = true;
             // 
             // dgvOrderDetails
             // 
@@ -417,72 +473,9 @@
             this.colDetailProductName.Name = "colDetailProductName";
             this.colDetailProductName.ReadOnly = true;
             // 
-            // colOrderStatus
-            // 
-            this.colOrderStatus.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colOrderStatus.DataPropertyName = "TrangThai";
-            this.colOrderStatus.HeaderText = "Trạng thái";
-            this.colOrderStatus.MinimumWidth = 8;
-            this.colOrderStatus.Name = "colOrderStatus";
-            this.colOrderStatus.ReadOnly = true;
-            // 
-            // colOrderPaymentStatus
-            // 
-            this.colOrderPaymentStatus.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colOrderPaymentStatus.DataPropertyName = "ThanhToan";
-            this.colOrderPaymentStatus.HeaderText = "Thanh toán";
-            this.colOrderPaymentStatus.MinimumWidth = 8;
-            this.colOrderPaymentStatus.Name = "colOrderPaymentStatus";
-            this.colOrderPaymentStatus.ReadOnly = true;
-            // 
-            // colOrderTotal
-            // 
-            this.colOrderTotal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colOrderTotal.DataPropertyName = "TongTien";
-            this.colOrderTotal.HeaderText = "Tổng tiền";
-            this.colOrderTotal.MinimumWidth = 8;
-            this.colOrderTotal.Name = "colOrderTotal";
-            this.colOrderTotal.ReadOnly = true;
-            // 
-            // colOrderDate
-            // 
-            this.colOrderDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colOrderDate.DataPropertyName = "NgayDat";
-            this.colOrderDate.HeaderText = "Ngày đặt";
-            this.colOrderDate.MinimumWidth = 8;
-            this.colOrderDate.Name = "colOrderDate";
-            this.colOrderDate.ReadOnly = true;
-            // 
-            // colOrderPhone
-            // 
-            this.colOrderPhone.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colOrderPhone.DataPropertyName = "SDT";
-            this.colOrderPhone.HeaderText = "Số điện thoại";
-            this.colOrderPhone.MinimumWidth = 8;
-            this.colOrderPhone.Name = "colOrderPhone";
-            this.colOrderPhone.ReadOnly = true;
-            // 
-            // colOrderCustomer
-            // 
-            this.colOrderCustomer.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colOrderCustomer.DataPropertyName = "KhachHang";
-            this.colOrderCustomer.HeaderText = "Người nhận";
-            this.colOrderCustomer.MinimumWidth = 8;
-            this.colOrderCustomer.Name = "colOrderCustomer";
-            this.colOrderCustomer.ReadOnly = true;
-            // 
-            // colOrderId
-            // 
-            this.colOrderId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colOrderId.DataPropertyName = "MaDonHang";
-            this.colOrderId.HeaderText = "Mã đơn";
-            this.colOrderId.MinimumWidth = 8;
-            this.colOrderId.Name = "colOrderId";
-            this.colOrderId.ReadOnly = true;
-            // 
             // frmAdminOrder
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;

@@ -133,6 +133,12 @@
     <Compile Include="FrmCustomerHome.Designer.cs">
       <DependentUpon>FrmCustomerHome.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmInforCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmInforCustomer.Designer.cs">
+      <DependentUpon>frmInforCustomer.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmInHoaDon.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -208,6 +214,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmCustomerHome.resx">
       <DependentUpon>FrmCustomerHome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmInforCustomer.resx">
+      <DependentUpon>frmInforCustomer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmInHoaDon.resx">
       <DependentUpon>FrmInHoaDon.cs</DependentUpon>
@@ -339,6 +348,8 @@
     <Content Include="Uploads\Products\prod_639294414325983014.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Uploads\Products\**\*.*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     <Content Include="Uploads\Products\prod_639293996070483445.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
