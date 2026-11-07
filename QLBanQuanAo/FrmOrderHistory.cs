@@ -34,6 +34,7 @@ namespace QLBanQuanAo
                 default: return status;
             }
         }
+
         private void TaiDanhSachDonHang()
         {
 
@@ -88,7 +89,17 @@ namespace QLBanQuanAo
         }
         private void dgvOrders_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            if (dgvOrders.CurrentRow != null && dgvOrders.CurrentRow.Cells["MaDonHang"].Value != null)
+            {
+                if (int.TryParse(dgvOrders.CurrentRow.Cells["MaDonHang"].Value.ToString(), out int orderId))
+                {
+                    TaiChiTietDonHang(orderId);
+                }
+            }
+        }
+        private void dgvOrderItems_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+           
         }
 
         private void btnCancelOrder_Click(object sender, EventArgs e)
@@ -99,7 +110,7 @@ namespace QLBanQuanAo
                 return;
             }
 
-            int orderId = Convert.ToInt32(dgvOrderItems.CurrentRow.Cells["MaDonHang"].Value);
+            int orderId = Convert.ToInt32(dgvOrders.CurrentRow.Cells["MaDonHang"].Value);
 
             using (var db = new QLBanHangDataContext())
             {
@@ -155,5 +166,7 @@ namespace QLBanQuanAo
             FrmInHoaDon frm = new FrmInHoaDon(orderId);
             frm.ShowDialog();
         }
+
+       
     }
 }

@@ -19,6 +19,7 @@ namespace QLBanQuanAo
 
         private void frmAdminProduct_Load(object sender, EventArgs e)
         {
+
             dgvProducts.AutoGenerateColumns = false;
 
             loadFilterCategoryComboBox();
@@ -427,7 +428,6 @@ namespace QLBanQuanAo
                 db.products.InsertOnSubmit(newProduct);
                 db.SubmitChanges(); // SQL tự cấp ID sản phẩm
 
-                // 2. Lưu đường dẫn ảnh vào bảng product_images trong SQL Server
                 if (!string.IsNullOrEmpty(selectedRelativeImagePath))
                 {
                     product_image newImg = new product_image
@@ -442,6 +442,23 @@ namespace QLBanQuanAo
                     db.product_images.InsertOnSubmit(newImg);
                     db.SubmitChanges();
                 }
+
+                product_variant defaultVariant = new product_variant
+                {
+                    product_id = newProduct.id,
+                    sku = "SKU-" + newProduct.id + "-" + DateTime.Now.Ticks.ToString().Substring(10),
+                    is_active = true
+                };
+                db.product_variants.InsertOnSubmit(defaultVariant);
+                db.SubmitChanges();
+
+                db.inventories.InsertOnSubmit(new inventory
+                {
+                    variant_id = defaultVariant.id,
+                    stock_quantity = (newProduct.status == "out_of_stock") ? 0 : 50,
+                    updated_at = DateTime.Now
+                });
+                db.SubmitChanges();
 
                 MessageBox.Show("Thêm sản phẩm và lưu ảnh thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 loadProductData();
@@ -539,6 +556,24 @@ namespace QLBanQuanAo
                                 is_primary = true,
                                 created_at = DateTime.Now
                             });
+                        }
+                    }
+
+                    var variants = db.product_variants.Where(v => v.product_id == p.id).ToList();
+                    if (p.status == "out_of_stock")
+                    {
+                        foreach (var v in variants)
+                        {
+                            var inv = db.inventories.FirstOrDefault(i => i.variant_id == v.id);
+                            if (inv != null) inv.stock_quantity = 0;
+                        }
+                    }
+                    else if (p.status == "active")
+                    {
+                        foreach (var v in variants)
+                        {
+                            var inv = db.inventories.FirstOrDefault(i => i.variant_id == v.id);
+                            if (inv != null && inv.stock_quantity == 0) inv.stock_quantity = 50;
                         }
                     }
 

@@ -22,6 +22,9 @@ namespace QLBanQuanAo
 
         private void FrmInHoaDon_Load(object sender, EventArgs e)
         {
+            this.reportViewer1.SetDisplayMode(Microsoft.Reporting.WinForms.DisplayMode.PrintLayout);
+            this.reportViewer1.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.PageWidth;
+            this.reportViewer1.RefreshReport();
             using (var db = new QLBanHangDataContext())
             {
                 var duLieuBaoCao = (from o in db.orders

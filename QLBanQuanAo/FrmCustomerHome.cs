@@ -15,10 +15,43 @@ namespace QLBanQuanAo
         private user CurrentUser;
         private bool isLoaded = false;
         private string currentTab = "ALL";
+        private Timer hoverTimer;
+
         public FrmCustomerHome(user u)
         {
             InitializeComponent();
             this.CurrentUser = u;
+            if (u != null)
+            {
+                UserSession.IsLoggedIn = true;
+                UserSession.CurrentUserId = u.id;
+                UserSession.CurrentUserName = u.full_name;
+            }
+            
+            hoverTimer = new Timer();
+            hoverTimer.Interval = 250;
+            hoverTimer.Tick += (s, ev) =>
+            {
+                Point pt = this.PointToClient(Cursor.Position);
+                if (!btnUser.Bounds.Contains(pt) && !btnLogout.Bounds.Contains(pt))
+                {
+                    btnLogout.Visible = false;
+                    hoverTimer.Stop();
+                }
+            };
+            btnUser.MouseEnter += (s, ev) =>
+            {
+                if (UserSession.IsLoggedIn)
+                {
+                    btnLogout.Visible = true;
+                    btnLogout.BringToFront();
+                    hoverTimer.Stop();
+                }
+            };
+            btnUser.MouseLeave += (s, ev) => { if (UserSession.IsLoggedIn) hoverTimer.Start(); };
+            btnLogout.MouseEnter += (s, ev) => { hoverTimer.Stop(); };
+            btnLogout.MouseLeave += (s, ev) => { hoverTimer.Start(); };
+
         }
 
         private void FrmCustomerHome_Load(object sender, EventArgs e)
@@ -81,11 +114,13 @@ namespace QLBanQuanAo
         }
         private void CapNhatHeader()
         {
-            btnUser.Visible = !UserSession.IsLoggedIn;
-            btnLogout.Visible = !UserSession.IsLoggedIn;
-            lblWelcome.Text = "Xin chào, " + UserSession.CurrentUserName;
+            btnUser.Visible = true;
+            btnLogout.Visible = false;
             if (UserSession.IsLoggedIn)
             {
+                btnUser.Text = "👤 " + UserSession.CurrentUserName;
+                if (lblWelcome != null) lblWelcome.Text = "Xin chào, " + UserSession.CurrentUserName;
+                btnLogout.Visible = false;
                 using (var db = new QLBanHangDataContext())
                 {
                     int tongSL = (from sl in db.cart_items
@@ -97,6 +132,9 @@ namespace QLBanQuanAo
             }
             else
             {
+                btnUser.Text = "👤 Đăng nhập";
+                if (lblWelcome != null) lblWelcome.Text = "";
+                btnLogout.Visible = false;
                 btnCart.Text = "🛒 Giỏ hàng";
             }
         }
@@ -139,7 +177,7 @@ namespace QLBanQuanAo
                 var ketquaLinQ = from sp in db.products
                                  join cat in db.categories on sp.category_id equals cat.id into gjCat
                                  from subCat in gjCat.DefaultIfEmpty()
-                                 where sp.status == "active"
+                                 where (sp.status == "active" || sp.status == "out_of_stock")
                                  && (tuKhoa == "" || sp.name.ToLower().Contains(tuKhoa))
                                  && (cboCategory.SelectedIndex <= 0 || (subCat != null && subCat.name == danhMuc))
                                  && (cboSize.SelectedIndex <= 0 || (from v in db.product_variants
@@ -285,18 +323,20 @@ namespace QLBanQuanAo
 
         private void btnUser_Click_1(object sender, EventArgs e)
         {
-            using (var db = new QLBanHangDataContext())
+            if (!UserSession.IsLoggedIn)
             {
-                var khach = (from u in db.users
-                             where u.id == 2
-                             select u).FirstOrDefault();
-                if (khach != null)
+                this.Hide();
+                frmLogin login = new frmLogin();
+                login.ShowDialog();
+
+                bool daMoFormMoi = Application.OpenForms.Cast<Form>()
+                            .Any(f => f != this && (f is FrmCustomerHome || f is frmMainAdmin) && f.Visible);
+                
+                if (!daMoFormMoi)
                 {
-                    UserSession.IsLoggedIn = true;
-                    UserSession.CurrentUserId = khach.id;
-                    UserSession.CurrentUserName = khach.full_name;
                     CapNhatHeader();
-                    MessageBox.Show("Đăng nhập thành công " + khach.full_name, "Thông báo");
+                    LocVaHienThiSanPham();
+                    this.Show();
                 }
             }
         }
@@ -307,6 +347,9 @@ namespace QLBanQuanAo
             if (dr == DialogResult.Yes)
             {
                 UserSession.IsLoggedIn = false;
+                UserSession.CurrentUserId = 0;
+                UserSession.CurrentUserName = "";
+                this.CurrentUser = null;
                 CapNhatHeader();
             }
         }
@@ -335,6 +378,11 @@ namespace QLBanQuanAo
         }
 
         private void pnlLeft_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void picBanner_Click(object sender, EventArgs e)
         {
 
         }
