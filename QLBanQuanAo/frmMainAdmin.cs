@@ -16,7 +16,7 @@ namespace QLBanQuanAo
         public frmMainAdmin(user u)
         {
             InitializeComponent();
-            //this.currentUser = u;
+            this.currentUser = u;
         }
 
 
@@ -120,10 +120,15 @@ namespace QLBanQuanAo
 
             if (result == DialogResult.Yes)
             {
-                this.Hide();
-                // Giả định form đăng nhập tên là frmLogin
-                frmLogin fLogin = new frmLogin();
-                fLogin.ShowDialog();
+                UserSession.Clear();
+
+                // Ưu tiên mở lại form đăng nhập gốc đang được ẩn.
+                frmLogin loginForm = Application.OpenForms.OfType<frmLogin>().FirstOrDefault();
+                if (loginForm == null || loginForm.IsDisposed)
+                    loginForm = new frmLogin();
+
+                loginForm.Show();
+                loginForm.BringToFront();
                 this.Close();
             }
         }

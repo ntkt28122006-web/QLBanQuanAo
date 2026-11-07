@@ -25,7 +25,7 @@ namespace QLBanQuanAo
             this.Hide();
         }
 
-      
+
 
         private void lnkSignin_Click(object sender, EventArgs e)
         {
@@ -46,7 +46,7 @@ namespace QLBanQuanAo
                 txtEmail.Focus();
                 return;
             }
-            
+
             if (string.IsNullOrEmpty(password))
             {
                 MessageBox.Show("Vui lòng nhập Mật khẩu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -56,7 +56,7 @@ namespace QLBanQuanAo
 
             try
             {
-          
+
                 // 2. Truy vấn LINQ to SQL lấy thông tin tài khoản theo Email
                 var u = db.users.FirstOrDefault(x => x.email == email);
 
@@ -75,7 +75,7 @@ namespace QLBanQuanAo
                 }
 
                 // 4. Kiểm tra Mật khẩu
-                
+
 
                 bool isPasswordValid = BCrypt.Net.BCrypt.Verify(password, u.password_hash);
 
@@ -86,15 +86,33 @@ namespace QLBanQuanAo
                     return;
                 }
 
-                // 5. Kiểm tra quyền (Role) của người dùng để chuyển hướng giao diện
-                var userRole = u.user_roles.Select(ur => ur.role.name).FirstOrDefault();
+                // 5. Kiểm tra vai trò theo tên, không phụ thuộc thứ tự bản ghi user_roles.
+                var userRoles = u.user_roles
+                    .Select(ur => ur.role.name)
+                    .ToList();
+
+                bool isAdmin = userRoles.Contains("Admin");
+                bool isCustomer = userRoles.Contains("Customer");
+
+                if (!isAdmin && !isCustomer)
+                {
+                    UserSession.Clear();
+                    MessageBox.Show(
+                        "Tài khoản chưa được gán quyền truy cập hợp lệ.",
+                        "Đăng nhập thất bại",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // Lưu đúng tài khoản vừa xác thực để các form giỏ hàng/đơn hàng dùng chung.
+                UserSession.SetCurrentUser(u);
 
                 MessageBox.Show($"Đăng nhập thành công! Chào mừng {u.full_name}", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                // 6. Chuyển hướng Form dựa trên vai trò
-                if (userRole == "Admin")
+                // Nếu tài khoản có cả hai vai trò thì ưu tiên mở khu vực quản trị.
+                if (isAdmin)
                 {
-                    // Mở Form Quản trị dành cho Admin
                     frmMainAdmin adminForm = new frmMainAdmin(u);
                     adminForm.Show();
                 }
@@ -104,7 +122,7 @@ namespace QLBanQuanAo
                     frmCustomerHome.Show();
                 }
 
-                this.Hide(); // Ẩn form đăng nhập
+                this.Hide();
             }
             catch (Exception ex)
             {

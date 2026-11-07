@@ -179,7 +179,7 @@ namespace QLBanQuanAo
             this.lnkSignin.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.lnkSignin.Name = "lnkSignin";
             this.lnkSignin.OverColor = System.Drawing.Color.White;
-            this.lnkSignin.Size = new System.Drawing.Size(295, 28);
+            this.lnkSignin.Size = new System.Drawing.Size(347, 28);
             this.lnkSignin.TabIndex = 10;
             this.lnkSignin.Text = "Chưa có tài khoản? Đăng ký ngay";
             this.lnkSignin.Click += new ReaLTaiizor.FoxBase.ButtonFoxBase.ClickEventHandler(this.lnkSignin_Click);

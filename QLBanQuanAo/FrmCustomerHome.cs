@@ -19,6 +19,9 @@ namespace QLBanQuanAo
         {
             InitializeComponent();
             this.CurrentUser = u;
+
+            // Đồng bộ phiên đăng nhập từ đúng tài khoản được truyền vào form.
+            UserSession.SetCurrentUser(u);
         }
 
         private void FrmCustomerHome_Load(object sender, EventArgs e)
@@ -71,19 +74,22 @@ namespace QLBanQuanAo
                 });
                 cboSort.SelectedIndex = 0;
             }
-                
+
             isLoaded = true;
             CapNhatHeader();
             DoiMauNutTab();
             LocVaHienThiSanPham();
-            
+
 
         }
         private void CapNhatHeader()
         {
             btnUser.Visible = !UserSession.IsLoggedIn;
-            btnLogout.Visible = !UserSession.IsLoggedIn;
-            lblWelcome.Text = "Xin chào, " + UserSession.CurrentUserName;
+            btnLogout.Visible = UserSession.IsLoggedIn;
+            lblWelcome.Text = UserSession.IsLoggedIn
+                ? "Xin chào, " + UserSession.CurrentUserName
+                : "Xin chào, khách hàng";
+
             if (UserSession.IsLoggedIn)
             {
                 using (var db = new QLBanHangDataContext())
@@ -157,7 +163,7 @@ namespace QLBanQuanAo
                                  && (currentTab == "ALL"
                                         || (currentTab == "HOT" && sp.is_hot == true)
                                         || (currentTab == "SALE" && sp.is_sale == true))
-                                    select sp;
+                                 select sp;
 
 
                 if (sapXep == 1)
@@ -285,20 +291,11 @@ namespace QLBanQuanAo
 
         private void btnUser_Click_1(object sender, EventArgs e)
         {
-            using (var db = new QLBanHangDataContext())
-            {
-                var khach = (from u in db.users
-                             where u.id == 2
-                             select u).FirstOrDefault();
-                if (khach != null)
-                {
-                    UserSession.IsLoggedIn = true;
-                    UserSession.CurrentUserId = khach.id;
-                    UserSession.CurrentUserName = khach.full_name;
-                    CapNhatHeader();
-                    MessageBox.Show("Đăng nhập thành công " + khach.full_name, "Thông báo");
-                }
-            }
+            if (UserSession.IsLoggedIn) return;
+
+            frmLogin loginForm = new frmLogin();
+            loginForm.Show();
+            this.Hide();
         }
 
         private void btnLogout_Click_1(object sender, EventArgs e)
@@ -306,7 +303,8 @@ namespace QLBanQuanAo
             DialogResult dr = MessageBox.Show("Bạn có muốn đăng xuất?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (dr == DialogResult.Yes)
             {
-                UserSession.IsLoggedIn = false;
+                UserSession.Clear();
+                CurrentUser = null;
                 CapNhatHeader();
             }
         }

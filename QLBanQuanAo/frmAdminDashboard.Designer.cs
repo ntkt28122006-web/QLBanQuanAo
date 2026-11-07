@@ -191,8 +191,8 @@
             // 
             // pnlCustomerList
             // 
-            this.pnlCustomerList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.pnlCustomerList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlCustomerList.BackColor = System.Drawing.Color.White;
             this.pnlCustomerList.Controls.Add(this.dgvCustomers);
@@ -201,7 +201,6 @@
             this.pnlCustomerList.Name = "pnlCustomerList";
             this.pnlCustomerList.Size = new System.Drawing.Size(1312, 274);
             this.pnlCustomerList.TabIndex = 2;
-            this.pnlCustomerList.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlCustomerList_Paint);
             // 
             // dgvCustomers
             // 
@@ -209,8 +208,8 @@
             this.dgvCustomers.AllowUserToDeleteRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.dgvCustomers.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvCustomers.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.dgvCustomers.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvCustomers.BackgroundColor = System.Drawing.Color.White;
             this.dgvCustomers.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -251,7 +250,6 @@
             this.dgvCustomers.Size = new System.Drawing.Size(1221, 335);
             this.dgvCustomers.TabIndex = 1;
             this.dgvCustomers.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCustomers_CellClick);
-            this.dgvCustomers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCustomers_CellContentClick);
             // 
             // colCustomerId
             // 
@@ -317,7 +315,7 @@
             // 
             // pnlCustomerDetail
             // 
-            this.pnlCustomerDetail.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.pnlCustomerDetail.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlCustomerDetail.Controls.Add(this.btnUnlockCustomer);
             this.pnlCustomerDetail.Controls.Add(this.btnLockCustomer);
@@ -335,7 +333,6 @@
             this.pnlCustomerDetail.Name = "pnlCustomerDetail";
             this.pnlCustomerDetail.Size = new System.Drawing.Size(1309, 201);
             this.pnlCustomerDetail.TabIndex = 2;
-            this.pnlCustomerDetail.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlCustomerDetail_Paint);
             // 
             // btnUnlockCustomer
             // 
@@ -390,7 +387,6 @@
             this.txtDetailCustomerPhone.ReadOnly = true;
             this.txtDetailCustomerPhone.Size = new System.Drawing.Size(220, 27);
             this.txtDetailCustomerPhone.TabIndex = 8;
-            this.txtDetailCustomerPhone.TextChanged += new System.EventHandler(this.txtDetailCustomerPhone_TextChanged);
             // 
             // txtDetailCustomerEmail
             // 
@@ -399,7 +395,6 @@
             this.txtDetailCustomerEmail.ReadOnly = true;
             this.txtDetailCustomerEmail.Size = new System.Drawing.Size(220, 27);
             this.txtDetailCustomerEmail.TabIndex = 7;
-            this.txtDetailCustomerEmail.TextChanged += new System.EventHandler(this.txtDetailCustomerEmail_TextChanged);
             // 
             // lblDetailCustomerEmail
             // 
@@ -420,7 +415,6 @@
             this.lblDetailCustomerPhone.Size = new System.Drawing.Size(200, 31);
             this.lblDetailCustomerPhone.TabIndex = 5;
             this.lblDetailCustomerPhone.Text = "SĐT";
-            this.lblDetailCustomerPhone.Click += new System.EventHandler(this.lblDetailCustomerPhone_Click);
             // 
             // txtDetailCustomerName
             // 
@@ -439,7 +433,6 @@
             this.lblDetailCustomerName.Size = new System.Drawing.Size(338, 27);
             this.lblDetailCustomerName.TabIndex = 3;
             this.lblDetailCustomerName.Text = "Họ và tên";
-            this.lblDetailCustomerName.Click += new System.EventHandler(this.lblDetailCustomerName_Click);
             // 
             // txtDetailCustomerId
             // 
@@ -448,7 +441,6 @@
             this.txtDetailCustomerId.ReadOnly = true;
             this.txtDetailCustomerId.Size = new System.Drawing.Size(220, 27);
             this.txtDetailCustomerId.TabIndex = 2;
-            this.txtDetailCustomerId.TextChanged += new System.EventHandler(this.txtDetailCustomerId_TextChanged);
             // 
             // lblDetailCustomerId
             // 

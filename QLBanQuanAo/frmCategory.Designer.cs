@@ -50,6 +50,9 @@
             this.txtCategoryId = new System.Windows.Forms.TextBox();
             this.lblCategoryId = new System.Windows.Forms.Label();
             this.pnlCategoryList = new System.Windows.Forms.Panel();
+            this.lblCategorySearch = new System.Windows.Forms.Label();
+            this.txtSearchCategory = new System.Windows.Forms.TextBox();
+            this.btnSearchCategory = new System.Windows.Forms.Button();
             this.dgvCategories = new System.Windows.Forms.DataGridView();
             this.colCategoryId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colCategoryName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -236,10 +239,10 @@
             // 
             // txtCategoryName
             // 
-            this.txtCategoryName.BackColor = System.Drawing.Color.Gainsboro;
+            this.txtCategoryName.BackColor = System.Drawing.Color.White;
             this.txtCategoryName.Location = new System.Drawing.Point(245, 45);
             this.txtCategoryName.Name = "txtCategoryName";
-            this.txtCategoryName.ReadOnly = true;
+            this.txtCategoryName.ReadOnly = false;
             this.txtCategoryName.Size = new System.Drawing.Size(180, 34);
             this.txtCategoryName.TabIndex = 1;
             this.txtCategoryName.TextChanged += new System.EventHandler(this.txtCategoryName_TextChanged);
@@ -279,12 +282,48 @@
             this.pnlCategoryList.AutoScroll = true;
             this.pnlCategoryList.BackColor = System.Drawing.Color.White;
             this.pnlCategoryList.Controls.Add(this.dgvCategories);
+            this.pnlCategoryList.Controls.Add(this.lblCategorySearch);
+            this.pnlCategoryList.Controls.Add(this.txtSearchCategory);
+            this.pnlCategoryList.Controls.Add(this.btnSearchCategory);
             this.pnlCategoryList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlCategoryList.Location = new System.Drawing.Point(0, 275);
             this.pnlCategoryList.Name = "pnlCategoryList";
             this.pnlCategoryList.Padding = new System.Windows.Forms.Padding(15);
             this.pnlCategoryList.Size = new System.Drawing.Size(1100, 365);
             this.pnlCategoryList.TabIndex = 3;
+            // 
+            // lblCategorySearch
+            // 
+            this.lblCategorySearch.AutoSize = true;
+            this.lblCategorySearch.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.lblCategorySearch.Location = new System.Drawing.Point(15, 10);
+            this.lblCategorySearch.Name = "lblCategorySearch";
+            this.lblCategorySearch.Size = new System.Drawing.Size(100, 20);
+            this.lblCategorySearch.TabIndex = 10;
+            this.lblCategorySearch.Text = "Tìm danh mục:";
+            // 
+            // txtSearchCategory
+            // 
+            this.txtSearchCategory.Location = new System.Drawing.Point(125, 7);
+            this.txtSearchCategory.Name = "txtSearchCategory";
+            this.txtSearchCategory.Size = new System.Drawing.Size(300, 27);
+            this.txtSearchCategory.TabIndex = 11;
+            this.txtSearchCategory.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSearchCategory_KeyDown);
+            // 
+            // btnSearchCategory
+            // 
+            this.btnSearchCategory.BackColor = System.Drawing.Color.FromArgb(31, 41, 55);
+            this.btnSearchCategory.FlatAppearance.BorderSize = 0;
+            this.btnSearchCategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSearchCategory.ForeColor = System.Drawing.Color.White;
+            this.btnSearchCategory.Location = new System.Drawing.Point(435, 5);
+            this.btnSearchCategory.Name = "btnSearchCategory";
+            this.btnSearchCategory.Size = new System.Drawing.Size(110, 32);
+            this.btnSearchCategory.TabIndex = 12;
+            this.btnSearchCategory.Text = "Tìm kiếm";
+            this.btnSearchCategory.UseVisualStyleBackColor = false;
+            this.btnSearchCategory.Click += new System.EventHandler(this.btnSearchCategory_Click);
+            // 
             // 
             // dgvCategories
             // 
@@ -311,10 +350,11 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvCategories.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvCategories.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvCategories.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvCategories.EnableHeadersVisualStyles = false;
             this.dgvCategories.GridColor = System.Drawing.Color.Gainsboro;
-            this.dgvCategories.Location = new System.Drawing.Point(15, 15);
+            this.dgvCategories.Location = new System.Drawing.Point(15, 48);
             this.dgvCategories.MultiSelect = false;
             this.dgvCategories.Name = "dgvCategories";
             this.dgvCategories.ReadOnly = true;
@@ -331,10 +371,9 @@
             this.dgvCategories.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvCategories.RowTemplate.Height = 35;
             this.dgvCategories.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvCategories.Size = new System.Drawing.Size(1070, 335);
+            this.dgvCategories.Size = new System.Drawing.Size(1070, 292);
             this.dgvCategories.TabIndex = 0;
             this.dgvCategories.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCategories_CellClick);
-            this.dgvCategories.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCategories_CellContentClick);
             // 
             // colCategoryId
             // 
@@ -429,6 +468,9 @@
         private System.Windows.Forms.Button btnDeleteCategory;
         private System.Windows.Forms.Button btnUpdateCategory;
         private System.Windows.Forms.Panel pnlCategoryList;
+        private System.Windows.Forms.Label lblCategorySearch;
+        private System.Windows.Forms.TextBox txtSearchCategory;
+        private System.Windows.Forms.Button btnSearchCategory;
         private System.Windows.Forms.DataGridView dgvCategories;
         private System.Windows.Forms.DataGridViewTextBoxColumn colCategoryId;
         private System.Windows.Forms.DataGridViewTextBoxColumn colCategoryName;
