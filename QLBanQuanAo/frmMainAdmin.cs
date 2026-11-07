@@ -7,22 +7,29 @@ namespace QLBanQuanAo
 {
     public partial class frmMainAdmin : Form
     {
-        private user currentUser; // Biến lưu thông tin người dùng hiện tại
-        // Biến lưu trữ form con hiện tại
+        private user currentUser; 
+        
         private Form activeForm;
-        // Biến lưu trữ nút đang được chọn
+       
         private Button currentButton;
 
         public frmMainAdmin(user u)
         {
             InitializeComponent();
             this.currentUser = u;
+
+            if (u != null)
+            {
+                UserSession.IsLoggedIn = true;
+                UserSession.CurrentUserId = u.id;   
+                UserSession.CurrentUserName = u.full_name;
+            }
         }
 
-
+       
         private void frmMainAdmin_Load(object sender, EventArgs e)
         {
-            // Mở mặc định form Dashboard khi trang chủ tải lên
+            
             btnDashboard.PerformClick();
         }
 
@@ -120,15 +127,14 @@ namespace QLBanQuanAo
 
             if (result == DialogResult.Yes)
             {
-                UserSession.Clear();
+                UserSession.IsLoggedIn = false;
+                UserSession.CurrentUserId = 0;
+                UserSession.CurrentUserName = "";
+                this.currentUser = null;
 
-                // Ưu tiên mở lại form đăng nhập gốc đang được ẩn.
-                frmLogin loginForm = Application.OpenForms.OfType<frmLogin>().FirstOrDefault();
-                if (loginForm == null || loginForm.IsDisposed)
-                    loginForm = new frmLogin();
-
-                loginForm.Show();
-                loginForm.BringToFront();
+                this.Hide();
+                frmLogin fLogin = new frmLogin();
+                fLogin.ShowDialog();
                 this.Close();
             }
         }
@@ -140,28 +146,6 @@ namespace QLBanQuanAo
         {
 
         }
-        private void OpenChildForm(Form childForm)
-        {
-            // Đóng form hiện tại nếu có
-            if (activeForm != null)
-            {
-                activeForm.Close();
-            }
-
-            activeForm = childForm;
-
-            // Cấu hình nhúng Form con vào Panel
-            childForm.TopLevel = false;
-            childForm.FormBorderStyle = FormBorderStyle.None;
-            childForm.Dock = DockStyle.Fill; // Tự động co giãn 100% theo pnlDesktop
-
-            // Xóa các control cũ và thêm Form mới vào pnlDesktop
-            pnlDesktop.Controls.Clear();
-            pnlDesktop.Controls.Add(childForm);
-            pnlDesktop.Tag = childForm;
-
-            childForm.BringToFront();
-            childForm.Show();
-        }
+        
     }
 }

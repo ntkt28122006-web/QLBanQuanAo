@@ -479,6 +479,7 @@ namespace QLBanQuanAo
             this.picBanner.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picBanner.TabIndex = 13;
             this.picBanner.TabStop = false;
+            this.picBanner.Click += new System.EventHandler(this.picBanner_Click);
             // 
             // FrmCustomerHome
             // 

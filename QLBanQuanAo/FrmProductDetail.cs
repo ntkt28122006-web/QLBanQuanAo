@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -20,7 +21,6 @@ namespace QLBanQuanAo
         {
             InitializeComponent();
             _productId = productId;
-           // this.Load += FrmProductDetail_Load;
 
         }
 
@@ -42,26 +42,81 @@ namespace QLBanQuanAo
                 lblProductName.Text = _currentProduct.name;
                 txtDescription.Text = _currentProduct.description;
 
+                decimal giaMacDinh = (_currentProduct.is_sale && _currentProduct.sale_price.HasValue)
+                                     ? _currentProduct.sale_price.Value : _currentProduct.price;
+                lblPrice.Text = string.Format("{0:N0} VNĐ", giaMacDinh);
+
+                HienThiAnhSanPham(db, _currentProduct.id);
+
+
                 var arrSizes = (from v in db.product_variants
                                 join s in db.product_sizes on v.size_id equals s.id
                                 where v.product_id == _productId && v.is_active == true
                                 orderby s.sort_order
                                 select s.name).Distinct().ToArray();
                 cboDetailSize.Items.Clear();
-                cboDetailSize.Items.AddRange(arrSizes);
-                if (cboDetailSize.Items.Count > 0) cboDetailSize.SelectedIndex = 0;
+                if (arrSizes.Length > 0)
+                {
+                    cboDetailSize.Items.AddRange(arrSizes);
+                }
+                else
+                {
+                    cboDetailSize.Items.Add("Free size");
+                }
+                cboDetailSize.SelectedIndex = 0;
 
                 var arrColors = (from v in db.product_variants
                                  join c in db.product_colors on v.color_id equals c.id
                                  where v.product_id == _productId && v.is_active == true
                                  select c.name).Distinct().ToArray();
                 cboDetailColor.Items.Clear();
-                cboDetailColor.Items.AddRange(arrColors);
-                if ( cboDetailColor.Items.Count > 0) cboDetailColor.SelectedIndex = 0;
-                                 
+                if (arrColors.Length > 0)
+                    cboDetailColor.Items.AddRange(arrColors);
+                else
+                {
+                    cboDetailColor.Items.Add("Mặc định");
+                    cboDetailColor.SelectedIndex = 0;
+                }
             }
             _isLoaded = true;
             CapNhatTonKhoTheoBienThe();
+        }
+        private void HienThiAnhSanPham(QLBanHangDataContext db, int productId)
+        {
+            picProduct.Image = null;
+            string dbImagePath = (from img in db.product_images
+                                  where img.product_id == productId
+                                  orderby img.is_primary descending, img.sort_order
+                                  select img.image_url).FirstOrDefault();
+            if (!string.IsNullOrEmpty(dbImagePath))
+            {
+                string cleanPath = dbImagePath.TrimStart('/', '\\').Replace("/", "\\");
+                if (!cleanPath.StartsWith("uploads", StringComparison.OrdinalIgnoreCase))
+                {
+                    cleanPath = Path.Combine("Uploads", "Products", cleanPath);
+                }
+                string fullPath = Path.Combine(Application.StartupPath, cleanPath);
+                if (!File.Exists(fullPath))
+                {
+                    string projectRoot = Path.GetFullPath(Path.Combine(Application.StartupPath, @"..\..\"));
+                    fullPath = Path.Combine(projectRoot, cleanPath);
+                }
+                if (File.Exists(fullPath))
+                {
+                    try
+                    {
+                        using (var stream = new FileStream(fullPath, FileMode.Open, FileAccess.Read))
+                        {
+                            picProduct.Image = Image.FromStream(stream);
+                        }
+                        picProduct.SizeMode = PictureBoxSizeMode.StretchImage;
+                    }
+                    catch 
+                    {
+                        
+                    }
+                }
+            }
         }
         private void CapNhatTonKhoTheoBienThe()
         {
@@ -70,8 +125,18 @@ namespace QLBanQuanAo
             string sizeChon = cboDetailSize.SelectedItem != null ? cboDetailSize.SelectedItem.ToString() : "";
             string mauChon = cboDetailColor.SelectedItem != null ? cboDetailColor.SelectedItem.ToString() : "";
 
+            decimal giaGoc = (_currentProduct.is_sale && _currentProduct.sale_price.HasValue)
+                            ? _currentProduct.sale_price.Value : _currentProduct.price;
+            lblPrice.Text = string.Format("{0:N0} VNĐ", giaGoc);
+
             using (var db = new QLBanHangDataContext())
             {
+                var spDb = db.products.FirstOrDefault(p => p.id == _productId);
+                if (spDb != null && spDb.status != "active")
+                {
+                    DatTrangThaiHetHang("Trạng thái: Hết hàng");
+                    return;
+                }
                 var bienThe = (from v in db.product_variants
                                join s in db.product_sizes on v.size_id equals s.id into gjS
                                from subS in gjS.DefaultIfEmpty()
@@ -79,9 +144,9 @@ namespace QLBanQuanAo
                                from subC in gjC.DefaultIfEmpty()
                                join inv in db.inventories on v.id equals inv.variant_id into gjInv
                                from subInv in gjInv.DefaultIfEmpty()
-                               where v.product_id == _productId
-                                   && (sizeChon == "" || subS.name == sizeChon)
-                                   && (mauChon == "" || subC.name == mauChon)
+                               where v.product_id == _productId && v.is_active == true
+                                   && (sizeChon == "" || sizeChon == "Free size" || (subS != null && subS.name == sizeChon))
+                                   && (mauChon == "" || mauChon == "Mặc định" || (subC != null && subC.name == mauChon))
                                select new
                                {
                                    Variant = v,
@@ -90,25 +155,17 @@ namespace QLBanQuanAo
                                }).FirstOrDefault();
                 if (bienThe != null)
                 {
-                    decimal giaBan = bienThe.Variant.price_override
-                        ?? ((_currentProduct.is_sale && _currentProduct.sale_price.HasValue) ? _currentProduct.sale_price.Value : _currentProduct.price);
-                    lblPrice.Text = string.Format("{0:N)} VNĐ", giaBan);
-
-                    if (!string.IsNullOrEmpty(bienThe.HexCode))
+                    decimal giaBan = bienThe.Variant.price_override ?? giaGoc;
+                    lblPrice.Text = string.Format("{0:N0} VNĐ", giaBan);
+                       
+                    if (picProduct.Image == null && !string.IsNullOrEmpty(bienThe.HexCode))
+                    {
                         picProduct.BackColor = ColorTranslator.FromHtml(bienThe.HexCode.Trim());
+                    }
+                    
                     if (bienThe.SoLuongTon > 0)
                     {
-                        lblStockStatus.Text = "Trạng thái: Còn Hàng (" + bienThe.SoLuongTon + " sản phẩm)";
-                        lblStockStatus.ForeColor = Color.SeaGreen;
-
-                        nudQuantity.Minimum = 1;
-                        nudQuantity.Maximum = bienThe.SoLuongTon;
-                        nudQuantity.Value = 1;
-                        nudQuantity.Enabled = true;
-
-                        btnAddToCart.Enabled = true;
-                        btnAddToCart.BackColor = Color.FromArgb(238, 77, 45);
-                        btnAddToCart.Text = "🛒 THÊM VÀO GIỎ HÀNG";
+                        HienThiConHang(bienThe.SoLuongTon);
                     }
                     else
                     {
@@ -117,11 +174,33 @@ namespace QLBanQuanAo
                 }
                 else
                 {
-                    DatTrangThaiHetHang("Trạng thái: Tạm hết mẫu Size/Màu này");
+                    bool coBienTheNaoKhong = db.product_variants.Any(v => v.product_id == _productId);
+                    if (!coBienTheNaoKhong && _currentProduct.status == "active")
+                    {
+                        HienThiConHang(100);
+                    }
+                    else
+                    {
+                        DatTrangThaiHetHang("Trạng thái: Hết hàng");
+                    }
                 }
 
 
             }
+        }
+        private void HienThiConHang(int soLuongTon)
+        {
+            lblStockStatus.Text = "Trang thái: Còn hàng (" + soLuongTon + " Sản phẩm)";
+            lblStockStatus.ForeColor = Color.Green;
+
+            nudQuantity.Minimum = 1;
+            nudQuantity.Maximum = soLuongTon;
+            nudQuantity.Value = 1;
+            nudQuantity.Enabled = true;
+
+            btnAddToCart.Enabled = true;
+            btnAddToCart.BackColor = Color.FromArgb(238, 77, 45);
+            btnAddToCart.Text = "🛒 THÊM VÀO GIỎ HÀNG";
         }
         private void DatTrangThaiHetHang(string msg)
         {
@@ -187,27 +266,48 @@ namespace QLBanQuanAo
             string mauChon = cboDetailColor.SelectedItem != null ? cboDetailSize.SelectedItem.ToString() : "";
             int soLuongMua = (int)nudQuantity.Value;
 
+            if (soLuongMua <= 0) return;
+
             using (var db = new QLBanHangDataContext())
             {
+                if (!UserSession.IsLoggedIn)
+                {
+                    MessageBox.Show("Vui lòng đăng nhập để thêm sản phẩm vào giỏ hàng!", "Yêu cầu đăng nhập", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
                 var variant = (from v in db.product_variants
                                join s in db.product_sizes on v.size_id equals s.id into gjS
                                from subS in gjS.DefaultIfEmpty()
                                join c in db.product_colors on v.color_id equals c.id into gjC
                                from subC in gjC.DefaultIfEmpty()
-                               where v.product_id == _productId
-                                    && (sizeChon == "" || subS.name == sizeChon)
-                                    && (mauChon == "" || subC.name == mauChon)
+                               where v.product_id == _productId && v.is_active == true
+                                    && (sizeChon == "" || sizeChon == "Free size" || (subS != null && subS.name == sizeChon))
+                                    && (mauChon == "" || mauChon == "Mặc định" || (subC != null && subC.name == mauChon))
                                select v).FirstOrDefault();
                 if (variant == null)
                 {
-                    MessageBox.Show("Không tìm thấy biến thể sản phẩm!", "Lỗi");
-                    return;
+                    variant = new product_variant
+                    {
+                        product_id = _productId,
+                        sku = "SKU-" + _productId + "-" + DateTime.Now.Ticks.ToString().Substring(10),
+                        price_override = null,
+                        is_active = true,
+                    };
+                    db.product_variants.InsertOnSubmit(variant);
+                    db.SubmitChanges();
+                    inventory newInv = new inventory
+                    {
+                        variant_id = variant.id,
+                        stock_quantity = 100,
+                        updated_at = DateTime.Now
+                    };
+                    db.inventories.InsertOnSubmit(newInv);
+                    db.SubmitChanges();
                 }
-
                 var tonKho = (from inv in db.inventories
                               where inv.variant_id == variant.id
                               select inv).FirstOrDefault();
-                int slTon = tonKho != null ? tonKho.stock_quantity : 0;
+                int slTon = tonKho != null ? tonKho.stock_quantity :100;
 
                 var gioHang = (from c in db.carts
                                where c.user_id == UserSession.CurrentUserId

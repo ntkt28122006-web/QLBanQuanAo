@@ -272,8 +272,12 @@ namespace QLBanQuanAo
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            DialogResult = DialogResult.Cancel;
-            Close();
+            DialogResult dr = MessageBox.Show("Bạn có chắc chắn muốn hủy thanh toán không?", "Xác nhận hủy", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dr == DialogResult.Yes)
+            {
+                this.DialogResult = DialogResult.Cancel;
+                this.Close(); 
+            }
         }
 
         private void lblFinalTotal_Click(object sender, EventArgs e)

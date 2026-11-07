@@ -62,36 +62,24 @@ namespace QLBanQuanAo
 
             try
             {
-                using (var db = new QLBanHangDataContext())
-                {
-                    var dsHienThi = (from o in db.orders
-                                     where o.user_id == UserSession.CurrentUserId
-                                     orderby o.created_at descending
-                                     select new
-                                     {
-                                         MaDonHang = o.id,
-                                         NgayDat = o.created_at,
-                                         NguoiNhan = o.recipient_name,
-                                         SoDienThoai = o.recipient_phone,
-                                         DiaChiGiao = o.shipping_address,
-                                         TongTien = o.total_amount,
-                                         TrangThai = o.status
-                                     }).ToList()
-                                     .Select(o => new
-                                     {
-                                         o.MaDonHang,
-                                         NgayDat = o.NgayDat.ToString("dd/MM/yyyy HH:mm"),
-                                         o.NguoiNhan,
-                                         o.SoDienThoai,
-                                         o.DiaChiGiao,
-                                         o.TongTien,
-                                         TrangThai = HienThiTrangThai(o.TrangThai)
-                                     }).ToList();
-
-                    dgvOrders.DataSource = dsHienThi;
-                }
-
-                if (dgvOrders.Rows.Count > 0)
+                
+                var donHangs = (from o in db.orders
+                                 where o.user_id == UserSession.CurrentUserId
+                                 orderby o.created_at descending
+                                 select o).ToList();
+                var dsHienThi = (from o in donHangs
+                                 select new
+                                 {
+                                     MaDonHang = o.id,
+                                     NgayDat = o.created_at.ToString("dd/MM/yyyy HH:mm"),
+                                     NguoiNhan = o.recipient_name,
+                                     SoDienThoai = o.recipient_phone,
+                                     DiaChiGiao = o.shipping_address,
+                                     TongTien = string.Format("{0:N0} VNĐ", o.total_amount),
+                                     TrangThai = HienThiTrangThai(o.status)
+                                 }).ToList();
+                dgvOrders.DataSource = dsHienThi;
+                if (dsHienThi.Any())
                 {
                     dgvOrders.ClearSelection();
                     dgvOrders.Rows[0].Selected = true;
@@ -159,8 +147,8 @@ namespace QLBanQuanAo
                                      MauSac = oi.color_name,
                                      KichCo = oi.size_name,
                                      SoLuong = oi.quantity,
-                                     DonGia = oi.unit_price,
-                                     ThanhTien = oi.line_total
+                                     DonGia = string.Format("{0:N0} VNĐ", oi.unit_price),
+                                     ThanhTien = string.Format("{0:N0} VNĐ", oi.line_total ?? (oi.quantity * oi.unit_price))
                                  }).ToList();
 
                 dgvOrderItems.DataSource = dsChiTiet;
@@ -169,24 +157,17 @@ namespace QLBanQuanAo
 
         private void dgvOrders_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0)
+            if (dgvOrders.CurrentRow != null && dgvOrders.CurrentRow.Cells["MaDonHang"].Value != null)
             {
-                HienThiChiTietDong(e.RowIndex);
+                if (int.TryParse(dgvOrders.CurrentRow.Cells["MaDonHang"].Value.ToString(), out int orderId))
+                {
+                    TaiChiTietDonHang(orderId);
+                }
             }
         }
-
-        private int? LayMaDonHangDangChon()
+        private void dgvOrderItems_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgvOrders.CurrentRow == null || !dgvOrders.Columns.Contains("MaDonHang"))
-            {
-                return null;
-            }
-
-            object value = dgvOrders.CurrentRow.Cells["MaDonHang"].Value;
-            int orderId;
-            return value != null && int.TryParse(value.ToString(), out orderId)
-                ? (int?)orderId
-                : null;
+           
         }
 
         private void btnCancelOrder_Click(object sender, EventArgs e)
@@ -199,12 +180,7 @@ namespace QLBanQuanAo
                 return;
             }
 
-            int orderId = selectedOrderId.Value;
-            DialogResult confirm = MessageBox.Show(
-                "Bạn có chắc chắn muốn hủy đơn hàng #" + orderId + " không?",
-                "Xác nhận hủy",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question);
+            int orderId = Convert.ToInt32(dgvOrders.CurrentRow.Cells["MaDonHang"].Value);
 
             if (confirm != DialogResult.Yes) return;
 
@@ -294,6 +270,11 @@ namespace QLBanQuanAo
 
             FrmInHoaDon frm = new FrmInHoaDon(selectedOrderId.Value);
             frm.ShowDialog();
+        }
+
+        private void dgvOrders_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

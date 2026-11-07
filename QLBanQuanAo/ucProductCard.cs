@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.IO;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -46,6 +47,42 @@ namespace QLBanQuanAo
                 {
                     picProduct.BackColor = Color.Gainsboro;
                 }
+                picProduct.Image = null;
+
+                string dbImagePath = (from img in db.product_images
+                                      where img.product_id == sp.id 
+                                      orderby img.is_primary descending, img.sort_order
+                                      select img.image_url).FirstOrDefault();
+                if (!string.IsNullOrEmpty(dbImagePath))
+                {
+                    string cleanPath = dbImagePath.TrimStart('/', '\\').Replace("/", "\\");
+                    if (!cleanPath.StartsWith("Uploads\\Products", StringComparison.OrdinalIgnoreCase))
+                    {
+                        cleanPath = Path.Combine("Uploads", "Products", cleanPath);
+                    }
+                    string fullPath = Path.Combine(Application.StartupPath, cleanPath);
+                    if (!File.Exists(fullPath))
+                    {
+                        string projectRoot = Path.GetFullPath(Path.Combine(Application.StartupPath, @"..\..\"));
+                        fullPath = Path.Combine(projectRoot, cleanPath);
+                    }
+                    if (File.Exists(fullPath))
+                    {
+                        try
+                        {
+                            using (var stream = new FileStream(fullPath, FileMode.Open, FileAccess.Read))
+                            {
+                                picProduct.Image = Image.FromStream(stream);
+                            }
+                            picProduct.SizeMode = PictureBoxSizeMode.StretchImage;
+                        }
+                        catch
+                        {
+
+                        }
+                    }
+                }
+
             }
         }
 
@@ -56,16 +93,17 @@ namespace QLBanQuanAo
 
         private void btnXem_Click(object sender, EventArgs e)
         {
-           if (!UserSession.IsLoggedIn)
-            {
-                MessageBox.Show("Vui lòng đăng nhập để kiểm tra và mua sản phẩm!","Yêu cầu đăng nhập", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+          
             FrmProductDetail frm = new FrmProductDetail(_productId);
             frm.ShowDialog();
         }
 
         private void lblTen_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblTen_Click_1(object sender, EventArgs e)
         {
 
         }
