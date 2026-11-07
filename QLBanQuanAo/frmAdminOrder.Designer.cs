@@ -78,7 +78,7 @@
             // 
             // pnlOrderHeader
             // 
-            this.pnlOrderHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(41)))), ((int)(((byte)(55)))));
+            this.pnlOrderHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(77)))), ((int)(((byte)(45)))));
             this.pnlOrderHeader.Controls.Add(this.lblOrderDescription);
             this.pnlOrderHeader.Controls.Add(this.lblOrderTitle);
             this.pnlOrderHeader.Dock = System.Windows.Forms.DockStyle.Top;

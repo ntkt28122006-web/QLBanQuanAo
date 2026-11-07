@@ -84,13 +84,18 @@ namespace QLBanQuanAo
         }
         private void CapNhatHeader()
         {
-            btnUser.Visible = !UserSession.IsLoggedIn;
-            btnLogout.Visible = UserSession.IsLoggedIn;
-            lblWelcome.Text = UserSession.IsLoggedIn
-                ? "Xin chào, " + UserSession.CurrentUserName
-                : "Xin chào, khách hàng";
+            bool loggedIn = UserSession.IsLoggedIn && UserSession.CurrentUserId > 0;
+            btnUser.Visible = !loggedIn;
+            btnCustomerProfile.Visible = loggedIn;
+            btnLogout.Visible = loggedIn;
+            lblWelcome.Visible = false;
 
-            if (UserSession.IsLoggedIn)
+            string customerName = UserSession.CurrentUserName ?? "Khách hàng";
+            if (customerName.Length > 17)
+                customerName = customerName.Substring(0, 15) + "...";
+            btnCustomerProfile.Text = "👤 " + customerName;
+
+            if (loggedIn)
             {
                 using (var db = new QLBanHangDataContext())
                 {
@@ -287,6 +292,24 @@ namespace QLBanQuanAo
             {
                 this.Close();
             }
+        }
+
+        private void btnCustomerProfile_Click(object sender, EventArgs e)
+        {
+            if (!UserSession.IsLoggedIn || UserSession.CurrentUserId <= 0)
+            {
+                MessageBox.Show("Vui lòng đăng nhập để xem hồ sơ cá nhân.", "Thông báo",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            using (frmInforCustomer profileForm = new frmInforCustomer())
+            {
+                profileForm.ShowDialog(this);
+            }
+
+            // Cập nhật tên hiển thị sau khi khách hàng sửa hồ sơ.
+            CapNhatHeader();
         }
 
         private void btnUser_Click_1(object sender, EventArgs e)

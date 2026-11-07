@@ -53,32 +53,6 @@
             this.pnlProductInfo = new System.Windows.Forms.Panel();
             this.tabProductInfo = new System.Windows.Forms.TabControl();
             this.tabProductGeneral = new System.Windows.Forms.TabPage();
-            this.tabProductVariants = new System.Windows.Forms.TabPage();
-            this.lblVariantTitle = new System.Windows.Forms.Label();
-            this.lblVariantColor = new System.Windows.Forms.Label();
-            this.cboVariantColor = new System.Windows.Forms.ComboBox();
-            this.lblVariantSize = new System.Windows.Forms.Label();
-            this.cboVariantSize = new System.Windows.Forms.ComboBox();
-            this.lblVariantSku = new System.Windows.Forms.Label();
-            this.txtVariantSku = new System.Windows.Forms.TextBox();
-            this.lblVariantPrice = new System.Windows.Forms.Label();
-            this.numVariantPrice = new System.Windows.Forms.NumericUpDown();
-            this.lblVariantStock = new System.Windows.Forms.Label();
-            this.numVariantStock = new System.Windows.Forms.NumericUpDown();
-            this.chkVariantActive = new System.Windows.Forms.CheckBox();
-            this.btnAddVariant = new System.Windows.Forms.Button();
-            this.btnUpdateVariant = new System.Windows.Forms.Button();
-            this.btnDisableVariant = new System.Windows.Forms.Button();
-            this.btnClearVariant = new System.Windows.Forms.Button();
-            this.dgvVariants = new System.Windows.Forms.DataGridView();
-            this.colVariantId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colVariantSku = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colVariantColor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colVariantSize = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colVariantPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colVariantStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colVariantStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lblVariantHint = new System.Windows.Forms.Label();
             this.btnExit = new System.Windows.Forms.Button();
             this.btnClearProduct = new System.Windows.Forms.Button();
             this.btnUpdateProduct = new System.Windows.Forms.Button();
@@ -105,6 +79,25 @@
             this.lblProductId = new System.Windows.Forms.Label();
             this.lblProductName = new System.Windows.Forms.Label();
             this.lblProductInfoTitle = new System.Windows.Forms.Label();
+            this.tabProductVariants = new System.Windows.Forms.TabPage();
+            this.lblVariantHint = new System.Windows.Forms.Label();
+            this.dgvVariants = new System.Windows.Forms.DataGridView();
+            this.btnClearVariant = new System.Windows.Forms.Button();
+            this.btnDisableVariant = new System.Windows.Forms.Button();
+            this.btnUpdateVariant = new System.Windows.Forms.Button();
+            this.btnAddVariant = new System.Windows.Forms.Button();
+            this.chkVariantActive = new System.Windows.Forms.CheckBox();
+            this.numVariantStock = new System.Windows.Forms.NumericUpDown();
+            this.lblVariantStock = new System.Windows.Forms.Label();
+            this.numVariantPrice = new System.Windows.Forms.NumericUpDown();
+            this.lblVariantPrice = new System.Windows.Forms.Label();
+            this.txtVariantSku = new System.Windows.Forms.TextBox();
+            this.lblVariantSku = new System.Windows.Forms.Label();
+            this.cboVariantSize = new System.Windows.Forms.ComboBox();
+            this.lblVariantSize = new System.Windows.Forms.Label();
+            this.cboVariantColor = new System.Windows.Forms.ComboBox();
+            this.lblVariantColor = new System.Windows.Forms.Label();
+            this.lblVariantTitle = new System.Windows.Forms.Label();
             this.pnlProductHeader.SuspendLayout();
             this.pnlProductFilter.SuspendLayout();
             this.pnlProductBody.SuspendLayout();
@@ -116,13 +109,13 @@
             this.pnlProductInfo.SuspendLayout();
             this.tabProductInfo.SuspendLayout();
             this.tabProductGeneral.SuspendLayout();
-            this.tabProductVariants.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numVariantPrice)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numVariantStock)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvVariants)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picProductImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numProductSalePrice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numProductPrice)).BeginInit();
+            this.tabProductVariants.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvVariants)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numVariantStock)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numVariantPrice)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlProductHeader
@@ -138,8 +131,8 @@
             // 
             // lblPageDescription
             // 
-            this.lblPageDescription.BackColor = System.Drawing.Color.Transparent;
-            this.lblPageDescription.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.lblPageDescription.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(77)))), ((int)(((byte)(45)))));
+            this.lblPageDescription.ForeColor = System.Drawing.Color.Black;
             this.lblPageDescription.Location = new System.Drawing.Point(28, 65);
             this.lblPageDescription.Name = "lblPageDescription";
             this.lblPageDescription.Size = new System.Drawing.Size(700, 22);
@@ -149,9 +142,10 @@
             // 
             // lblPageTitle
             // 
+            this.lblPageTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(77)))), ((int)(((byte)(45)))));
             this.lblPageTitle.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPageTitle.ForeColor = System.Drawing.Color.White;
-            this.lblPageTitle.Location = new System.Drawing.Point(24, -3);
+            this.lblPageTitle.Location = new System.Drawing.Point(3, 0);
             this.lblPageTitle.Name = "lblPageTitle";
             this.lblPageTitle.Size = new System.Drawing.Size(1280, 90);
             this.lblPageTitle.TabIndex = 0;
@@ -223,7 +217,7 @@
             // 
             // btnResetFilter
             // 
-            this.btnResetFilter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(65)))), ((int)(((byte)(81)))));
+            this.btnResetFilter.BackColor = System.Drawing.Color.Black;
             this.btnResetFilter.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnResetFilter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnResetFilter.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -376,10 +370,23 @@
             this.colProductStatus.Name = "colProductStatus";
             this.colProductStatus.ReadOnly = true;
             // 
+            // pnlProductInfo
+            // 
+            this.pnlProductInfo.Controls.Add(this.tabProductInfo);
+            this.pnlProductInfo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlProductInfo.Location = new System.Drawing.Point(0, 0);
+            this.pnlProductInfo.Name = "pnlProductInfo";
+            this.pnlProductInfo.Padding = new System.Windows.Forms.Padding(12);
+            this.pnlProductInfo.Size = new System.Drawing.Size(504, 900);
+            this.pnlProductInfo.TabIndex = 0;
+            this.pnlProductInfo.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlProductInfo_Paint);
+            // 
             // tabProductInfo
             // 
+            this.tabProductInfo.Controls.Add(this.tabProductGeneral);
+            this.tabProductInfo.Controls.Add(this.tabProductVariants);
             this.tabProductInfo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabProductInfo.Location = new System.Drawing.Point(0, 0);
+            this.tabProductInfo.Location = new System.Drawing.Point(12, 12);
             this.tabProductInfo.Name = "tabProductInfo";
             this.tabProductInfo.SelectedIndex = 0;
             this.tabProductInfo.Size = new System.Drawing.Size(480, 876);
@@ -389,277 +396,6 @@
             // 
             this.tabProductGeneral.AutoScroll = true;
             this.tabProductGeneral.AutoScrollMinSize = new System.Drawing.Size(0, 840);
-            this.tabProductGeneral.Name = "tabProductGeneral";
-            this.tabProductGeneral.Padding = new System.Windows.Forms.Padding(3);
-            this.tabProductGeneral.TabIndex = 0;
-            this.tabProductGeneral.Text = "Thông tin chung";
-            this.tabProductGeneral.UseVisualStyleBackColor = true;
-            // 
-            // tabProductVariants
-            // 
-            this.tabProductVariants.AutoScroll = true;
-            this.tabProductVariants.AutoScrollMinSize = new System.Drawing.Size(0, 690);
-            this.tabProductVariants.Name = "tabProductVariants";
-            this.tabProductVariants.Padding = new System.Windows.Forms.Padding(3);
-            this.tabProductVariants.TabIndex = 1;
-            this.tabProductVariants.Text = "Biến thể & tồn kho";
-            this.tabProductVariants.UseVisualStyleBackColor = true;
-            // 
-            // lblVariantTitle
-            // 
-            this.lblVariantTitle.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
-            this.lblVariantTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(41)))), ((int)(((byte)(55)))));
-            this.lblVariantTitle.Location = new System.Drawing.Point(15, 14);
-            this.lblVariantTitle.Name = "lblVariantTitle";
-            this.lblVariantTitle.Size = new System.Drawing.Size(420, 30);
-            this.lblVariantTitle.TabIndex = 0;
-            this.lblVariantTitle.Text = "Quản lý màu sắc, kích thước và tồn kho";
-            // 
-            // lblVariantColor
-            // 
-            this.lblVariantColor.Location = new System.Drawing.Point(15, 52);
-            this.lblVariantColor.Name = "lblVariantColor";
-            this.lblVariantColor.Size = new System.Drawing.Size(205, 22);
-            this.lblVariantColor.TabIndex = 1;
-            this.lblVariantColor.Text = "Màu sắc";
-            // 
-            // cboVariantColor
-            // 
-            this.cboVariantColor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboVariantColor.FormattingEnabled = true;
-            this.cboVariantColor.Location = new System.Drawing.Point(15, 76);
-            this.cboVariantColor.Name = "cboVariantColor";
-            this.cboVariantColor.Size = new System.Drawing.Size(205, 28);
-            this.cboVariantColor.TabIndex = 2;
-            // 
-            // lblVariantSize
-            // 
-            this.lblVariantSize.Location = new System.Drawing.Point(235, 52);
-            this.lblVariantSize.Name = "lblVariantSize";
-            this.lblVariantSize.Size = new System.Drawing.Size(205, 22);
-            this.lblVariantSize.TabIndex = 3;
-            this.lblVariantSize.Text = "Kích thước";
-            // 
-            // cboVariantSize
-            // 
-            this.cboVariantSize.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboVariantSize.FormattingEnabled = true;
-            this.cboVariantSize.Location = new System.Drawing.Point(235, 76);
-            this.cboVariantSize.Name = "cboVariantSize";
-            this.cboVariantSize.Size = new System.Drawing.Size(205, 28);
-            this.cboVariantSize.TabIndex = 4;
-            // 
-            // lblVariantSku
-            // 
-            this.lblVariantSku.Location = new System.Drawing.Point(15, 112);
-            this.lblVariantSku.Name = "lblVariantSku";
-            this.lblVariantSku.Size = new System.Drawing.Size(205, 22);
-            this.lblVariantSku.TabIndex = 5;
-            this.lblVariantSku.Text = "Mã SKU (để trống tự tạo)";
-            // 
-            // txtVariantSku
-            // 
-            this.txtVariantSku.Location = new System.Drawing.Point(15, 136);
-            this.txtVariantSku.MaxLength = 64;
-            this.txtVariantSku.Name = "txtVariantSku";
-            this.txtVariantSku.Size = new System.Drawing.Size(205, 27);
-            this.txtVariantSku.TabIndex = 6;
-            // 
-            // lblVariantPrice
-            // 
-            this.lblVariantPrice.Location = new System.Drawing.Point(235, 112);
-            this.lblVariantPrice.Name = "lblVariantPrice";
-            this.lblVariantPrice.Size = new System.Drawing.Size(205, 22);
-            this.lblVariantPrice.TabIndex = 7;
-            this.lblVariantPrice.Text = "Giá riêng (0 = dùng giá SP)";
-            // 
-            // numVariantPrice
-            // 
-            this.numVariantPrice.Location = new System.Drawing.Point(235, 136);
-            this.numVariantPrice.Maximum = new decimal(new int[] { 1000000000, 0, 0, 0 });
-            this.numVariantPrice.Name = "numVariantPrice";
-            this.numVariantPrice.Size = new System.Drawing.Size(205, 27);
-            this.numVariantPrice.TabIndex = 8;
-            this.numVariantPrice.ThousandsSeparator = true;
-            // 
-            // lblVariantStock
-            // 
-            this.lblVariantStock.Location = new System.Drawing.Point(15, 172);
-            this.lblVariantStock.Name = "lblVariantStock";
-            this.lblVariantStock.Size = new System.Drawing.Size(205, 22);
-            this.lblVariantStock.TabIndex = 9;
-            this.lblVariantStock.Text = "Số lượng tồn kho";
-            // 
-            // numVariantStock
-            // 
-            this.numVariantStock.Location = new System.Drawing.Point(15, 196);
-            this.numVariantStock.Maximum = new decimal(new int[] { 1000000000, 0, 0, 0 });
-            this.numVariantStock.Name = "numVariantStock";
-            this.numVariantStock.Size = new System.Drawing.Size(205, 27);
-            this.numVariantStock.TabIndex = 10;
-            this.numVariantStock.ThousandsSeparator = true;
-            // 
-            // chkVariantActive
-            // 
-            this.chkVariantActive.AutoSize = true;
-            this.chkVariantActive.Checked = true;
-            this.chkVariantActive.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkVariantActive.Location = new System.Drawing.Point(235, 198);
-            this.chkVariantActive.Name = "chkVariantActive";
-            this.chkVariantActive.Size = new System.Drawing.Size(129, 24);
-            this.chkVariantActive.TabIndex = 11;
-            this.chkVariantActive.Text = "Đang kinh doanh";
-            this.chkVariantActive.UseVisualStyleBackColor = true;
-            // 
-            // btnAddVariant
-            // 
-            this.btnAddVariant.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(41)))), ((int)(((byte)(55)))));
-            this.btnAddVariant.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddVariant.ForeColor = System.Drawing.Color.White;
-            this.btnAddVariant.Location = new System.Drawing.Point(15, 238);
-            this.btnAddVariant.Name = "btnAddVariant";
-            this.btnAddVariant.Size = new System.Drawing.Size(100, 34);
-            this.btnAddVariant.TabIndex = 12;
-            this.btnAddVariant.Text = "Thêm";
-            this.btnAddVariant.UseVisualStyleBackColor = false;
-            this.btnAddVariant.Click += new System.EventHandler(this.btnAddVariant_Click);
-            // 
-            // btnUpdateVariant
-            // 
-            this.btnUpdateVariant.Location = new System.Drawing.Point(125, 238);
-            this.btnUpdateVariant.Name = "btnUpdateVariant";
-            this.btnUpdateVariant.Size = new System.Drawing.Size(100, 34);
-            this.btnUpdateVariant.TabIndex = 13;
-            this.btnUpdateVariant.Text = "Cập nhật";
-            this.btnUpdateVariant.UseVisualStyleBackColor = true;
-            this.btnUpdateVariant.Click += new System.EventHandler(this.btnUpdateVariant_Click);
-            // 
-            // btnDisableVariant
-            // 
-            this.btnDisableVariant.Location = new System.Drawing.Point(235, 238);
-            this.btnDisableVariant.Name = "btnDisableVariant";
-            this.btnDisableVariant.Size = new System.Drawing.Size(100, 34);
-            this.btnDisableVariant.TabIndex = 14;
-            this.btnDisableVariant.Text = "Ngừng bán";
-            this.btnDisableVariant.UseVisualStyleBackColor = true;
-            this.btnDisableVariant.Click += new System.EventHandler(this.btnDisableVariant_Click);
-            // 
-            // btnClearVariant
-            // 
-            this.btnClearVariant.Location = new System.Drawing.Point(345, 238);
-            this.btnClearVariant.Name = "btnClearVariant";
-            this.btnClearVariant.Size = new System.Drawing.Size(95, 34);
-            this.btnClearVariant.TabIndex = 15;
-            this.btnClearVariant.Text = "Tạo mới";
-            this.btnClearVariant.UseVisualStyleBackColor = true;
-            this.btnClearVariant.Click += new System.EventHandler(this.btnClearVariant_Click);
-            // 
-            // dgvVariants
-            // 
-            this.dgvVariants.AllowUserToAddRows = false;
-            this.dgvVariants.AllowUserToDeleteRows = false;
-            this.dgvVariants.AutoGenerateColumns = false;
-            this.dgvVariants.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvVariants.BackgroundColor = System.Drawing.Color.White;
-            this.dgvVariants.ColumnHeadersHeight = 34;
-            this.dgvVariants.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.colVariantId,
-            this.colVariantSku,
-            this.colVariantColor,
-            this.colVariantSize,
-            this.colVariantPrice,
-            this.colVariantStock,
-            this.colVariantStatus});
-            this.dgvVariants.Location = new System.Drawing.Point(15, 286);
-            this.dgvVariants.MultiSelect = false;
-            this.dgvVariants.Name = "dgvVariants";
-            this.dgvVariants.ReadOnly = true;
-            this.dgvVariants.RowHeadersVisible = false;
-            this.dgvVariants.RowTemplate.Height = 28;
-            this.dgvVariants.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvVariants.Size = new System.Drawing.Size(435, 350);
-            this.dgvVariants.TabIndex = 16;
-            this.dgvVariants.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvVariants_CellClick);
-            // 
-            // colVariantId
-            // 
-            this.colVariantId.DataPropertyName = "id";
-            this.colVariantId.Name = "colVariantId";
-            this.colVariantId.Visible = false;
-            // 
-            // colVariantSku
-            // 
-            this.colVariantSku.DataPropertyName = "sku";
-            this.colVariantSku.HeaderText = "SKU";
-            this.colVariantSku.Name = "colVariantSku";
-            this.colVariantSku.ReadOnly = true;
-            // 
-            // colVariantColor
-            // 
-            this.colVariantColor.DataPropertyName = "ColorName";
-            this.colVariantColor.HeaderText = "Màu";
-            this.colVariantColor.Name = "colVariantColor";
-            this.colVariantColor.ReadOnly = true;
-            // 
-            // colVariantSize
-            // 
-            this.colVariantSize.DataPropertyName = "SizeName";
-            this.colVariantSize.HeaderText = "Size";
-            this.colVariantSize.Name = "colVariantSize";
-            this.colVariantSize.ReadOnly = true;
-            // 
-            // colVariantPrice
-            // 
-            this.colVariantPrice.DataPropertyName = "PriceOverride";
-            this.colVariantPrice.HeaderText = "Giá riêng";
-            this.colVariantPrice.Name = "colVariantPrice";
-            this.colVariantPrice.ReadOnly = true;
-            // 
-            // colVariantStock
-            // 
-            this.colVariantStock.DataPropertyName = "StockQuantity";
-            this.colVariantStock.HeaderText = "Tồn";
-            this.colVariantStock.Name = "colVariantStock";
-            this.colVariantStock.ReadOnly = true;
-            // 
-            // colVariantStatus
-            // 
-            this.colVariantStatus.DataPropertyName = "Status";
-            this.colVariantStatus.HeaderText = "Trạng thái";
-            this.colVariantStatus.Name = "colVariantStatus";
-            this.colVariantStatus.ReadOnly = true;
-            // 
-            // lblVariantHint
-            // 
-            this.lblVariantHint.ForeColor = System.Drawing.Color.DimGray;
-            this.lblVariantHint.Location = new System.Drawing.Point(15, 644);
-            this.lblVariantHint.Name = "lblVariantHint";
-            this.lblVariantHint.Size = new System.Drawing.Size(435, 42);
-            this.lblVariantHint.TabIndex = 17;
-            this.lblVariantHint.Text = "Chọn một sản phẩm ở danh sách bên trái trước khi thêm hoặc cập nhật biến thể.";
-            this.tabProductVariants.Controls.Add(this.lblVariantHint);
-            this.tabProductVariants.Controls.Add(this.dgvVariants);
-            this.tabProductVariants.Controls.Add(this.btnClearVariant);
-            this.tabProductVariants.Controls.Add(this.btnDisableVariant);
-            this.tabProductVariants.Controls.Add(this.btnUpdateVariant);
-            this.tabProductVariants.Controls.Add(this.btnAddVariant);
-            this.tabProductVariants.Controls.Add(this.chkVariantActive);
-            this.tabProductVariants.Controls.Add(this.numVariantStock);
-            this.tabProductVariants.Controls.Add(this.lblVariantStock);
-            this.tabProductVariants.Controls.Add(this.numVariantPrice);
-            this.tabProductVariants.Controls.Add(this.lblVariantPrice);
-            this.tabProductVariants.Controls.Add(this.txtVariantSku);
-            this.tabProductVariants.Controls.Add(this.lblVariantSku);
-            this.tabProductVariants.Controls.Add(this.cboVariantSize);
-            this.tabProductVariants.Controls.Add(this.lblVariantSize);
-            this.tabProductVariants.Controls.Add(this.cboVariantColor);
-            this.tabProductVariants.Controls.Add(this.lblVariantColor);
-            this.tabProductVariants.Controls.Add(this.lblVariantTitle);
-            // 
-            // pnlProductInfo
-            // 
-            this.pnlProductInfo.AutoScroll = false;
-            this.pnlProductInfo.AutoScrollMinSize = new System.Drawing.Size(0, 0);
             this.tabProductGeneral.Controls.Add(this.btnExit);
             this.tabProductGeneral.Controls.Add(this.btnClearProduct);
             this.tabProductGeneral.Controls.Add(this.btnUpdateProduct);
@@ -686,16 +422,13 @@
             this.tabProductGeneral.Controls.Add(this.lblProductId);
             this.tabProductGeneral.Controls.Add(this.lblProductName);
             this.tabProductGeneral.Controls.Add(this.lblProductInfoTitle);
-            this.tabProductInfo.Controls.Add(this.tabProductGeneral);
-            this.tabProductInfo.Controls.Add(this.tabProductVariants);
-            this.pnlProductInfo.Controls.Add(this.tabProductInfo);
-            this.pnlProductInfo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlProductInfo.Location = new System.Drawing.Point(0, 0);
-            this.pnlProductInfo.Name = "pnlProductInfo";
-            this.pnlProductInfo.Padding = new System.Windows.Forms.Padding(12);
-            this.pnlProductInfo.Size = new System.Drawing.Size(504, 900);
-            this.pnlProductInfo.TabIndex = 0;
-            this.pnlProductInfo.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlProductInfo_Paint);
+            this.tabProductGeneral.Location = new System.Drawing.Point(4, 34);
+            this.tabProductGeneral.Name = "tabProductGeneral";
+            this.tabProductGeneral.Padding = new System.Windows.Forms.Padding(3);
+            this.tabProductGeneral.Size = new System.Drawing.Size(472, 838);
+            this.tabProductGeneral.TabIndex = 0;
+            this.tabProductGeneral.Text = "Thông tin chung";
+            this.tabProductGeneral.UseVisualStyleBackColor = true;
             // 
             // btnExit
             // 
@@ -749,7 +482,7 @@
             // 
             // btnChooseImage
             // 
-            this.btnChooseImage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(41)))), ((int)(((byte)(55)))));
+            this.btnChooseImage.BackColor = System.Drawing.Color.Black;
             this.btnChooseImage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnChooseImage.ForeColor = System.Drawing.Color.White;
             this.btnChooseImage.Location = new System.Drawing.Point(150, 620);
@@ -961,6 +694,221 @@
             this.lblProductInfoTitle.Text = "Thông tin sản phẩm";
             this.lblProductInfoTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // tabProductVariants
+            // 
+            this.tabProductVariants.AutoScroll = true;
+            this.tabProductVariants.AutoScrollMinSize = new System.Drawing.Size(0, 690);
+            this.tabProductVariants.Controls.Add(this.lblVariantHint);
+            this.tabProductVariants.Controls.Add(this.dgvVariants);
+            this.tabProductVariants.Controls.Add(this.btnClearVariant);
+            this.tabProductVariants.Controls.Add(this.btnDisableVariant);
+            this.tabProductVariants.Controls.Add(this.btnUpdateVariant);
+            this.tabProductVariants.Controls.Add(this.btnAddVariant);
+            this.tabProductVariants.Controls.Add(this.chkVariantActive);
+            this.tabProductVariants.Controls.Add(this.numVariantStock);
+            this.tabProductVariants.Controls.Add(this.lblVariantStock);
+            this.tabProductVariants.Controls.Add(this.numVariantPrice);
+            this.tabProductVariants.Controls.Add(this.lblVariantPrice);
+            this.tabProductVariants.Controls.Add(this.txtVariantSku);
+            this.tabProductVariants.Controls.Add(this.lblVariantSku);
+            this.tabProductVariants.Controls.Add(this.cboVariantSize);
+            this.tabProductVariants.Controls.Add(this.lblVariantSize);
+            this.tabProductVariants.Controls.Add(this.cboVariantColor);
+            this.tabProductVariants.Controls.Add(this.lblVariantColor);
+            this.tabProductVariants.Controls.Add(this.lblVariantTitle);
+            this.tabProductVariants.Location = new System.Drawing.Point(4, 29);
+            this.tabProductVariants.Name = "tabProductVariants";
+            this.tabProductVariants.Padding = new System.Windows.Forms.Padding(3);
+            this.tabProductVariants.Size = new System.Drawing.Size(472, 843);
+            this.tabProductVariants.TabIndex = 1;
+            this.tabProductVariants.Text = "Biến thể & tồn kho";
+            this.tabProductVariants.UseVisualStyleBackColor = true;
+            // 
+            // lblVariantHint
+            // 
+            this.lblVariantHint.ForeColor = System.Drawing.Color.DimGray;
+            this.lblVariantHint.Location = new System.Drawing.Point(15, 644);
+            this.lblVariantHint.Name = "lblVariantHint";
+            this.lblVariantHint.Size = new System.Drawing.Size(435, 42);
+            this.lblVariantHint.TabIndex = 17;
+            this.lblVariantHint.Text = "Chọn một sản phẩm ở danh sách bên trái trước khi thêm hoặc cập nhật biến thể.";
+            // 
+            // dgvVariants
+            // 
+            this.dgvVariants.AllowUserToAddRows = false;
+            this.dgvVariants.AllowUserToDeleteRows = false;
+            this.dgvVariants.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvVariants.BackgroundColor = System.Drawing.Color.White;
+            this.dgvVariants.ColumnHeadersHeight = 34;
+            this.dgvVariants.Location = new System.Drawing.Point(15, 286);
+            this.dgvVariants.MultiSelect = false;
+            this.dgvVariants.Name = "dgvVariants";
+            this.dgvVariants.ReadOnly = true;
+            this.dgvVariants.RowHeadersVisible = false;
+            this.dgvVariants.RowHeadersWidth = 62;
+            this.dgvVariants.RowTemplate.Height = 28;
+            this.dgvVariants.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvVariants.Size = new System.Drawing.Size(435, 350);
+            this.dgvVariants.TabIndex = 16;
+            this.dgvVariants.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvVariants_CellClick);
+            // 
+            // btnClearVariant
+            // 
+            this.btnClearVariant.Location = new System.Drawing.Point(345, 238);
+            this.btnClearVariant.Name = "btnClearVariant";
+            this.btnClearVariant.Size = new System.Drawing.Size(95, 34);
+            this.btnClearVariant.TabIndex = 15;
+            this.btnClearVariant.Text = "Tạo mới";
+            this.btnClearVariant.UseVisualStyleBackColor = true;
+            this.btnClearVariant.Click += new System.EventHandler(this.btnClearVariant_Click);
+            // 
+            // btnDisableVariant
+            // 
+            this.btnDisableVariant.Location = new System.Drawing.Point(235, 238);
+            this.btnDisableVariant.Name = "btnDisableVariant";
+            this.btnDisableVariant.Size = new System.Drawing.Size(100, 34);
+            this.btnDisableVariant.TabIndex = 14;
+            this.btnDisableVariant.Text = "Ngừng bán";
+            this.btnDisableVariant.UseVisualStyleBackColor = true;
+            this.btnDisableVariant.Click += new System.EventHandler(this.btnDisableVariant_Click);
+            // 
+            // btnUpdateVariant
+            // 
+            this.btnUpdateVariant.Location = new System.Drawing.Point(125, 238);
+            this.btnUpdateVariant.Name = "btnUpdateVariant";
+            this.btnUpdateVariant.Size = new System.Drawing.Size(100, 34);
+            this.btnUpdateVariant.TabIndex = 13;
+            this.btnUpdateVariant.Text = "Cập nhật";
+            this.btnUpdateVariant.UseVisualStyleBackColor = true;
+            this.btnUpdateVariant.Click += new System.EventHandler(this.btnUpdateVariant_Click);
+            // 
+            // btnAddVariant
+            // 
+            this.btnAddVariant.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(41)))), ((int)(((byte)(55)))));
+            this.btnAddVariant.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddVariant.ForeColor = System.Drawing.Color.White;
+            this.btnAddVariant.Location = new System.Drawing.Point(15, 238);
+            this.btnAddVariant.Name = "btnAddVariant";
+            this.btnAddVariant.Size = new System.Drawing.Size(100, 34);
+            this.btnAddVariant.TabIndex = 12;
+            this.btnAddVariant.Text = "Thêm";
+            this.btnAddVariant.UseVisualStyleBackColor = false;
+            this.btnAddVariant.Click += new System.EventHandler(this.btnAddVariant_Click);
+            // 
+            // chkVariantActive
+            // 
+            this.chkVariantActive.AutoSize = true;
+            this.chkVariantActive.Checked = true;
+            this.chkVariantActive.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkVariantActive.Location = new System.Drawing.Point(235, 198);
+            this.chkVariantActive.Name = "chkVariantActive";
+            this.chkVariantActive.Size = new System.Drawing.Size(175, 29);
+            this.chkVariantActive.TabIndex = 11;
+            this.chkVariantActive.Text = "Đang kinh doanh";
+            this.chkVariantActive.UseVisualStyleBackColor = true;
+            // 
+            // numVariantStock
+            // 
+            this.numVariantStock.Location = new System.Drawing.Point(15, 196);
+            this.numVariantStock.Maximum = new decimal(new int[] {
+            1000000000,
+            0,
+            0,
+            0});
+            this.numVariantStock.Name = "numVariantStock";
+            this.numVariantStock.Size = new System.Drawing.Size(205, 31);
+            this.numVariantStock.TabIndex = 10;
+            this.numVariantStock.ThousandsSeparator = true;
+            // 
+            // lblVariantStock
+            // 
+            this.lblVariantStock.Location = new System.Drawing.Point(15, 172);
+            this.lblVariantStock.Name = "lblVariantStock";
+            this.lblVariantStock.Size = new System.Drawing.Size(205, 22);
+            this.lblVariantStock.TabIndex = 9;
+            this.lblVariantStock.Text = "Số lượng tồn kho";
+            // 
+            // numVariantPrice
+            // 
+            this.numVariantPrice.Location = new System.Drawing.Point(235, 136);
+            this.numVariantPrice.Maximum = new decimal(new int[] {
+            1000000000,
+            0,
+            0,
+            0});
+            this.numVariantPrice.Name = "numVariantPrice";
+            this.numVariantPrice.Size = new System.Drawing.Size(205, 31);
+            this.numVariantPrice.TabIndex = 8;
+            this.numVariantPrice.ThousandsSeparator = true;
+            // 
+            // lblVariantPrice
+            // 
+            this.lblVariantPrice.Location = new System.Drawing.Point(235, 112);
+            this.lblVariantPrice.Name = "lblVariantPrice";
+            this.lblVariantPrice.Size = new System.Drawing.Size(205, 22);
+            this.lblVariantPrice.TabIndex = 7;
+            this.lblVariantPrice.Text = "Giá riêng (0 = dùng giá SP)";
+            // 
+            // txtVariantSku
+            // 
+            this.txtVariantSku.Location = new System.Drawing.Point(15, 136);
+            this.txtVariantSku.MaxLength = 64;
+            this.txtVariantSku.Name = "txtVariantSku";
+            this.txtVariantSku.Size = new System.Drawing.Size(205, 31);
+            this.txtVariantSku.TabIndex = 6;
+            // 
+            // lblVariantSku
+            // 
+            this.lblVariantSku.Location = new System.Drawing.Point(15, 112);
+            this.lblVariantSku.Name = "lblVariantSku";
+            this.lblVariantSku.Size = new System.Drawing.Size(205, 22);
+            this.lblVariantSku.TabIndex = 5;
+            this.lblVariantSku.Text = "Mã SKU (để trống tự tạo)";
+            // 
+            // cboVariantSize
+            // 
+            this.cboVariantSize.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboVariantSize.FormattingEnabled = true;
+            this.cboVariantSize.Location = new System.Drawing.Point(235, 76);
+            this.cboVariantSize.Name = "cboVariantSize";
+            this.cboVariantSize.Size = new System.Drawing.Size(205, 33);
+            this.cboVariantSize.TabIndex = 4;
+            // 
+            // lblVariantSize
+            // 
+            this.lblVariantSize.Location = new System.Drawing.Point(235, 52);
+            this.lblVariantSize.Name = "lblVariantSize";
+            this.lblVariantSize.Size = new System.Drawing.Size(205, 22);
+            this.lblVariantSize.TabIndex = 3;
+            this.lblVariantSize.Text = "Kích thước";
+            // 
+            // cboVariantColor
+            // 
+            this.cboVariantColor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboVariantColor.FormattingEnabled = true;
+            this.cboVariantColor.Location = new System.Drawing.Point(15, 76);
+            this.cboVariantColor.Name = "cboVariantColor";
+            this.cboVariantColor.Size = new System.Drawing.Size(205, 33);
+            this.cboVariantColor.TabIndex = 2;
+            // 
+            // lblVariantColor
+            // 
+            this.lblVariantColor.Location = new System.Drawing.Point(15, 52);
+            this.lblVariantColor.Name = "lblVariantColor";
+            this.lblVariantColor.Size = new System.Drawing.Size(205, 22);
+            this.lblVariantColor.TabIndex = 1;
+            this.lblVariantColor.Text = "Màu sắc";
+            // 
+            // lblVariantTitle
+            // 
+            this.lblVariantTitle.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            this.lblVariantTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(41)))), ((int)(((byte)(55)))));
+            this.lblVariantTitle.Location = new System.Drawing.Point(15, 14);
+            this.lblVariantTitle.Name = "lblVariantTitle";
+            this.lblVariantTitle.Size = new System.Drawing.Size(420, 30);
+            this.lblVariantTitle.TabIndex = 0;
+            this.lblVariantTitle.Text = "Quản lý màu sắc, kích thước và tồn kho";
+            // 
             // frmAdminProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
@@ -989,18 +937,18 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitProductContent)).EndInit();
             this.splitProductContent.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvVariants)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numVariantPrice)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numVariantStock)).EndInit();
-            this.tabProductVariants.ResumeLayout(false);
-            this.tabProductVariants.PerformLayout();
+            this.pnlProductInfo.ResumeLayout(false);
+            this.tabProductInfo.ResumeLayout(false);
             this.tabProductGeneral.ResumeLayout(false);
             this.tabProductGeneral.PerformLayout();
-            this.tabProductInfo.ResumeLayout(false);
-            this.pnlProductInfo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picProductImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numProductSalePrice)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numProductPrice)).EndInit();
+            this.tabProductVariants.ResumeLayout(false);
+            this.tabProductVariants.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvVariants)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numVariantStock)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numVariantPrice)).EndInit();
             this.ResumeLayout(false);
 
         }
