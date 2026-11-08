@@ -356,10 +356,32 @@ namespace QLBanQuanAo
             }
 
             this.Hide();
+
             using (frmLogin login = new frmLogin())
             {
                 login.ShowDialog();
             }
+
+            Form formPhuDangMo = Application.OpenForms.Cast<Form>()
+                  .FirstOrDefault(f => f != this && !(f is FrmCustomerHome) && !(f is frmMainAdmin) && f.Visible);
+
+            if (formPhuDangMo != null)
+            {
+                formPhuDangMo.FormClosed += (s, args) =>
+                {
+                    bool daMoTrangChinhMoi = Application.OpenForms.Cast<Form>()
+                        .Any(f => f != this && (f is FrmCustomerHome || f is frmMainAdmin) && f.Visible);
+
+                    if (!daMoTrangChinhMoi && !this.IsDisposed)
+                    {
+                        CapNhatHeader();
+                        LocVaHienThiSanPham();
+                        this.Show();
+                    }
+                };
+                return;
+            }
+
 
             bool daMoFormMoi = Application.OpenForms.Cast<Form>()
                         .Any(f => f != this && (f is FrmCustomerHome || f is frmMainAdmin) && f.Visible);

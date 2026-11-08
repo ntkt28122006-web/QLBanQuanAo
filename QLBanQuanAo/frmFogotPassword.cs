@@ -278,8 +278,6 @@ namespace QLBanQuanAo
 
         private void lnkBackToLogin_Click(object sender, EventArgs e)
         {
-            frmLogin loginForm = new frmLogin();
-            loginForm.Show();
             this.Close();
         }
 

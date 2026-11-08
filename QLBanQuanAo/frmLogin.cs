@@ -20,18 +20,26 @@ namespace QLBanQuanAo
 
         private void lnkForgotPassword_Click(object sender, EventArgs e)
         {
-            frmFogotPassword forgotPasswordForm = new frmFogotPassword();
-            forgotPasswordForm.Show();
-            this.Hide();
+            this.Opacity = 0;
+            using (frmFogotPassword frm = new frmFogotPassword())
+            {
+                frm.ShowDialog();
+            }
+            this.Opacity = 1;
+            this.Activate();
         }
 
 
 
         private void lnkSignin_Click(object sender, EventArgs e)
         {
-            frmSignIn frmSignIn = new frmSignIn();
-            frmSignIn.Show();
-            this.Hide();
+            this.Opacity = 0; 
+            using (frmSignIn frmSignIn = new frmSignIn())
+            {
+                frmSignIn.ShowDialog(this); 
+            }
+            this.Opacity = 1; 
+            this.Activate();
         }
 
         private void btnLogIn_Click(object sender, EventArgs e)

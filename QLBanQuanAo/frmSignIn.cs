@@ -31,8 +31,6 @@ namespace QLBanQuanAo
 
         private void foxLinkLabel1_Click(object sender, EventArgs e)
         {
-            frmLogin frmLogin = new frmLogin();
-            frmLogin.Show();
             this.Close();
         }
 
