@@ -7,7 +7,6 @@
 Ứng dụng desktop **bán hàng và quản lý cửa hàng thời trang**, xây dựng bằng **C# Windows Forms** và **SQL Server**, gồm hai phân hệ: **khách hàng** (mua sắm) và **quản trị viên** (quản lý cửa hàng).
 
 ---
-
 ## ✨ Chức năng chính
 
 **🔐 Tài khoản**
@@ -39,56 +38,6 @@
 | BCrypt.Net | Băm mật khẩu và mã OTP |
 | RDLC / ReportViewer | Thiết kế và hiển thị báo cáo, hóa đơn |
 | SMTP (Gmail) | Gửi email OTP |
-
-## 📸 Giao diện
-
-### Xác thực
-
-| Đăng nhập | Đăng ký | Đổi mật khẩu |
-|:---:|:---:|:---:|
-| <img src="docs/login.png" width="250"> | <img src="docs/register.png" width="250"> | <img src="docs/change-password.png" width="250"> |
-
-### Phân hệ khách hàng
-
-**Trang chủ**
-
-![Trang chủ khách hàng](docs/customer-home.png)
-
-| Chi tiết sản phẩm | Giỏ hàng |
-|:---:|:---:|
-| <img src="docs/product-detail.png" width="420"> | <img src="docs/cart.png" width="420"> |
-
-| Thanh toán & đặt hàng | Lịch sử đơn hàng |
-|:---:|:---:|
-| <img src="docs/checkout.png" width="420"> | <img src="docs/order-history.png" width="420"> |
-
-### Phân hệ quản trị
-
-**Quản lý sản phẩm**
-
-![Quản lý sản phẩm](docs/admin-products.png)
-
-**Quản lý danh mục**
-
-![Quản lý danh mục](docs/admin-categories.png)
-
-**Quản lý đơn hàng**
-
-![Quản lý đơn hàng](docs/admin-orders.png)
-
-**Quản lý tài khoản khách hàng**
-
-![Quản lý tài khoản](docs/admin-accounts.png)
-
-**In hóa đơn (RDLC)**
-
-![Hóa đơn](docs/invoice.png)
-
-## 🗄️ Cơ sở dữ liệu
-
-Sơ đồ quan hệ thực thể (ERD):
-
-![ERD](docs/erd.png)
 
 ## 🚀 Hướng dẫn cài đặt & chạy
 
