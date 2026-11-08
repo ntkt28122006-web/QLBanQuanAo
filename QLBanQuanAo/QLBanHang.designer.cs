@@ -33,9 +33,6 @@ namespace QLBanQuanAo
     partial void Insertaddress(address instance);
     partial void Updateaddress(address instance);
     partial void Deleteaddress(address instance);
-    partial void Insertuser(user instance);
-    partial void Updateuser(user instance);
-    partial void Deleteuser(user instance);
     partial void Insertcart_item(cart_item instance);
     partial void Updatecart_item(cart_item instance);
     partial void Deletecart_item(cart_item instance);
@@ -84,6 +81,9 @@ namespace QLBanQuanAo
     partial void Insertuser_role(user_role instance);
     partial void Updateuser_role(user_role instance);
     partial void Deleteuser_role(user_role instance);
+    partial void Insertuser(user instance);
+    partial void Updateuser(user instance);
+    partial void Deleteuser(user instance);
     #endregion
 		
 		public QLBanHangDataContext() : 
@@ -121,14 +121,6 @@ namespace QLBanQuanAo
 			get
 			{
 				return this.GetTable<address>();
-			}
-		}
-		
-		public System.Data.Linq.Table<user> users
-		{
-			get
-			{
-				return this.GetTable<user>();
 			}
 		}
 		
@@ -257,6 +249,14 @@ namespace QLBanQuanAo
 			get
 			{
 				return this.GetTable<user_role>();
+			}
+		}
+		
+		public System.Data.Linq.Table<user> users
+		{
+			get
+			{
+				return this.GetTable<user>();
 			}
 		}
 	}
@@ -629,520 +629,6 @@ namespace QLBanQuanAo
 		{
 			this.SendPropertyChanging();
 			entity.address = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.users")]
-	public partial class user : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _id;
-		
-		private string _full_name;
-		
-		private string _email;
-		
-		private string _password_hash;
-		
-		private string _phone;
-		
-		private bool _email_verified;
-		
-		private System.Nullable<System.DateTime> _email_verified_at;
-		
-		private string _email_verification_otp_hash;
-		
-		private System.Nullable<System.DateTime> _email_verification_otp_expires_at;
-		
-		private string _password_reset_otp_hash;
-		
-		private System.Nullable<System.DateTime> _password_reset_otp_expires_at;
-		
-		private string _status;
-		
-		private System.DateTime _created_at;
-		
-		private System.DateTime _updated_at;
-		
-		private EntitySet<address> _addresses;
-		
-		private EntitySet<cart> _carts;
-		
-		private EntitySet<order> _orders;
-		
-		private EntitySet<review> _reviews;
-		
-		private EntitySet<user_role> _user_roles;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnidChanging(int value);
-    partial void OnidChanged();
-    partial void Onfull_nameChanging(string value);
-    partial void Onfull_nameChanged();
-    partial void OnemailChanging(string value);
-    partial void OnemailChanged();
-    partial void Onpassword_hashChanging(string value);
-    partial void Onpassword_hashChanged();
-    partial void OnphoneChanging(string value);
-    partial void OnphoneChanged();
-    partial void Onemail_verifiedChanging(bool value);
-    partial void Onemail_verifiedChanged();
-    partial void Onemail_verified_atChanging(System.Nullable<System.DateTime> value);
-    partial void Onemail_verified_atChanged();
-    partial void Onemail_verification_otp_hashChanging(string value);
-    partial void Onemail_verification_otp_hashChanged();
-    partial void Onemail_verification_otp_expires_atChanging(System.Nullable<System.DateTime> value);
-    partial void Onemail_verification_otp_expires_atChanged();
-    partial void Onpassword_reset_otp_hashChanging(string value);
-    partial void Onpassword_reset_otp_hashChanged();
-    partial void Onpassword_reset_otp_expires_atChanging(System.Nullable<System.DateTime> value);
-    partial void Onpassword_reset_otp_expires_atChanged();
-    partial void OnstatusChanging(string value);
-    partial void OnstatusChanged();
-    partial void Oncreated_atChanging(System.DateTime value);
-    partial void Oncreated_atChanged();
-    partial void Onupdated_atChanging(System.DateTime value);
-    partial void Onupdated_atChanged();
-    #endregion
-		
-		public user()
-		{
-			this._addresses = new EntitySet<address>(new Action<address>(this.attach_addresses), new Action<address>(this.detach_addresses));
-			this._carts = new EntitySet<cart>(new Action<cart>(this.attach_carts), new Action<cart>(this.detach_carts));
-			this._orders = new EntitySet<order>(new Action<order>(this.attach_orders), new Action<order>(this.detach_orders));
-			this._reviews = new EntitySet<review>(new Action<review>(this.attach_reviews), new Action<review>(this.detach_reviews));
-			this._user_roles = new EntitySet<user_role>(new Action<user_role>(this.attach_user_roles), new Action<user_role>(this.detach_user_roles));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int id
-		{
-			get
-			{
-				return this._id;
-			}
-			set
-			{
-				if ((this._id != value))
-				{
-					this.OnidChanging(value);
-					this.SendPropertyChanging();
-					this._id = value;
-					this.SendPropertyChanged("id");
-					this.OnidChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_full_name", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
-		public string full_name
-		{
-			get
-			{
-				return this._full_name;
-			}
-			set
-			{
-				if ((this._full_name != value))
-				{
-					this.Onfull_nameChanging(value);
-					this.SendPropertyChanging();
-					this._full_name = value;
-					this.SendPropertyChanged("full_name");
-					this.Onfull_nameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_email", DbType="VarChar(254) NOT NULL", CanBeNull=false)]
-		public string email
-		{
-			get
-			{
-				return this._email;
-			}
-			set
-			{
-				if ((this._email != value))
-				{
-					this.OnemailChanging(value);
-					this.SendPropertyChanging();
-					this._email = value;
-					this.SendPropertyChanged("email");
-					this.OnemailChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_password_hash", DbType="VarChar(255) NOT NULL", CanBeNull=false)]
-		public string password_hash
-		{
-			get
-			{
-				return this._password_hash;
-			}
-			set
-			{
-				if ((this._password_hash != value))
-				{
-					this.Onpassword_hashChanging(value);
-					this.SendPropertyChanging();
-					this._password_hash = value;
-					this.SendPropertyChanged("password_hash");
-					this.Onpassword_hashChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_phone", DbType="VarChar(20)")]
-		public string phone
-		{
-			get
-			{
-				return this._phone;
-			}
-			set
-			{
-				if ((this._phone != value))
-				{
-					this.OnphoneChanging(value);
-					this.SendPropertyChanging();
-					this._phone = value;
-					this.SendPropertyChanged("phone");
-					this.OnphoneChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_email_verified", DbType="Bit NOT NULL")]
-		public bool email_verified
-		{
-			get
-			{
-				return this._email_verified;
-			}
-			set
-			{
-				if ((this._email_verified != value))
-				{
-					this.Onemail_verifiedChanging(value);
-					this.SendPropertyChanging();
-					this._email_verified = value;
-					this.SendPropertyChanged("email_verified");
-					this.Onemail_verifiedChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_email_verified_at", DbType="DateTime2")]
-		public System.Nullable<System.DateTime> email_verified_at
-		{
-			get
-			{
-				return this._email_verified_at;
-			}
-			set
-			{
-				if ((this._email_verified_at != value))
-				{
-					this.Onemail_verified_atChanging(value);
-					this.SendPropertyChanging();
-					this._email_verified_at = value;
-					this.SendPropertyChanged("email_verified_at");
-					this.Onemail_verified_atChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_email_verification_otp_hash", DbType="VarChar(255)")]
-		public string email_verification_otp_hash
-		{
-			get
-			{
-				return this._email_verification_otp_hash;
-			}
-			set
-			{
-				if ((this._email_verification_otp_hash != value))
-				{
-					this.Onemail_verification_otp_hashChanging(value);
-					this.SendPropertyChanging();
-					this._email_verification_otp_hash = value;
-					this.SendPropertyChanged("email_verification_otp_hash");
-					this.Onemail_verification_otp_hashChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_email_verification_otp_expires_at", DbType="DateTime2")]
-		public System.Nullable<System.DateTime> email_verification_otp_expires_at
-		{
-			get
-			{
-				return this._email_verification_otp_expires_at;
-			}
-			set
-			{
-				if ((this._email_verification_otp_expires_at != value))
-				{
-					this.Onemail_verification_otp_expires_atChanging(value);
-					this.SendPropertyChanging();
-					this._email_verification_otp_expires_at = value;
-					this.SendPropertyChanged("email_verification_otp_expires_at");
-					this.Onemail_verification_otp_expires_atChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_password_reset_otp_hash", DbType="VarChar(255)")]
-		public string password_reset_otp_hash
-		{
-			get
-			{
-				return this._password_reset_otp_hash;
-			}
-			set
-			{
-				if ((this._password_reset_otp_hash != value))
-				{
-					this.Onpassword_reset_otp_hashChanging(value);
-					this.SendPropertyChanging();
-					this._password_reset_otp_hash = value;
-					this.SendPropertyChanged("password_reset_otp_hash");
-					this.Onpassword_reset_otp_hashChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_password_reset_otp_expires_at", DbType="DateTime2")]
-		public System.Nullable<System.DateTime> password_reset_otp_expires_at
-		{
-			get
-			{
-				return this._password_reset_otp_expires_at;
-			}
-			set
-			{
-				if ((this._password_reset_otp_expires_at != value))
-				{
-					this.Onpassword_reset_otp_expires_atChanging(value);
-					this.SendPropertyChanging();
-					this._password_reset_otp_expires_at = value;
-					this.SendPropertyChanged("password_reset_otp_expires_at");
-					this.Onpassword_reset_otp_expires_atChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_status", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
-		public string status
-		{
-			get
-			{
-				return this._status;
-			}
-			set
-			{
-				if ((this._status != value))
-				{
-					this.OnstatusChanging(value);
-					this.SendPropertyChanging();
-					this._status = value;
-					this.SendPropertyChanged("status");
-					this.OnstatusChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_created_at", DbType="DateTime2 NOT NULL")]
-		public System.DateTime created_at
-		{
-			get
-			{
-				return this._created_at;
-			}
-			set
-			{
-				if ((this._created_at != value))
-				{
-					this.Oncreated_atChanging(value);
-					this.SendPropertyChanging();
-					this._created_at = value;
-					this.SendPropertyChanged("created_at");
-					this.Oncreated_atChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_updated_at", DbType="DateTime2 NOT NULL")]
-		public System.DateTime updated_at
-		{
-			get
-			{
-				return this._updated_at;
-			}
-			set
-			{
-				if ((this._updated_at != value))
-				{
-					this.Onupdated_atChanging(value);
-					this.SendPropertyChanging();
-					this._updated_at = value;
-					this.SendPropertyChanged("updated_at");
-					this.Onupdated_atChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="user_address", Storage="_addresses", ThisKey="id", OtherKey="user_id")]
-		public EntitySet<address> addresses
-		{
-			get
-			{
-				return this._addresses;
-			}
-			set
-			{
-				this._addresses.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="user_cart", Storage="_carts", ThisKey="id", OtherKey="user_id")]
-		public EntitySet<cart> carts
-		{
-			get
-			{
-				return this._carts;
-			}
-			set
-			{
-				this._carts.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="user_order", Storage="_orders", ThisKey="id", OtherKey="user_id")]
-		public EntitySet<order> orders
-		{
-			get
-			{
-				return this._orders;
-			}
-			set
-			{
-				this._orders.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="user_review", Storage="_reviews", ThisKey="id", OtherKey="user_id")]
-		public EntitySet<review> reviews
-		{
-			get
-			{
-				return this._reviews;
-			}
-			set
-			{
-				this._reviews.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="user_user_role", Storage="_user_roles", ThisKey="id", OtherKey="user_id")]
-		public EntitySet<user_role> user_roles
-		{
-			get
-			{
-				return this._user_roles;
-			}
-			set
-			{
-				this._user_roles.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_addresses(address entity)
-		{
-			this.SendPropertyChanging();
-			entity.user = this;
-		}
-		
-		private void detach_addresses(address entity)
-		{
-			this.SendPropertyChanging();
-			entity.user = null;
-		}
-		
-		private void attach_carts(cart entity)
-		{
-			this.SendPropertyChanging();
-			entity.user = this;
-		}
-		
-		private void detach_carts(cart entity)
-		{
-			this.SendPropertyChanging();
-			entity.user = null;
-		}
-		
-		private void attach_orders(order entity)
-		{
-			this.SendPropertyChanging();
-			entity.user = this;
-		}
-		
-		private void detach_orders(order entity)
-		{
-			this.SendPropertyChanging();
-			entity.user = null;
-		}
-		
-		private void attach_reviews(review entity)
-		{
-			this.SendPropertyChanging();
-			entity.user = this;
-		}
-		
-		private void detach_reviews(review entity)
-		{
-			this.SendPropertyChanging();
-			entity.user = null;
-		}
-		
-		private void attach_user_roles(user_role entity)
-		{
-			this.SendPropertyChanging();
-			entity.user = this;
-		}
-		
-		private void detach_user_roles(user_role entity)
-		{
-			this.SendPropertyChanging();
-			entity.user = null;
 		}
 	}
 	
@@ -5316,6 +4802,544 @@ namespace QLBanQuanAo
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.users")]
+	public partial class user : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id;
+		
+		private string _full_name;
+		
+		private string _email;
+		
+		private string _password_hash;
+		
+		private string _phone;
+		
+		private bool _email_verified;
+		
+		private System.Nullable<System.DateTime> _email_verified_at;
+		
+		private string _email_verification_otp_hash;
+		
+		private System.Nullable<System.DateTime> _email_verification_otp_expires_at;
+		
+		private string _password_reset_otp_hash;
+		
+		private System.Nullable<System.DateTime> _password_reset_otp_expires_at;
+		
+		private string _status;
+		
+		private System.DateTime _created_at;
+		
+		private System.DateTime _updated_at;
+		
+		private int _password_reset_attempts;
+		
+		private EntitySet<address> _addresses;
+		
+		private EntitySet<cart> _carts;
+		
+		private EntitySet<order> _orders;
+		
+		private EntitySet<review> _reviews;
+		
+		private EntitySet<user_role> _user_roles;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidChanging(int value);
+    partial void OnidChanged();
+    partial void Onfull_nameChanging(string value);
+    partial void Onfull_nameChanged();
+    partial void OnemailChanging(string value);
+    partial void OnemailChanged();
+    partial void Onpassword_hashChanging(string value);
+    partial void Onpassword_hashChanged();
+    partial void OnphoneChanging(string value);
+    partial void OnphoneChanged();
+    partial void Onemail_verifiedChanging(bool value);
+    partial void Onemail_verifiedChanged();
+    partial void Onemail_verified_atChanging(System.Nullable<System.DateTime> value);
+    partial void Onemail_verified_atChanged();
+    partial void Onemail_verification_otp_hashChanging(string value);
+    partial void Onemail_verification_otp_hashChanged();
+    partial void Onemail_verification_otp_expires_atChanging(System.Nullable<System.DateTime> value);
+    partial void Onemail_verification_otp_expires_atChanged();
+    partial void Onpassword_reset_otp_hashChanging(string value);
+    partial void Onpassword_reset_otp_hashChanged();
+    partial void Onpassword_reset_otp_expires_atChanging(System.Nullable<System.DateTime> value);
+    partial void Onpassword_reset_otp_expires_atChanged();
+    partial void OnstatusChanging(string value);
+    partial void OnstatusChanged();
+    partial void Oncreated_atChanging(System.DateTime value);
+    partial void Oncreated_atChanged();
+    partial void Onupdated_atChanging(System.DateTime value);
+    partial void Onupdated_atChanged();
+    partial void Onpassword_reset_attemptsChanging(int value);
+    partial void Onpassword_reset_attemptsChanged();
+    #endregion
+		
+		public user()
+		{
+			this._addresses = new EntitySet<address>(new Action<address>(this.attach_addresses), new Action<address>(this.detach_addresses));
+			this._carts = new EntitySet<cart>(new Action<cart>(this.attach_carts), new Action<cart>(this.detach_carts));
+			this._orders = new EntitySet<order>(new Action<order>(this.attach_orders), new Action<order>(this.detach_orders));
+			this._reviews = new EntitySet<review>(new Action<review>(this.attach_reviews), new Action<review>(this.detach_reviews));
+			this._user_roles = new EntitySet<user_role>(new Action<user_role>(this.attach_user_roles), new Action<user_role>(this.detach_user_roles));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int id
+		{
+			get
+			{
+				return this._id;
+			}
+			set
+			{
+				if ((this._id != value))
+				{
+					this.OnidChanging(value);
+					this.SendPropertyChanging();
+					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_full_name", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string full_name
+		{
+			get
+			{
+				return this._full_name;
+			}
+			set
+			{
+				if ((this._full_name != value))
+				{
+					this.Onfull_nameChanging(value);
+					this.SendPropertyChanging();
+					this._full_name = value;
+					this.SendPropertyChanged("full_name");
+					this.Onfull_nameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_email", DbType="VarChar(254) NOT NULL", CanBeNull=false)]
+		public string email
+		{
+			get
+			{
+				return this._email;
+			}
+			set
+			{
+				if ((this._email != value))
+				{
+					this.OnemailChanging(value);
+					this.SendPropertyChanging();
+					this._email = value;
+					this.SendPropertyChanged("email");
+					this.OnemailChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_password_hash", DbType="VarChar(255) NOT NULL", CanBeNull=false)]
+		public string password_hash
+		{
+			get
+			{
+				return this._password_hash;
+			}
+			set
+			{
+				if ((this._password_hash != value))
+				{
+					this.Onpassword_hashChanging(value);
+					this.SendPropertyChanging();
+					this._password_hash = value;
+					this.SendPropertyChanged("password_hash");
+					this.Onpassword_hashChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_phone", DbType="VarChar(20)")]
+		public string phone
+		{
+			get
+			{
+				return this._phone;
+			}
+			set
+			{
+				if ((this._phone != value))
+				{
+					this.OnphoneChanging(value);
+					this.SendPropertyChanging();
+					this._phone = value;
+					this.SendPropertyChanged("phone");
+					this.OnphoneChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_email_verified", DbType="Bit NOT NULL")]
+		public bool email_verified
+		{
+			get
+			{
+				return this._email_verified;
+			}
+			set
+			{
+				if ((this._email_verified != value))
+				{
+					this.Onemail_verifiedChanging(value);
+					this.SendPropertyChanging();
+					this._email_verified = value;
+					this.SendPropertyChanged("email_verified");
+					this.Onemail_verifiedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_email_verified_at", DbType="DateTime2")]
+		public System.Nullable<System.DateTime> email_verified_at
+		{
+			get
+			{
+				return this._email_verified_at;
+			}
+			set
+			{
+				if ((this._email_verified_at != value))
+				{
+					this.Onemail_verified_atChanging(value);
+					this.SendPropertyChanging();
+					this._email_verified_at = value;
+					this.SendPropertyChanged("email_verified_at");
+					this.Onemail_verified_atChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_email_verification_otp_hash", DbType="VarChar(255)")]
+		public string email_verification_otp_hash
+		{
+			get
+			{
+				return this._email_verification_otp_hash;
+			}
+			set
+			{
+				if ((this._email_verification_otp_hash != value))
+				{
+					this.Onemail_verification_otp_hashChanging(value);
+					this.SendPropertyChanging();
+					this._email_verification_otp_hash = value;
+					this.SendPropertyChanged("email_verification_otp_hash");
+					this.Onemail_verification_otp_hashChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_email_verification_otp_expires_at", DbType="DateTime2")]
+		public System.Nullable<System.DateTime> email_verification_otp_expires_at
+		{
+			get
+			{
+				return this._email_verification_otp_expires_at;
+			}
+			set
+			{
+				if ((this._email_verification_otp_expires_at != value))
+				{
+					this.Onemail_verification_otp_expires_atChanging(value);
+					this.SendPropertyChanging();
+					this._email_verification_otp_expires_at = value;
+					this.SendPropertyChanged("email_verification_otp_expires_at");
+					this.Onemail_verification_otp_expires_atChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_password_reset_otp_hash", DbType="VarChar(255)")]
+		public string password_reset_otp_hash
+		{
+			get
+			{
+				return this._password_reset_otp_hash;
+			}
+			set
+			{
+				if ((this._password_reset_otp_hash != value))
+				{
+					this.Onpassword_reset_otp_hashChanging(value);
+					this.SendPropertyChanging();
+					this._password_reset_otp_hash = value;
+					this.SendPropertyChanged("password_reset_otp_hash");
+					this.Onpassword_reset_otp_hashChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_password_reset_otp_expires_at", DbType="DateTime2")]
+		public System.Nullable<System.DateTime> password_reset_otp_expires_at
+		{
+			get
+			{
+				return this._password_reset_otp_expires_at;
+			}
+			set
+			{
+				if ((this._password_reset_otp_expires_at != value))
+				{
+					this.Onpassword_reset_otp_expires_atChanging(value);
+					this.SendPropertyChanging();
+					this._password_reset_otp_expires_at = value;
+					this.SendPropertyChanged("password_reset_otp_expires_at");
+					this.Onpassword_reset_otp_expires_atChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_status", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
+		public string status
+		{
+			get
+			{
+				return this._status;
+			}
+			set
+			{
+				if ((this._status != value))
+				{
+					this.OnstatusChanging(value);
+					this.SendPropertyChanging();
+					this._status = value;
+					this.SendPropertyChanged("status");
+					this.OnstatusChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_created_at", DbType="DateTime2 NOT NULL")]
+		public System.DateTime created_at
+		{
+			get
+			{
+				return this._created_at;
+			}
+			set
+			{
+				if ((this._created_at != value))
+				{
+					this.Oncreated_atChanging(value);
+					this.SendPropertyChanging();
+					this._created_at = value;
+					this.SendPropertyChanged("created_at");
+					this.Oncreated_atChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_updated_at", DbType="DateTime2 NOT NULL")]
+		public System.DateTime updated_at
+		{
+			get
+			{
+				return this._updated_at;
+			}
+			set
+			{
+				if ((this._updated_at != value))
+				{
+					this.Onupdated_atChanging(value);
+					this.SendPropertyChanging();
+					this._updated_at = value;
+					this.SendPropertyChanged("updated_at");
+					this.Onupdated_atChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_password_reset_attempts", DbType="Int NOT NULL")]
+		public int password_reset_attempts
+		{
+			get
+			{
+				return this._password_reset_attempts;
+			}
+			set
+			{
+				if ((this._password_reset_attempts != value))
+				{
+					this.Onpassword_reset_attemptsChanging(value);
+					this.SendPropertyChanging();
+					this._password_reset_attempts = value;
+					this.SendPropertyChanged("password_reset_attempts");
+					this.Onpassword_reset_attemptsChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="user_address", Storage="_addresses", ThisKey="id", OtherKey="user_id")]
+		public EntitySet<address> addresses
+		{
+			get
+			{
+				return this._addresses;
+			}
+			set
+			{
+				this._addresses.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="user_cart", Storage="_carts", ThisKey="id", OtherKey="user_id")]
+		public EntitySet<cart> carts
+		{
+			get
+			{
+				return this._carts;
+			}
+			set
+			{
+				this._carts.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="user_order", Storage="_orders", ThisKey="id", OtherKey="user_id")]
+		public EntitySet<order> orders
+		{
+			get
+			{
+				return this._orders;
+			}
+			set
+			{
+				this._orders.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="user_review", Storage="_reviews", ThisKey="id", OtherKey="user_id")]
+		public EntitySet<review> reviews
+		{
+			get
+			{
+				return this._reviews;
+			}
+			set
+			{
+				this._reviews.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="user_user_role", Storage="_user_roles", ThisKey="id", OtherKey="user_id")]
+		public EntitySet<user_role> user_roles
+		{
+			get
+			{
+				return this._user_roles;
+			}
+			set
+			{
+				this._user_roles.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_addresses(address entity)
+		{
+			this.SendPropertyChanging();
+			entity.user = this;
+		}
+		
+		private void detach_addresses(address entity)
+		{
+			this.SendPropertyChanging();
+			entity.user = null;
+		}
+		
+		private void attach_carts(cart entity)
+		{
+			this.SendPropertyChanging();
+			entity.user = this;
+		}
+		
+		private void detach_carts(cart entity)
+		{
+			this.SendPropertyChanging();
+			entity.user = null;
+		}
+		
+		private void attach_orders(order entity)
+		{
+			this.SendPropertyChanging();
+			entity.user = this;
+		}
+		
+		private void detach_orders(order entity)
+		{
+			this.SendPropertyChanging();
+			entity.user = null;
+		}
+		
+		private void attach_reviews(review entity)
+		{
+			this.SendPropertyChanging();
+			entity.user = this;
+		}
+		
+		private void detach_reviews(review entity)
+		{
+			this.SendPropertyChanging();
+			entity.user = null;
+		}
+		
+		private void attach_user_roles(user_role entity)
+		{
+			this.SendPropertyChanging();
+			entity.user = this;
+		}
+		
+		private void detach_user_roles(user_role entity)
+		{
+			this.SendPropertyChanging();
+			entity.user = null;
 		}
 	}
 }

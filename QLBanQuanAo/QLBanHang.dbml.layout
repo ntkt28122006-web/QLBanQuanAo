@@ -8,12 +8,6 @@
         <elementListCompartment Id="69753326-fe8b-4a30-954e-a8926d16365c" absoluteBounds="18.64, 22.335, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="e7eaa235-83e4-4abe-b51c-1f1298b1fe59" absoluteBounds="14.25, 14.625, 2, 3.5016097005208309">
-      <DataClassMoniker Name="/QLBanHangDataContext/user" />
-      <nestedChildShapes>
-        <elementListCompartment Id="b6ca8c2d-3c1a-425b-86f6-66533b43aa98" absoluteBounds="14.265, 15.085, 1.9700000000000002, 2.941609700520833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
     <classShape Id="83d92a4b-ac09-47be-b61a-654c9bb1848b" absoluteBounds="12.125, 8.75, 2, 1.7708968098958326">
       <DataClassMoniker Name="/QLBanHangDataContext/cart_item" />
       <nestedChildShapes>
@@ -110,25 +104,11 @@
         <elementListCompartment Id="b0dfb391-4586-4499-a899-6c48416dc8af" absoluteBounds="4.0150000000000006, 18.21, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(16.09375 : 18.1266097005208); (16.09375 : 22.78125); (18.625 : 22.78125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/QLBanHangDataContext/user/user_address" />
-      <nodes>
-        <classShapeMoniker Id="e7eaa235-83e4-4abe-b51c-1f1298b1fe59" />
-        <classShapeMoniker Id="5d8e9a8d-3fc7-4dd4-96a8-5ad70c9916b4" />
-      </nodes>
-    </associationConnector>
     <associationConnector edgePoints="[(12.4375 : 13.125); (12.4375 : 10.5208968098958)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/QLBanHangDataContext/cart/cart_cart_item" />
       <nodes>
         <classShapeMoniker Id="f08fced9-142f-4c38-8b9d-3984619afd35" />
         <classShapeMoniker Id="83d92a4b-ac09-47be-b61a-654c9bb1848b" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(14.25 : 16.2896981139323); (11.75 : 16.2896981139323); (11.75 : 14.7035953776042)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/QLBanHangDataContext/user/user_cart" />
-      <nodes>
-        <classShapeMoniker Id="e7eaa235-83e4-4abe-b51c-1f1298b1fe59" />
-        <classShapeMoniker Id="f08fced9-142f-4c38-8b9d-3984619afd35" />
       </nodes>
     </associationConnector>
     <associationConnector edgePoints="[(15.7055298715445 : 10.5208968098958); (15.7055298715445 : 10.7708968098958); (16.3084925155248 : 10.7708968098958); (16.3084925155248 : 10.5208968098958)]" fixedFrom="NotFixed" fixedTo="NotFixed">
@@ -152,13 +132,6 @@
         <classShapeMoniker Id="cee46d92-8079-4859-b8b4-045066027d2f" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(16.25 : 16.3758048502604); (28.5 : 16.3758048502604)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/QLBanHangDataContext/user/user_order" />
-      <nodes>
-        <classShapeMoniker Id="e7eaa235-83e4-4abe-b51c-1f1298b1fe59" />
-        <classShapeMoniker Id="cee46d92-8079-4859-b8b4-045066027d2f" />
-      </nodes>
-    </associationConnector>
     <associationConnector edgePoints="[(14.75 : 5.04890055338542); (13.15625 : 5.04890055338542); (13.15625 : 8.75)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/QLBanHangDataContext/product_variant/product_variant_cart_item" />
       <nodes>
@@ -166,7 +139,7 @@
         <classShapeMoniker Id="83d92a4b-ac09-47be-b61a-654c9bb1848b" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(14.75 : 5.73640055338542); (13.2395833333333 : 5.73640055338542 : JumpStart); (13.0729166666667 : 5.73640055338542 : JumpEnd); (11.375 : 5.73640055338542)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(14.75 : 5.73640055338542); (11.375 : 5.73640055338542)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/QLBanHangDataContext/product_variant/product_variant_inventory" />
       <nodes>
         <classShapeMoniker Id="036946ed-e74c-4286-a5f1-aa1761f5a717" />
@@ -215,24 +188,17 @@
         <classShapeMoniker Id="036946ed-e74c-4286-a5f1-aa1761f5a717" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(16.6854987577624 : 10.5208968098958); (16.6854987577624 : 12.0937575268555); (15.3333333333333 : 12.0937575268555 : JumpStart); (15.1666666666667 : 12.0937575268555 : JumpEnd); (12.5208333333333 : 12.0937575268555 : JumpStart); (12.3541666666667 : 12.0937575268555 : JumpEnd); (7.75 : 12.0937575268555)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(16.6854987577624 : 10.5208968098958); (16.6854987577624 : 12.0937575268555); (15.4270808333333 : 12.0937575268555 : JumpStart); (15.2604141666667 : 12.0937575268555 : JumpEnd); (12.5208333333333 : 12.0937575268555 : JumpStart); (12.3541666666667 : 12.0937575268555 : JumpEnd); (7.75 : 12.0937575268555)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/QLBanHangDataContext/category/category_product" />
       <nodes>
         <classShapeMoniker Id="173be09c-977b-4977-a507-f0909b7dbf20" />
         <classShapeMoniker Id="012f1f5e-2d43-40a0-a90b-97e5bf5f96ab" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(7.75 : 12.6406287634277); (12.3541666666667 : 12.6406287634277 : JumpStart); (12.5208333333333 : 12.6406287634277 : JumpEnd); (15.1666666666667 : 12.6406287634277 : JumpStart); (15.3333333333333 : 12.6406287634277 : JumpEnd); (17.875 : 12.6406287634277)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(7.75 : 12.6406287634277); (12.3541666666667 : 12.6406287634277 : JumpStart); (12.5208333333333 : 12.6406287634277 : JumpEnd); (15.2604141666667 : 12.6406287634277 : JumpStart); (15.4270808333333 : 12.6406287634277 : JumpEnd); (17.875 : 12.6406287634277)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/QLBanHangDataContext/product/product_review" />
       <nodes>
         <classShapeMoniker Id="012f1f5e-2d43-40a0-a90b-97e5bf5f96ab" />
-        <classShapeMoniker Id="708d0555-58cf-409d-a588-b4f4fcf0ed9e" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(15.25 : 14.625); (15.25 : 11.6718787634277); (16.6021654244291 : 11.6718787634277 : JumpStart); (16.7688320910957 : 11.6718787634277 : JumpEnd); (17.875 : 11.6718787634277)]" fixedFrom="Algorithm" fixedTo="Algorithm">
-      <AssociationMoniker Name="/QLBanHangDataContext/user/user_review" />
-      <nodes>
-        <classShapeMoniker Id="e7eaa235-83e4-4abe-b51c-1f1298b1fe59" />
         <classShapeMoniker Id="708d0555-58cf-409d-a588-b4f4fcf0ed9e" />
       </nodes>
     </associationConnector>
@@ -257,10 +223,44 @@
         <classShapeMoniker Id="8caf60a9-f8d5-4917-8f71-92db9698bf62" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(14.25 : 17.9383048502604); (6 : 17.9383048502604)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <classShape Id="b9e72dd8-c619-403a-9402-207356e80dab" absoluteBounds="14.875, 15.75, 2, 3.6939111328124996">
+      <DataClassMoniker Name="/QLBanHangDataContext/user" />
+      <nestedChildShapes>
+        <elementListCompartment Id="8a99d59f-989c-4adf-8bbc-ec0571338f81" absoluteBounds="14.89, 16.21, 1.9700000000000002, 3.1339111328125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(16.40625 : 19.4439111328125); (16.40625 : 22.78125); (18.625 : 22.78125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/QLBanHangDataContext/user/user_address" />
+      <nodes>
+        <classShapeMoniker Id="b9e72dd8-c619-403a-9402-207356e80dab" />
+        <classShapeMoniker Id="5d8e9a8d-3fc7-4dd4-96a8-5ad70c9916b4" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(15.875 : 15.75); (15.875 : 13.9142976888021); (15.4270808333333 : 13.9142976888021 : JumpStart); (15.2604141666667 : 13.9142976888021 : JumpEnd); (12.75 : 13.9142976888021)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/QLBanHangDataContext/user/user_cart" />
+      <nodes>
+        <classShapeMoniker Id="b9e72dd8-c619-403a-9402-207356e80dab" />
+        <classShapeMoniker Id="f08fced9-142f-4c38-8b9d-3984619afd35" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(16.875 : 16.9719555664063); (19.5416666666667 : 16.9719555664063 : JumpStart); (19.7083333333333 : 16.9719555664063 : JumpEnd); (28.5 : 16.9719555664063)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/QLBanHangDataContext/user/user_order" />
+      <nodes>
+        <classShapeMoniker Id="b9e72dd8-c619-403a-9402-207356e80dab" />
+        <classShapeMoniker Id="cee46d92-8079-4859-b8b4-045066027d2f" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(15.3437475 : 15.75); (15.3437475 : 11.6718787634277); (16.6021654244291 : 11.6718787634277 : JumpStart); (16.7688320910957 : 11.6718787634277 : JumpEnd); (17.875 : 11.6718787634277)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/QLBanHangDataContext/user/user_review" />
+      <nodes>
+        <classShapeMoniker Id="b9e72dd8-c619-403a-9402-207356e80dab" />
+        <classShapeMoniker Id="708d0555-58cf-409d-a588-b4f4fcf0ed9e" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(14.875 : 18.3469962565104); (6 : 18.3469962565104)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/QLBanHangDataContext/user/user_user_role" />
       <nodes>
-        <classShapeMoniker Id="e7eaa235-83e4-4abe-b51c-1f1298b1fe59" />
+        <classShapeMoniker Id="b9e72dd8-c619-403a-9402-207356e80dab" />
         <classShapeMoniker Id="8caf60a9-f8d5-4917-8f71-92db9698bf62" />
       </nodes>
     </associationConnector>
