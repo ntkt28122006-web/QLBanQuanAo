@@ -93,17 +93,7 @@ namespace QLBanQuanAo
             }
         }
 
-        private void dgvOrders_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (dgvOrders.CurrentRow != null && dgvOrders.CurrentRow.Cells["MaDonHang"].Value != null)
-            {
-                if (int.TryParse(dgvOrders.CurrentRow.Cells["MaDonHang"].Value.ToString(), out int orderId))
-                {
-                    TaiChiTietDonHang(orderId);
-                }
-            }
-        }
-
+        
         private void dgvOrderItems_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
         }
@@ -175,6 +165,13 @@ namespace QLBanQuanAo
 
         private void dgvOrders_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
+            if (dgvOrders.CurrentRow != null && dgvOrders.CurrentRow.Cells["MaDonHang"].Value != null)
+            {
+                if (int.TryParse(dgvOrders.CurrentRow.Cells["MaDonHang"].Value.ToString(), out int orderId))
+                {
+                    TaiChiTietDonHang(orderId);
+                }
+            }
         }
     }
 }
